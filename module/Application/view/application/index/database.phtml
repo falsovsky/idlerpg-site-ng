@@ -181,8 +181,22 @@ $this->headScript()->prependFile("https://cdnjs.cloudflare.com/ajax/libs/moment-
                         sort: 'timestamp'
                     }
                 },
-                { data: "created" },
-                { data: "last_login" },
+                {
+                    data: "created",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                {
+                    data: "last_login",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
                 { data: "amulet",
                     "type": "num",
                     render: {

@@ -133,8 +133,14 @@ class BotParser
                         'timestamp' => (int) $data[12] + (int) $data[13] + (int) $data[14] + (int) $data[15] +
                             (int) $data[16] + (int) $data[17] + (int) $data[18],
                     ],
-                    'created' => (int) $data[19], // created
-                    'last_login' => (int) $data[20], // last login
+                    'created' => [
+                        'display' => date('Y-m-d H:i:s', (int) $data[19]), // created
+                        'timestamp' => (int) $data[19],
+                    ],
+                    'last_login' => [
+                        'display' => date('Y-m-d H:i:s', (int) $data[20]), // last login
+                        'timestamp' => (int) $data[20],
+                    ],
                     'amulet' => [
                         'display' => $data[21], // amulet
                         'timestamp' => (int) $data[21],
