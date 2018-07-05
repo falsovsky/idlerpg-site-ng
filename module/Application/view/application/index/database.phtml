@@ -1,0 +1,261 @@
+<?php
+$this->headLink()->prependStylesheet("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css");
+$this->headScript()->prependFile("https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/2.2.2/moment-duration-format.min.js")
+    ->prependFile("https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js")
+    ->prependFile("https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js");
+?>
+
+
+<div class="row">
+    <table id="example" class="display" style="width:100%">
+
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Level</th>
+            <th>Admin</th>
+            <th>Class</th>
+            <th>TTL</th>
+            <th>Nick!User@Host</th>
+            <th>Online</th>
+            <th>Total Time Idled</th>
+            <th>X Pos</th>
+            <th>Y Pos</th>
+            <th>Msg Pen.</th>
+            <th>Nick Pen.</th>
+            <th>Part Pen.</th>
+            <th>Kick Pen.</th>
+            <th>Quit Pen.</th>
+            <th>Quest Pen.</th>
+            <th>Logout Pen.</th>
+            <th>Total Pen.</th>
+            <th>Acct. Created</th>
+            <th>Last Login</th>
+            <th>Amulet</th>
+            <th>Charm</th>
+            <th>Helm</th>
+            <th>Boots</th>
+            <th>Gloves</th>
+            <th>Ring</th>
+            <th>Leggings</th>
+            <th>Shield</th>
+            <th>Tunic</th>
+            <th>Weapon</th>
+            <th>Sum</th>
+            <th>Alignment</th>
+        </tr>
+        </thead>
+
+
+
+        <tfoot>
+            <th>User</th>
+            <th>Level</th>
+            <th>Admin</th>
+            <th>Class</th>
+            <th>TTL</th>
+            <th>Nick!User@Host</th>
+            <th>Online</th>
+            <th>Total Time Idled</th>
+            <th>X Pos</th>
+            <th>Y Pos</th>
+            <th>Msg Pen.</th>
+            <th>Nick Pen.</th>
+            <th>Part Pen.</th>
+            <th>Kick Pen.</th>
+            <th>Quit Pen.</th>
+            <th>Quest Pen.</th>
+            <th>Logout Pen.</th>
+            <th>Total Pen.</th>
+            <th>Acct. Created</th>
+            <th>Last Login</th>
+            <th>Amulet</th>
+            <th>Charm</th>
+            <th>Helm</th>
+            <th>Boots</th>
+            <th>Gloves</th>
+            <th>Ring</th>
+            <th>Leggings</th>
+            <th>Shield</th>
+            <th>Tunic</th>
+            <th>Weapon</th>
+            <th>Sum</th>
+            <th>Alignment</th>
+        </tfoot>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "ajax": "<?php echo $this->url('database-json'); ?>",
+            "scrollX": true,
+            "paging": false,
+
+            columns: [
+                { data: "nick" },
+                { data: "level" },
+                { data: "admin" },
+                { data: "class" },
+                {
+                    data: "ttl",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "nick_host" },
+                { data: "online" },
+                {
+                    data: "idled",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "x_pos" },
+                { data: "y_pos" },
+                {
+                    data: "msg_pen",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                {
+                    data: "nick_pen",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                {
+                    data: "part_pen",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                {
+                    data: "kick_pen",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                {
+                    data: "quit_pen",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                {
+                    data: "quest_pen",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                {
+                    data: "logout_pen",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                {
+                    data: "total_pen",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "created" },
+                { data: "last_login" },
+                { data: "amulet",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "charm",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "helm",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "boots",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "gloves",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "ring",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "leggings",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "shield",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "tunic",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "weapon",
+                    "type": "num",
+                    render: {
+                        _: 'display',
+                        sort: 'timestamp'
+                    }
+                },
+                { data: "sum" },
+                { data: "alignment" },
+            ],
+        });
+    });
+</script>

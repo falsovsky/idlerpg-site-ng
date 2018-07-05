@@ -1,0 +1,13 @@
+
+<div class="row">
+
+    <h1>Scoreboard</h1>
+    <h2>Pick a player to view</h2>
+    <p class="small">[gray=offline]</p>
+    <ol>
+        <?php foreach ($this->score as $player): ?>
+            <li><?php echo $this->scoreboard($player); ?></li>
+        <?php endforeach; ?>
+    </ol>
+
+</div>
