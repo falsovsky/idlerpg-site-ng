@@ -43,12 +43,10 @@ class IndexController extends AbstractActionController
 
     public function playerInfoAction()
     {
-
     }
 
     public function databaseAction()
     {
-
     }
 
     public function databaseJsonAction()

@@ -17,10 +17,12 @@ class BotParser
         $players = [];
 
         $row = 0;
-        if (($handle = fopen($this->config['bot_db'], "r")) !== FALSE) {
-            while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
+        if (($handle = fopen($this->config['bot_db'], "r")) !== false) {
+            while (($data = fgetcsv($handle, 1000, "\t")) !== false) {
                 $row++;
-                if ($row == 1) continue;
+                if ($row == 1) {
+                    continue;
+                }
                 $players[] = [
                     'nick' => $data[0],
                     'level' => (int)$data[3],
@@ -44,7 +46,8 @@ class BotParser
     }
 */
 
-    private function secondsToTime($seconds) {
+    private function secondsToTime($seconds)
+    {
         $dtF = new Carbon('@0');
         $dtT = new Carbon("@$seconds");
         return $dtF->diffForHumans($dtT, true);
@@ -53,7 +56,7 @@ class BotParser
     private function parseAlignment($alignment)
     {
         $align = "";
-        switch($alignment) {
+        switch ($alignment) {
             case 'n':
                 $align = "Neutral";
                 break;
@@ -72,10 +75,12 @@ class BotParser
         $database = [];
 
         $row = 0;
-        if (($handle = fopen($this->config['bot_db'], "r")) !== FALSE) {
-            while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
+        if (($handle = fopen($this->config['bot_db'], "r")) !== false) {
+            while (($data = fgetcsv($handle, 1000, "\t")) !== false) {
                 $row++;
-                if ($row == 1) continue;
+                if ($row == 1) {
+                    continue;
+                }
 
                 $database[] = [
                     'nick' => $data[0], // nick
@@ -175,7 +180,6 @@ class BotParser
                         (int) $data[30], // sum
                     'alignment' => $this->parseAlignment($data[31]), // alignment
                 ];
-
             }
             fclose($handle);
         }
