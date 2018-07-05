@@ -50,7 +50,7 @@ class BotParser
     {
         $dtF = new Carbon('@0');
         $dtT = new Carbon("@$seconds");
-        return $dtF->diffForHumans($dtT, true);
+        return $dtF->diffForHumans($dtT, true, false, 2);
     }
 
     private function parseAlignment($alignment)
@@ -85,14 +85,14 @@ class BotParser
                 $database[] = [
                     'nick' => $data[0], // nick
                     'level' => $data[3], // level
-                    'admin' => (bool) $data[2], // admin
+                    'admin' => ($data[2] ? 'Yes' : 'No'), // admin
                     'class' => $data[4], // class
                     'ttl'  => [
                         'display' => $this->secondsToTime((int) $data[5]),
                         'timestamp' => (int) $data[5], // ttl
                     ],
                     'nick_host' => $data[7], // nick and host
-                    'online' => (bool) $data[8], // online
+                    'online' => ($data[8] ? 'Yes' : 'No'), // online
                     'idled' => [
                         'display' => $this->secondsToTime((int) $data[9]), // idled
                         'timestamp' => (int) $data[9],
