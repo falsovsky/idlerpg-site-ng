@@ -3,14 +3,23 @@
 namespace Application\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
+use Carbon\Carbon;
 
 class Scoreboard extends AbstractHelper
 {
+    /*
     private function secondsToTime($seconds)
     {
         $dtF = new \DateTime('@0');
         $dtT = new \DateTime("@$seconds");
         return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
+    }
+    */
+    private function secondsToTime($seconds)
+    {
+        $dtF = new Carbon('@0');
+        $dtT = new Carbon("@$seconds");
+        return $dtF->diffForHumans($dtT, true, false);
     }
 
     public function __invoke($item)
