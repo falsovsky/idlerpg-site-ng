@@ -15,4 +15,15 @@ class Module
     {
         return include __DIR__ . '/../config/module.config.php';
     }
+
+    public function onBootstrap($e)
+    {
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $viewModel = $e->getApplication()->getMvcEvent()->getViewModel();
+
+        $config = $serviceManager->get('configuration');
+        $config = $config['idlerpg'];
+
+        $viewModel->title = $config['bot_channel'] . '@' . $config['network_host'];
+    }
 }
