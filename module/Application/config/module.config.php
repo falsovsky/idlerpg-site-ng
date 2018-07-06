@@ -63,8 +63,9 @@ return [
             'playerinfo' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/playerinfo/:nick',
+                    'route'    => '/playerinfo[:mod]/:nick',
                     'constraints' => [
+                        'mod' => '-full-modifier',
                         //'nick' => '[\a]+'
                     ],
                     'defaults' => [

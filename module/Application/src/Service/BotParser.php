@@ -275,4 +275,33 @@ class BotParser
 
         return $player_info;
     }
+
+    public function getModifiers($nick, $limit = 5)
+    {
+        $modifiers = [
+            'items' => [],
+            'total' => 0,
+        ];
+
+        $tmp = [];
+        $handle = fopen($this->config['bot_mod'], "r");
+        if ($handle) {
+            while (($line = fgets($handle)) !== false) {
+                if (strpos($line, $nick) !== false) {
+                    $tmp[] = $line;
+                }
+            }
+            fclose($handle);
+        }
+
+        $tmp = array_reverse($tmp);
+        $modifiers['total'] = count($tmp);
+        if ($limit > 0) {
+            $modifiers['items'] = array_slice($tmp, 0, $limit);
+        } else {
+            $modifiers['items'] = $tmp;
+        }
+
+        return $modifiers;
+    }
 }

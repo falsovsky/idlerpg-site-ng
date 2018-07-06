@@ -44,6 +44,7 @@ class IndexController extends AbstractActionController
     public function playerInfoAction()
     {
         $nick = (string) $this->params()->fromRoute('nick', 0);
+        $fullmod = (string) $this->params()->fromRoute('mod', false);
         if (0 === $nick) {
             return $this->redirect()->toRoute('home');
         }
@@ -51,6 +52,14 @@ class IndexController extends AbstractActionController
         $player_info = $this->parser->getPlayerInfo($nick);
         if (0 === $player_info) {
             return $this->redirect()->toRoute('home');
+        }
+
+        if ($fullmod) {
+            $player_info['mod'] = $this->parser->getModifiers($nick, 0);
+            $player_info['mod']['link'] = false;
+        } else {
+            $player_info['mod'] = $this->parser->getModifiers($nick);
+            $player_info['mod']['link'] = true;
         }
 
         return new ViewModel($player_info);
