@@ -38,13 +38,6 @@ class BotParser
 
         return $players;
     }
-/*
-    private function secondsToTime($seconds) {
-        $dtF = new \DateTime('@0');
-        $dtT = new \DateTime("@$seconds");
-        return $dtF->diff($dtT)->format('%a days, %H:%I:%S');
-    }
-*/
 
     private function secondsToTime($seconds)
     {
@@ -191,5 +184,19 @@ class BotParser
         }
 
         return ['data' => $database];
+    }
+
+    public function getPlayerInfo($nick)
+    {
+        $player_info = 0;
+        $database = $this->getDatabase();
+
+        foreach ($database['data'] as $item) {
+            if ($item['nick'] === $nick) {
+                $player_info = $item;
+            }
+        }
+
+        return $player_info;
     }
 }

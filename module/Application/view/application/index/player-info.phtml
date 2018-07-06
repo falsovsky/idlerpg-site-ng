@@ -1,0 +1,13 @@
+<h1>Player Info</h1>
+
+<p><b>User:</b> <?php echo $this->nick; ?><br />
+<b>Class:</b> <?php echo $this->class; ?><br />
+<b>Admin?:</b> <?php echo $this->admin; ?><br />
+<b>Level:</b> <?php echo $this->level; ?><br />
+<b>Next level:</b><?php echo $this->ttl['display']; ?><br />
+<b>Status:</b> <?php echo ($this->online == 'Yes' ? 'Online' : 'Offline'); ?><br />
+<b>Account Created:</b> <?php echo $this->created['display']; ?><br />
+<b>Last login:</b> <?php echo $this->last_login['display']; ?><br />
+<b>Total time idled:</b> <?php echo $this->idled['display']; ?><br />
+<b>Current position:</b> [<?php echo $this->x_pos; ?>,<?php echo $this->y_pos; ?>]<br />
+<b>Alignment:</b> <?php echo $this->alignment; ?><br />
