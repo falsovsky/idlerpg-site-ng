@@ -20,7 +20,7 @@ class Scoreboard extends AbstractHelper
         $escaper = $this->getView()->plugin('escapehtml');
 
         $class = '';
-        if ($item['status']) {
+        if (! $item['status']) {
             $class = ' class="offline"';
         }
         $str = '<a' . $class. ' href="' . $url('playerinfo', ['nick' => $item['nick']]) . '">' . $item['nick'] . '</a>';
