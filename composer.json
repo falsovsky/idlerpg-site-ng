@@ -17,9 +17,9 @@
         "zendframework/zend-mvc": "^3.0.1",
         "zfcampus/zf-development-mode": "^3.0",
         "zendframework/zend-json": "^3.0",
-        "zendframework/zend-mvc-i18n": "^1.0",
         "zendframework/zend-navigation": "^2.9",
-        "nesbot/carbon": "^1.32"
+        "nesbot/carbon": "^1.32",
+        "symfony/translation": "v3.4.12"
     },
     "autoload": {
         "psr-4": {
