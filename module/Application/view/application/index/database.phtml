@@ -1,3 +1,5 @@
+<?php $this->headTitle('Player database'); ?>
+
 <?php
 $this->headLink()->prependStylesheet("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css");
 $this->headScript()
@@ -6,11 +8,10 @@ $this->headScript()
     ->prependFile("https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js");
 ?>
 
+<h1>Player database</h1>
 
-<div class="row">
-    <table id="example" class="display" style="width:100%">
-
-        <thead>
+<table id="example" class="display" style="width:100%">
+    <thead>
         <tr>
             <th>User</th>
             <th>Level</th>
@@ -45,11 +46,8 @@ $this->headScript()
             <th>Sum</th>
             <th>Alignment</th>
         </tr>
-        </thead>
-
-
-
-        <tfoot>
+    </thead>
+    <tfoot>
         <tr>
             <th>User</th>
             <th>Level</th>
@@ -84,9 +82,8 @@ $this->headScript()
             <th>Sum</th>
             <th>Alignment</th>
         </tr>
-        </tfoot>
-    </table>
-</div>
+    </tfoot>
+</table>
 
 <script>
     $(document).ready(function() {
