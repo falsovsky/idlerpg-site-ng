@@ -31,3 +31,7 @@ div.container a.navbar-brand > img {
     margin-right: 4px;
     margin-top: -2px;
 }
+
+a.offline {
+    color: #707070;
+}
