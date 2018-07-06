@@ -19,7 +19,8 @@
         "zendframework/zend-json": "^3.0",
         "zendframework/zend-navigation": "^2.9",
         "nesbot/carbon": "^1.32",
-        "symfony/translation": "v3.4.12"
+        "symfony/translation": "v3.4.12",
+        "intervention/image": "^2.4"
     },
     "autoload": {
         "psr-4": {
