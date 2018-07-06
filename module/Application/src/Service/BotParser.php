@@ -82,97 +82,97 @@ class BotParser
                     'class' => $data[4], // class
                     'ttl'  => [
                         'display' => $this->secondsToTime((int) $data[5]),
-                        'timestamp' => (int) $data[5], // ttl
+                        'numeric' => (int) $data[5], // ttl
                     ],
                     'nick_host' => $data[7], // nick and host
                     'online' => ($data[8] ? 'Yes' : 'No'), // online
                     'idled' => [
                         'display' => $this->secondsToTime((int) $data[9]), // idled
-                        'timestamp' => (int) $data[9],
+                        'numeric' => (int) $data[9],
                     ],
                     'x_pos' => (int) $data[10], // x pos
                     'y_pos' => (int) $data[11], // y pos
                     'msg_pen' => [
                         'display' => $this->secondsToTime((int) $data[12]), // msg pen
-                        'timestamp' => (int) $data[12],
+                        'numeric' => (int) $data[12],
                     ],
                     'nick_pen' => [
                         'display' => $this->secondsToTime((int) $data[13]), // nick pen
-                        'timestamp' => (int) $data[13],
+                        'numeric' => (int) $data[13],
                     ],
                     'part_pen' => [
                         'display' => $this->secondsToTime((int) $data[14]), // part pen
-                        'timestamp' => (int) $data[14],
+                        'numeric' => (int) $data[14],
                     ],
                     'kick_pen' => [
                         'display' => $this->secondsToTime((int) $data[15]), // kick pen
-                        'timestamp' => (int) $data[15],
+                        'numeric' => (int) $data[15],
                     ],
                     'quit_pen' => [
                         'display' => $this->secondsToTime((int) $data[16]), // quit pen
-                        'timestamp' => (int) $data[16],
+                        'numeric' => (int) $data[16],
                     ],
                     'quest_pen' => [
                         'display' => $this->secondsToTime((int) $data[17]), // quest pen
-                        'timestamp' => (int) $data[17],
+                        'numeric' => (int) $data[17],
                     ],
                     'logout_pen' => [
                         'display' => $this->secondsToTime((int) $data[18]), // logout pen
-                        'timestamp' => (int) $data[18],
+                        'numeric' => (int) $data[18],
                     ],
                     'total_pen' => [
                         'display' => $this->secondsToTime((int) $data[12] + (int) $data[13] + (int) $data[14] +
                             (int) $data[15] + (int) $data[16] + (int) $data[17] + (int) $data[18]), // total pen
-                        'timestamp' => (int) $data[12] + (int) $data[13] + (int) $data[14] + (int) $data[15] +
+                        'numeric' => (int) $data[12] + (int) $data[13] + (int) $data[14] + (int) $data[15] +
                             (int) $data[16] + (int) $data[17] + (int) $data[18],
                     ],
                     'created' => [
                         'display' => date('Y-m-d H:i:s', (int) $data[19]), // created
-                        'timestamp' => (int) $data[19],
+                        'numeric' => (int) $data[19],
                     ],
                     'last_login' => [
                         'display' => date('Y-m-d H:i:s', (int) $data[20]), // last login
-                        'timestamp' => (int) $data[20],
+                        'numeric' => (int) $data[20],
                     ],
                     'amulet' => [
                         'display' => $data[21], // amulet
-                        'timestamp' => (int) $data[21],
+                        'numeric' => (int) $data[21],
                     ],
                     'charm' => [
                         'display' => $data[22], // charm
-                        'timestamp' => (int) $data[22],
+                        'numeric' => (int) $data[22],
                     ],
                     'helm' => [
                         'display' => $data[23], // helm
-                        'timestamp' => (int) $data[23],
+                        'numeric' => (int) $data[23],
                     ],
                     'boots' => [
                         'display' => $data[24], // boots
-                        'timestamp' => (int) $data[24],
+                        'numeric' => (int) $data[24],
                     ],
                     'gloves' => [
                         'display' => $data[25], // gloves
-                        'timestamp' => (int) $data[25],
+                        'numeric' => (int) $data[25],
                     ],
                     'ring' => [
                         'display' => $data[26], // ring
-                        'timestamp' => (int) $data[26],
+                        'numeric' => (int) $data[26],
                     ],
                     'leggings' => [
                         'display' => $data[27], // leggings
-                        'timestamp' => (int) $data[27],
+                        'numeric' => (int) $data[27],
                     ],
                     'shield' => [
                         'display' => $data[28], // shield
-                        'timestamp' => (int) $data[28],
+                        'numeric' => (int) $data[28],
                     ],
                     'tunic' => [
                         'display' => $data[29], // tunic
-                        'timestamp' => (int) $data[29],
+                        'numeric' => (int) $data[29],
                     ],
                     'weapon' => [
                         'display' => $data[30], // weapon
-                        'timestamp' => (int) $data[30],
+                        'numeric' => (int) $data[30],
                     ],
                     'sum' => (int) $data[21] + (int) $data[22] + (int) $data[23] + (int) $data[24] +
                         (int) $data[25] + (int) $data[26] + (int) $data[27] + (int) $data[28] + (int) $data[29] +
