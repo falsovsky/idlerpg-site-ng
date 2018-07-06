@@ -11,3 +11,32 @@
 <b>Total time idled:</b> <?php echo $this->idled['display']; ?><br />
 <b>Current position:</b> [<?php echo $this->x_pos; ?>,<?php echo $this->y_pos; ?>]<br />
 <b>Alignment:</b> <?php echo $this->alignment; ?><br />
+
+<h2>Items</h2>
+<p>
+    amulet: <?php echo $this->amulet['numeric']; ?> <?php echo (isset($this->amulet['unique']) ? '[' .$this->amulet['unique'] . ']' : ''); ?><br />
+    boots: <?php echo $this->boots['numeric']; ?> <?php echo (isset($this->boots['unique']) ? '[' .$this->boots['unique'] . ']' : ''); ?><br />
+    charm: <?php echo $this->charm['numeric']; ?> <?php echo (isset($this->charm['unique']) ? '[' .$this->charm['unique'] . ']' : ''); ?><br />
+    gloves: <?php echo $this->gloves['numeric']; ?> <?php echo (isset($this->gloves['unique']) ? '[' .$this->gloves['unique'] . ']' : ''); ?><br />
+    helm: <?php echo $this->helm['numeric']; ?> <?php echo (isset($this->helm['unique']) ? '[' .$this->helm['unique'] . ']' : ''); ?><br />
+    leggings: <?php echo $this->leggings['numeric']; ?> <?php echo (isset($this->leggings['unique']) ? '[' .$this->leggings['unique'] . ']' : ''); ?><br />
+    ring: <?php echo $this->ring['numeric']; ?> <?php echo (isset($this->ring['unique']) ? '[' .$this->ring['unique'] . ']' : ''); ?><br />
+    shield: <?php echo $this->shield['numeric']; ?> <?php echo (isset($this->shield['unique']) ? '[' .$this->shield['unique'] . ']' : ''); ?><br />
+    tunic: <?php echo $this->tunic['numeric']; ?> <?php echo (isset($this->tunic['unique']) ? '[' .$this->tunic['unique'] . ']' : ''); ?><br />
+    weapon: <?php echo $this->weapon['numeric']; ?> <?php echo (isset($this->weapon['unique']) ? '[' .$this->weapon['unique'] . ']' : ''); ?><br />
+    <br />
+    sum: <?php echo $this->sum; ?><br />
+</p>
+
+<h2>Penalties</h2>
+<p>
+    kick: <?php echo $this->kick_pen['display']; ?><br />
+    logout: <?php echo $this->logout_pen['display']; ?><br />
+    msg: <?php echo $this->msg_pen['display']; ?><br />
+    nick: <?php echo $this->nick_pen['display']; ?><br />
+    part: <?php echo $this->part_pen['display']; ?><br />
+    quest: <?php echo $this->quest_pen['display']; ?><br />
+    quit: <?php echo $this->quit_pen['display']; ?><br />
+    <br />
+    total: <?php echo $this->total_pen['display']; ?>
+</p>
