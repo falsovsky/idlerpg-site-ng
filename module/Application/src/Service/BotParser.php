@@ -1,7 +1,9 @@
 <?php
+
 namespace Application\Service;
 
 use Carbon\Carbon;
+use Intervention\Image\ImageManager;
 
 class BotParser
 {
@@ -303,5 +305,75 @@ class BotParser
         }
 
         return $modifiers;
+    }
+
+    private function drawPlayer($image, $nick, $x, $y, $color)
+    {
+        $crosssize = 5;
+
+        // Bottom top
+        $image->line($x - $crosssize, $y, $x + $crosssize, $y, function ($draw) use ($color) {
+            $draw->color($color);
+        });
+
+        // Left right
+        $image->line($x, $y - $crosssize, $x, $y + $crosssize, function ($draw) use ($color) {
+            $draw->color($color);
+        });
+
+        $text_x = $x + $crosssize + 2;
+        $text_y = $y + ($crosssize + 2);
+
+        $image->text($nick, $text_x + 1, $text_y + 1, function ($font) {
+            $font->file($this->config['map_font']);
+            $font->size(13);
+            $font->color("#000");
+        });
+
+        $image->text($nick, $text_x, $text_y, function ($font) use ($color) {
+            $font->file($this->config['map_font']);
+            $font->size(13);
+            $font->color($color);
+        });
+
+        return $image;
+    }
+
+    public function getPlayerMap($nick)
+    {
+        $player_info = $this->getPlayerInfo($nick);
+
+        $manager = new ImageManager(['driver' => 'gd']);
+        $image = $manager->make($this->config['map_image']);
+
+        $image = $this->drawPlayer(
+            $image,
+            $nick,
+            $player_info['x_pos'],
+            $player_info['y_pos'],
+            ($player_info['online'] == 'Yes' ? '#0080e1' : '#d30000')
+        );
+
+        return $image->encode('png');
+    }
+
+    public function getWorldMap()
+    {
+        $database = $this->getDatabase();
+
+        $manager = new ImageManager(['driver' => 'gd']);
+        $image = $manager->make($this->config['map_image']);
+
+        foreach ($database['data'] as $player) {
+            $image = $this->drawPlayer(
+                $image,
+                $player['nick'],
+                $player['x_pos'],
+                $player['y_pos'],
+                ($player['online'] == 'Yes' ? '#0080e1' : '#d30000')
+            );
+        }
+
+        return $image->encode('png');
     }
 }

@@ -12,6 +12,11 @@
 <b>Current position:</b> [<?php echo $this->x_pos; ?>,<?php echo $this->y_pos; ?>]<br />
 <b>Alignment:</b> <?php echo $this->alignment; ?><br />
 
+<h2>Map</h2>
+<div id="map">
+    <img src="<?php echo $this->url('player-map-image', ['nick' => $this->nick]); ?>">
+</div>
+
 <h2>Items</h2>
 <p>
 amulet: <?php echo $this->amulet['numeric']; ?> <?php echo (isset($this->amulet['unique']) ? '[' .$this->amulet['unique'] . ']' : ''); ?><br />
@@ -49,7 +54,7 @@ total: <?php echo $this->total_pen['display']; ?>
     <?php endforeach; ?>
     <br />
     <?php if ($this->mod['link']) : ?>
-    [<a href="<?php echo $this->url('playerinfo', ['nick' => $this->nick, 'mod' => '-full-modifier']); ?>">View all Character Modifiers</a> (<?php echo $this->mod['total']; ?>)]
+    [<a href="<?php echo $this->url('player-info', ['nick' => $this->nick, 'mod' => '-full-modifier']); ?>">View all Character Modifiers</a> (<?php echo $this->mod['total']; ?>)]
     <?php endif; ?>
 </p>
 

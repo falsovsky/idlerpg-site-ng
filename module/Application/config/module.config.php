@@ -1,9 +1,4 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Application;
 
@@ -52,25 +47,57 @@ return [
             'database-json' => [
                 'type' => Literal::class,
                 'options' => [
-                    'route'    => '/database.json',
+                    'route'    => '/api/database',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'databaseJson',
+                        'controller' => Controller\JsonController::class,
+                        'action'     => 'database',
                     ],
                 ],
             ],
 
-            'playerinfo' => [
+            'player-info' => [
                 'type'    => Segment::class,
                 'options' => [
                     'route'    => '/playerinfo[:mod]/:nick',
                     'constraints' => [
                         'mod' => '-full-modifier',
-                        //'nick' => '[\a]+'
                     ],
                     'defaults' => [
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'playerInfo',
+                    ],
+                ],
+            ],
+
+            'player-map-image' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/images/playermap/:nick',
+                    'defaults' => [
+                        'controller'    => Controller\ImageController::class,
+                        'action'        => 'playerMap',
+                    ],
+                ],
+            ],
+
+            'world-map' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/worldmap',
+                    'defaults' => [
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'worldMap',
+                    ],
+                ],
+            ],
+
+            'world-map-image' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/images/worldmap',
+                    'defaults' => [
+                        'controller'    => Controller\ImageController::class,
+                        'action'        => 'worldMap',
                     ],
                 ],
             ],
@@ -92,12 +119,18 @@ return [
                 'label' => 'Player database',
                 'route' => 'database',
             ],
+            [
+                'label' => 'World Map',
+                'route' => 'world-map',
+            ],
         ],
     ],
 
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IdleControllerFactory::class,
+            Controller\JsonController::class => Controller\Factory\IdleControllerFactory::class,
+            Controller\ImageController::class => Controller\Factory\IdleControllerFactory::class,
         ],
     ],
 

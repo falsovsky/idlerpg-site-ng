@@ -1,20 +1,15 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Application\Controller;
 
-use Application\Service\BotParser;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\View\Model\JsonModel;
+use Application\Service\BotParser;
 
 class IndexController extends AbstractActionController
 {
     private $config;
+    private $parser;
 
     public function __construct(array $config, BotParser $parser)
     {
@@ -70,10 +65,8 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
-    public function databaseJsonAction()
+    public function worldMapAction()
     {
-        $database = $this->parser->getDatabase();
-
-        return new JsonModel($database);
+        return new ViewModel();
     }
 }

@@ -5,7 +5,6 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Application\Service\BotParser;
 
-// Factory class
 class IdleControllerFactory implements FactoryInterface
 {
     public function __invoke(

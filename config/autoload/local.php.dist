@@ -24,5 +24,8 @@ return [
 
         'network_name' => 'ExampleNet',
         'network_host' => 'irc.example.org',
+
+        'map_image'    => __DIR__ . '/../../public/img/themap.png',
+        'map_font'     => __DIR__ . '/../../public/fonts/Antonio-Bold.ttf',
     ]
 ];

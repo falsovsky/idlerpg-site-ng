@@ -17,13 +17,12 @@ class Scoreboard extends AbstractHelper
     public function __invoke($item)
     {
         $url = $this->getView()->plugin('url');
-        $escaper = $this->getView()->plugin('escapehtml');
 
         $class = '';
         if (! $item['status']) {
             $class = ' class="offline"';
         }
-        $str = '<a' . $class. ' href="' . $url('playerinfo', ['nick' => $item['nick']]) . '">' . $item['nick'] . '</a>';
+        $str = '<a' . $class. ' href="' . $url('player-info', ['nick' => $item['nick']]) . '">' . $item['nick'] . '</a>';
         $str .= ', the level ' . $item['level'] . ' ' . $item['class'] . '. ';
         $str .= 'Next level in ' . $this->secondsToTime($item['ttl']) . '.';
 
