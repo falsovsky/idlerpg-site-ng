@@ -9,122 +9,8 @@ use Application\Service\BotParser;
 use Application\View\Helper\Scoreboard;
 
 return [
-    'router' => [
-        'routes' => [
-            'home' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route'    => '/',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'gameInfo',
-                    ],
-                ],
-            ],
-
-            'scoreboard' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route'    => '/scoreboard',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'scoreBoard',
-                    ],
-                ],
-            ],
-
-            'database' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route'    => '/database',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'database',
-                    ],
-                ],
-            ],
-
-            'database-json' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route'    => '/api/database',
-                    'defaults' => [
-                        'controller' => Controller\JsonController::class,
-                        'action'     => 'database',
-                    ],
-                ],
-            ],
-
-            'player-info' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/playerinfo[:mod]/:nick',
-                    'constraints' => [
-                        'mod' => '-full-modifier',
-                    ],
-                    'defaults' => [
-                        'controller'    => Controller\IndexController::class,
-                        'action'        => 'playerInfo',
-                    ],
-                ],
-            ],
-
-            'player-map-image' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/images/playermap/:nick',
-                    'defaults' => [
-                        'controller'    => Controller\ImageController::class,
-                        'action'        => 'playerMap',
-                    ],
-                ],
-            ],
-
-            'world-map' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/worldmap',
-                    'defaults' => [
-                        'controller'    => Controller\IndexController::class,
-                        'action'        => 'worldMap',
-                    ],
-                ],
-            ],
-
-            'world-map-image' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/images/worldmap',
-                    'defaults' => [
-                        'controller'    => Controller\ImageController::class,
-                        'action'        => 'worldMap',
-                    ],
-                ],
-            ],
-
-        ],
-    ],
-
-    'navigation' => [
-        'default' => [
-            [
-                'label' => 'Game Info',
-                'route' => 'home',
-            ],
-            [
-                'label' => 'Scoreboard',
-                'route' => 'scoreboard',
-            ],
-            [
-                'label' => 'Player database',
-                'route' => 'database',
-            ],
-            [
-                'label' => 'World Map',
-                'route' => 'world-map',
-            ],
-        ],
-    ],
+    'router' => require __DIR__ .'/router.config.php',
+    'navigation' => require __DIR__ .'/navigation.config.php',
 
     'controllers' => [
         'factories' => [
@@ -136,8 +22,8 @@ return [
 
     'service_manager' => [
         'factories' => [
-            BotParser::class => Service\Factory\BotParserFactory::class,
             'Cache' => Service\Factory\CacheFactory::class,
+            BotParser::class => Service\Factory\BotParserFactory::class,
         ],
     ],
 
