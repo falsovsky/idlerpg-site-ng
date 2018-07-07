@@ -17,6 +17,7 @@ class BotParserFactory implements FactoryInterface
         $idlerpg = $config['idlerpg'];
 
         $cache = $container->get('Cache');
+        $cache->clearExpired();
 
         return new Botparser($idlerpg, $cache);
     }
