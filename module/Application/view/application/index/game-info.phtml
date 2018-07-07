@@ -21,8 +21,8 @@
 <p>To register, simply:</p>
 
 <code>
-    /msg <?php echo $this->bot_nick; ?> REGISTER <char name> <password>
-    <char class>
+    /msg <?php echo $this->bot_nick; ?> REGISTER [char name] [password]
+    [char class]
 </code>
 
 <p>Where 'char name' can be up to 16 chars long, 'password' can be up
@@ -34,7 +34,7 @@
 <p>To login, simply:</p>
 
 <code>
-    /msg <?php echo $this->bot_nick; ?> LOGIN <char name> <password>
+    /msg <?php echo $this->bot_nick; ?> LOGIN [char name] [password]
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command.</p>
@@ -56,7 +56,7 @@
 <p>To change your password, simply:</p>
 
 <code>
-    /msg <?php echo $this->bot_nick; ?> NEWPASS <new password>
+    /msg <?php echo $this->bot_nick; ?> NEWPASS [new password]
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command.</p>
@@ -82,7 +82,7 @@
 <p>To change your alignment, simply:</p>
 
 <code>
-    /msg <?php echo $this->bot_nick; ?> ALIGN <good|neutral|evil>
+    /msg <?php echo $this->bot_nick; ?> ALIGN [good|neutral|evil]
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command.</p>
