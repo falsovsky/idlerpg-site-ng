@@ -20,7 +20,9 @@
         "zendframework/zend-navigation": "^2.9",
         "nesbot/carbon": "^1.32",
         "symfony/translation": "v3.4.12",
-        "intervention/image": "^2.4"
+        "intervention/image": "^2.4",
+        "zendframework/zend-cache": "^2.8",
+        "zendframework/zend-serializer": "^2.9"
     },
     "autoload": {
         "psr-4": {

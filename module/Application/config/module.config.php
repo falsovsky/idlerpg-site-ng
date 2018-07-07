@@ -137,6 +137,7 @@ return [
     'service_manager' => [
         'factories' => [
             BotParser::class => Service\Factory\BotParserFactory::class,
+            'Cache' => Service\Factory\CacheFactory::class,
         ],
     ],
 

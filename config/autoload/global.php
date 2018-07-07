@@ -12,5 +12,21 @@
  */
 
 return [
-    // ...
+    'cache' => [
+        'adapter' => [
+            'name'    => 'filesystem',
+            'options' => [
+                'ttl' => 120,
+                'cacheDir' => 'data/cache',
+            ],
+        ],
+        'plugins' => [
+            // Don't throw exceptions on cache errors
+            'exception_handler' => [
+                'throw_exceptions' => false,
+            ],
+            // We store database rows on filesystem so we need to serialize them
+            'Serializer',
+        ],
+    ],
 ];

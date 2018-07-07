@@ -3,6 +3,7 @@ namespace Application\Service\Factory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Zend\Cache\StorageFactory;
 use Application\Service\BotParser;
 
 class BotParserFactory implements FactoryInterface
@@ -15,6 +16,8 @@ class BotParserFactory implements FactoryInterface
         $config = $container->get('configuration');
         $idlerpg = $config['idlerpg'];
 
-        return new Botparser($idlerpg);
+        $cache = $container->get('Cache');
+
+        return new Botparser($idlerpg, $cache);
     }
 }
