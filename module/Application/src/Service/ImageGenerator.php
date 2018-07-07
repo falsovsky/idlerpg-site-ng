@@ -46,20 +46,18 @@ class ImageGenerator
         });
 
         if ($text) {
-            $text_x = $x + self::CROSSHAIR_SIZE + 2;
-            $text_y = $y + (self::CROSSHAIR_SIZE + 2);
+            $text_x = $x + self::CROSSHAIR_SIZE + 4;
+            $text_y = $y + self::CROSSHAIR_SIZE;
 
             // Draw a "shadow" 1 pixel ahead
             $image->text($text, $text_x + 1, $text_y + 1, function ($font) {
-                $font->file($this->config['map_font']);
-                $font->size(13);
+                $font->file(4);
                 $font->color("#000");
             });
 
             // Text
             $image->text($text, $text_x, $text_y, function ($font) use ($color) {
-                $font->file($this->config['map_font']);
-                $font->size(13);
+                $font->file(4);
                 $font->color($color);
             });
         }
