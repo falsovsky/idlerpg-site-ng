@@ -1,8 +1,10 @@
 body {
     padding-top: 60px;
-    padding-bottom: 40px;
 }
 
 a.offline {
     color: #707070;
+}
+#footer {
+    margin: 3em 0;
 }
