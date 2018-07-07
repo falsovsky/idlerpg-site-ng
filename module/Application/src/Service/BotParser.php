@@ -409,10 +409,10 @@ class BotParser
 
     /**
      * Returns a string with a generated image with the Player position and name
-     * @param string $nick
+     * @param String $nick
      * @return string
      */
-    public function getPlayerMap(string $nick)
+    public function getPlayerMap(String $nick)
     {
         $player_info = $this->getDatabase($nick);
 
@@ -461,5 +461,27 @@ class BotParser
         }
 
         return $image->encode('png');
+    }
+
+    /**
+     * Returns an array with the coordinates and name of all Players and Items
+     * @return array
+     */
+    public function getCoordinates()
+    {
+        $coordinates = [];
+
+        $players = $this->getDatabase();
+        $items = $this->getItems();
+
+        foreach ($players as $player) {
+            $coordinates[] = ['x' => $player['x_pos'], 'y' => $player['y_pos'], 'text' => $player['nick']];
+        }
+
+        foreach ($items as $item) {
+            $coordinates[] = ['x' => $item['x_pos'], 'y' => $item['y_pos'], 'text' => $item['type']];
+        }
+
+        return $coordinates;
     }
 }

@@ -67,6 +67,6 @@ class IndexController extends AbstractActionController
 
     public function worldMapAction()
     {
-        return new ViewModel();
+        return new ViewModel(['coords' => $this->parser->getCoordinates()]);
     }
 }

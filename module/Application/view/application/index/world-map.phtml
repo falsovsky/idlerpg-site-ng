@@ -6,5 +6,10 @@
 <div id="mapenc">
     <div id="map">
         <img src="<?php echo $this->url('world-map-image'); ?>" alt="IdleRPG World Map" title="IdleRPG World Map" usemap="#world" border="0" />
+        <map id="world" name="world">
+            <?php foreach ($this->coords as $coord) : ?>
+                <area shape="circle" coords="<?php echo $coord['x']; ?>,<?php echo $coord['y']; ?>,3" alt="<?php echo $coord['text']; ?>" href="<?php echo $this->url('player-info', ['nick' => $coord['text']]); ?>" title="<?php echo $coord['text']; ?> (<?php echo $coord['x']; ?>,<?php echo $coord['y']; ?>)" />
+            <?php endforeach; ?>
+        </map>
     </div>
 </div>
