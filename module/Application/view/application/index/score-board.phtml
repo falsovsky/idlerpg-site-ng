@@ -1,8 +1,8 @@
 <?php $this->headTitle('Scoreboard'); ?>
 
 <h1>Scoreboard</h1>
-<h2>Pick a player to view</h2>
-<p class="small">[gray=offline]</p>
+<p>[gray=offline]</p>
+
 <ol>
     <?php foreach ($this->score as $player) : ?>
         <li><?php echo $this->scoreboard($player); ?></li>

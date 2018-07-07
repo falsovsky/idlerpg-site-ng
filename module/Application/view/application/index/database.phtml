@@ -1,37 +1,38 @@
 <?php $this->headTitle('Player database'); ?>
 
 <?php
-$this->headLink()->prependStylesheet("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css");
+$this->headLink()
+    ->prependStylesheet("https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css")
+    ->prependStylesheet("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css");
 $this->headScript()
-    ->prependFile("https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/2.2.2/moment-duration-format.min.js")
-    ->prependFile("https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js")
+    ->prependFile("https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js")
     ->prependFile("https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js");
 ?>
 
 <h1>Player database</h1>
 
-<table id="example" class="display" style="width:100%">
+<table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
             <th>User</th>
             <th>Level</th>
             <th>Admin</th>
             <th>Class</th>
-            <th>TTL</th>
+            <th>Time to level</th>
             <th>Nick!User@Host</th>
             <th>Online</th>
             <th>Total Time Idled</th>
             <th>X Pos</th>
             <th>Y Pos</th>
-            <th>Msg Pen.</th>
-            <th>Nick Pen.</th>
-            <th>Part Pen.</th>
-            <th>Kick Pen.</th>
-            <th>Quit Pen.</th>
-            <th>Quest Pen.</th>
-            <th>Logout Pen.</th>
-            <th>Total Pen.</th>
-            <th>Acct. Created</th>
+            <th>Message Penalty</th>
+            <th>Nick Penalty</th>
+            <th>Part Penalty</th>
+            <th>Kick Penalty</th>
+            <th>Quit Penalty</th>
+            <th>Quest Penalty</th>
+            <th>Logout Penalty</th>
+            <th>Total Penalty</th>
+            <th>Account Created</th>
             <th>Last Login</th>
             <th>Amulet</th>
             <th>Charm</th>
@@ -53,21 +54,21 @@ $this->headScript()
             <th>Level</th>
             <th>Admin</th>
             <th>Class</th>
-            <th>TTL</th>
+            <th>Time to level</th>
             <th>Nick!User@Host</th>
             <th>Online</th>
             <th>Total Time Idled</th>
             <th>X Pos</th>
             <th>Y Pos</th>
-            <th>Msg Pen.</th>
-            <th>Nick Pen.</th>
-            <th>Part Pen.</th>
-            <th>Kick Pen.</th>
-            <th>Quit Pen.</th>
-            <th>Quest Pen.</th>
-            <th>Logout Pen.</th>
-            <th>Total Pen.</th>
-            <th>Acct. Created</th>
+            <th>Message Penalty</th>
+            <th>Nick Penalty</th>
+            <th>Part Penalty</th>
+            <th>Kick Penalty</th>
+            <th>Quit Penalty</th>
+            <th>Quest Penalty</th>
+            <th>Logout Penalty</th>
+            <th>Total Penalty</th>
+            <th>Account Created</th>
             <th>Last Login</th>
             <th>Amulet</th>
             <th>Charm</th>
@@ -87,10 +88,19 @@ $this->headScript()
 
 <script>
     $(document).ready(function() {
+        $('th').addClass( 'text-nowrap' );
+
         $('#example').DataTable({
-            "ajax": "<?php echo $this->url('database-json'); ?>",
-            "scrollX": true,
-            "paging": false,
+            ajax: "<?php echo $this->url('database-json'); ?>",
+            scrollY: '500px',
+            scrollX: true,
+            scrollCollapse: true,
+            deferRender: true,
+            paging: false,
+
+            createdRow: function( row, data, dataIndex ) {
+                $('td', row).addClass( 'text-nowrap' );
+            },
 
             columns: [
                 { data: "nick" },
@@ -99,17 +109,17 @@ $this->headScript()
                 { data: "class" },
                 {
                     data: "ttl",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
-                        sort: 'numeric'
+                        sort: 'numeric',
                     }
                 },
                 { data: "nick_host" },
                 { data: "online" },
                 {
                     data: "idled",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -119,7 +129,7 @@ $this->headScript()
                 { data: "y_pos" },
                 {
                     data: "msg_pen",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -127,7 +137,7 @@ $this->headScript()
                 },
                 {
                     data: "nick_pen",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -135,7 +145,7 @@ $this->headScript()
                 },
                 {
                     data: "part_pen",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -143,7 +153,7 @@ $this->headScript()
                 },
                 {
                     data: "kick_pen",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -151,7 +161,7 @@ $this->headScript()
                 },
                 {
                     data: "quit_pen",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -159,7 +169,7 @@ $this->headScript()
                 },
                 {
                     data: "quest_pen",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -167,7 +177,7 @@ $this->headScript()
                 },
                 {
                     data: "logout_pen",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -175,7 +185,7 @@ $this->headScript()
                 },
                 {
                     data: "total_pen",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -183,7 +193,7 @@ $this->headScript()
                 },
                 {
                     data: "created",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
@@ -191,77 +201,77 @@ $this->headScript()
                 },
                 {
                     data: "last_login",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "amulet",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "charm",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "helm",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "boots",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "gloves",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "ring",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "leggings",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "shield",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "tunic",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
                     }
                 },
                 { data: "weapon",
-                    "type": "num",
+                    type: "num",
                     render: {
                         _: 'display',
                         sort: 'numeric'
