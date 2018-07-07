@@ -409,10 +409,10 @@ class BotParser
 
     /**
      * Returns a string with a generated image with the Player position and name
-     * @param String $nick
-     * @return string
+     * @param string $nick
+     * @return mixed
      */
-    public function getPlayerMap(String $nick)
+    public function getPlayerMap(string $nick)
     {
         $player_info = $this->getDatabase($nick);
 

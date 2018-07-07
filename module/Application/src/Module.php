@@ -24,6 +24,6 @@ class Module
         $config = $serviceManager->get('configuration');
         $config = $config['idlerpg'];
 
-        $viewModel->title = $config['bot_channel'] . '@' . $config['network_host'];
+        $viewModel->title = $config['bot_channel'] . '[at]' . $config['network_host'];
     }
 }
