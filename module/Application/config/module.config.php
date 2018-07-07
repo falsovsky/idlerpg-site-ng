@@ -11,19 +11,19 @@ return [
     'router' => require __DIR__ .'/router.config.php',
     'navigation' => require __DIR__ .'/navigation.config.php',
 
-    'controllers' => [
-        'factories' => [
-            Controller\IndexController::class => Controller\Factory\IdleControllerFactory::class,
-            Controller\JsonController::class => Controller\Factory\IdleControllerFactory::class,
-            Controller\ImageController::class => Controller\Factory\ImageControllerFactory::class,
-        ],
-    ],
-
     'service_manager' => [
         'factories' => [
             'Cache' => Service\Factory\CacheFactory::class,
             ImageGenerator::class => Service\Factory\ImageGeneratorFactory::class,
             BotParser::class => Service\Factory\BotParserFactory::class,
+        ],
+    ],
+
+    'controllers' => [
+        'factories' => [
+            Controller\IndexController::class => Controller\Factory\IdleControllerFactory::class,
+            Controller\JsonController::class => Controller\Factory\IdleControllerFactory::class,
+            Controller\ImageController::class => Controller\Factory\ImageControllerFactory::class,
         ],
     ],
 
