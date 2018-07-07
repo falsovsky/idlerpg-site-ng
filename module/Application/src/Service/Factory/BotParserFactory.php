@@ -3,7 +3,6 @@ namespace Application\Service\Factory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Zend\Cache\StorageFactory;
 use Application\Service\BotParser;
 
 class BotParserFactory implements FactoryInterface
