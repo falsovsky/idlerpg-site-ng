@@ -2,10 +2,9 @@
 
 namespace Application;
 
-use Zend\Router\Http\Literal;
-use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 use Application\Service\BotParser;
+use Application\Service\ImageGenerator;
 use Application\View\Helper\Scoreboard;
 
 return [
@@ -16,13 +15,14 @@ return [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IdleControllerFactory::class,
             Controller\JsonController::class => Controller\Factory\IdleControllerFactory::class,
-            Controller\ImageController::class => Controller\Factory\IdleControllerFactory::class,
+            Controller\ImageController::class => Controller\Factory\ImageControllerFactory::class,
         ],
     ],
 
     'service_manager' => [
         'factories' => [
             'Cache' => Service\Factory\CacheFactory::class,
+            ImageGenerator::class => Service\Factory\ImageGeneratorFactory::class,
             BotParser::class => Service\Factory\BotParserFactory::class,
         ],
     ],

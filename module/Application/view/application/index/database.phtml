@@ -86,12 +86,13 @@ $this->headScript()
     </tfoot>
 </table>
 
-<script>
+<?php
+$script = <<< EOT
     $(document).ready(function() {
         $('th').addClass( 'text-nowrap' );
 
         $('#example').DataTable({
-            ajax: "<?php echo $this->url('database-json'); ?>",
+            ajax: "{$this->url('database-json')}",
             scrollY: '500px',
             scrollX: true,
             scrollCollapse: true,
@@ -282,4 +283,6 @@ $this->headScript()
             ],
         });
     });
-</script>
+EOT;
+$this->inlineScript()->appendScript($script);
+?>

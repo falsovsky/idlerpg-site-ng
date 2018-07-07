@@ -1,0 +1,44 @@
+<?php $this->headTitle('Current Quest'); ?>
+
+<h1>Current Quest</h1>
+
+<?php if ($this->quest['title']) : ?>
+<p><b>Quest:</b> <?php echo $this->quest['title']; ?></p>
+
+    <?php if ($this->quest['type'] == 1) : ?>
+<p><b>Time to completion:</b> <?php echo $this->quest['objective'] - time(); ?></p>
+    <?php elseif ($this->quest['type'] == 2) : ?>
+    <?php $goal['x_pos'] = $this->quest['stages'][$this->quest['objective']]['x_pos']; ?>
+    <?php $goal['y_pos'] = $this->quest['stages'][$this->quest['objective']]['y_pos']; ?>
+<p><b>Current goal:</b> [<?php echo $goal['x_pos']; ?>,<?php echo $goal['y_pos']; ?>]</p>
+    <?php endif; ?>
+
+    <?php foreach ($this->quest['players'] as $n => $player) : ?>
+<p>
+    <b>Participant <?php echo ($n + 1); ?>:</b>
+    <a href="<?php echo $this->url('player-info', ['nick' => $player['nick']]); ?>"><?php echo $player['nick']; ?></a>
+    <br />
+    <b>Position:</b> [<?php echo $player['x_pos']; ?>,<?php echo $player['y_pos']; ?>]</p>
+    <?php endforeach; ?>
+
+<h2>Quest Map:</h2>
+<p>[Questers are shown in blue, current goal in red]</p>
+
+
+<img src="<?php echo $this->url('quest-map-image'); ?>" alt="IdleRPG World Map" title="IdleRPG World Map"
+     usemap="#world" border="0" />
+<map id="world" name="world">
+    <?php foreach ($this->quest['players'] as $player) : ?>
+    <area shape="circle" coords="<?php echo $player['x_pos']; ?>,<?php echo $player['y_pos']; ?>,3"
+          alt="<?php echo $player['nick']; ?>"
+          href="<?php echo $this->url('player-info', ['nick' => $player['nick']]); ?>"
+          title="<?php echo $player['nick']; ?> (<?php echo $player['x_pos']; ?>,<?php echo $player['y_pos']; ?>)" />
+    <?php endforeach; ?>
+    <?php if ($this->quest['type'] == 2) : ?>
+    <area shape="circle" coords="<?php echo $goal['x_pos']; ?>,<?php echo $goal['y_pos']; ?>,3"
+          alt="Goal" title="Goal (<?php echo $goal['x_pos']; ?>,<?php echo $goal['y_pos']; ?>)" />
+    <?php endif; ?>
+</map>
+<?php else : ?>
+    <p>Sorry, there is no active quest.</p>
+<?php endif; ?>

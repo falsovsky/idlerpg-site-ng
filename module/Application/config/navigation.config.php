@@ -18,5 +18,9 @@ return [
             'label' => 'World Map',
             'route' => 'world-map',
         ],
+        [
+            'label' => 'Quest info',
+            'route' => 'quest-info',
+        ],
     ],
 ];

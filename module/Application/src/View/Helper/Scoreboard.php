@@ -22,7 +22,8 @@ class Scoreboard extends AbstractHelper
         if (! $item['status']) {
             $class = ' class="offline"';
         }
-        $str = '<a' . $class. ' href="' . $url('player-info', ['nick' => $item['nick']]) . '">' . $item['nick'] . '</a>';
+        $str = '<a' . $class. ' href="' . $url('player-info', ['nick' => $item['nick']]) . '">';
+        $str .= $item['nick'] . '</a>';
         $str .= ', the level ' . $item['level'] . ' ' . $item['class'] . '. ';
         $str .= 'Next level in ' . $this->secondsToTime($item['ttl']) . '.';
 

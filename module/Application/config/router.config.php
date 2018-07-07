@@ -99,5 +99,27 @@ return [
             ],
         ],
 
+        'quest-info' => [
+            'type'    => Segment::class,
+            'options' => [
+                'route'    => '/quest',
+                'defaults' => [
+                    'controller'    => Controller\IndexController::class,
+                    'action'        => 'questInfo',
+                ],
+            ],
+        ],
+
+        'quest-map-image' => [
+            'type'    => Segment::class,
+            'options' => [
+                'route'    => '/images/quest',
+                'defaults' => [
+                    'controller'    => Controller\ImageController::class,
+                    'action'        => 'questMap',
+                ],
+            ],
+        ],
+
     ],
 ];

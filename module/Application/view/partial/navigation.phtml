@@ -1,7 +1,4 @@
-<?php
-/* @var $container Zend\Navigation\Navigation */
-$container = $this->container;
-?>
+<?php $container = $this->container; ?>
 <ul class="<?php echo $this->navigation($container)->menu()->getUlClass(); ?>">
     <?php foreach ($container as $page) : ?>
         <?php if (! $this->navigation()->accept($page)) { ?>
@@ -10,7 +7,7 @@ $container = $this->container;
         <?php /* @var $page Zend\Navigation\Page\Mvc */ ?>
         <?php $hasChildren = $page->hasPages() ?>
         <?php if (! $hasChildren) : ?>
-            <li class="nav-item<?php if ($page->isActive()) { echo ' active'; } ?>">
+            <li class="nav-item<?php echo ($page->isActive()) ? ' active' : ''?>">
                 <a
                     class="nav-link"
                     href="<?php echo $page->getHref() ?>"
@@ -21,59 +18,6 @@ $container = $this->container;
                     <?php echo $this->escapeHtml($page->getLabel()); ?>
                 </a>
             </li>
-        <?php else : ?>
-            <?php
-            //check if access is allowed at least one item
-            $access = false;
-
-            foreach ($page->getPages() as $child) {
-                if ($this->navigation()->accept($child) && $child->get("separator") !== true) {
-                    $access = true;
-                    break;
-                }
-            }
-
-            if ($access) :
-                ?>
-                <li class="dropdown<?php if ($page->isActive(true)) { ?>
-                    <?php echo ' active'; ?>
-                    <?php } ?>">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <?php if ($page->get("icon") !== "") : ?>
-                            <span class="<?php echo $page->get("icon"); ?>"></span>
-                        <?php endif; ?>
-                        <?php echo $this->escapeHtml($page->getLabel()); ?>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <?php foreach ($page->getPages() as $child) : ?>
-                            <?php if (! $this->navigation()->accept($child)) { ?>
-                                <?php continue; ?>
-                            <?php } ?>
-                            <?php if ($child->get("separator") === true) : ?>
-                                <li class="divider"></li>
-                                <?php
-                                continue;
-                            endif;
-                            ?>
-                            <li<?php if ($child->isActive()) { ?>
-                                <?php echo ' class="active"'; ?>
-                            <?php } ?>>
-                                <a
-                                    href="<?php echo $child->getHref() ?>"
-                                    <?php if ($child->getTarget() != "") : ?>
-                                        target="<?php echo $child->getTarget(); ?>"
-                                    <?php endif; ?> >
-                                    <?php if ($child->get("icon") !== "") : ?>
-                                        <span class="<?php echo $child->get("icon"); ?>"></span>
-                                    <?php endif; ?>
-                                    <?php echo $this->escapeHtml($child->getLabel()); ?>
-                                </a>
-                            </li>
-                        <?php endforeach ?>
-                    </ul>
-                </li>
-            <?php endif ?>
         <?php endif ?>
     <?php endforeach ?>
 </ul>

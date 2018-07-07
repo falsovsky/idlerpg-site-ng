@@ -8,9 +8,11 @@
     have its class be anything you like, as well.</p>
 
 <h2>Location</h2>
+<?php $url = "irc://" . $this->network_host . "/" . substr($this->bot_channel, 1); ?>
 <p>
-    The Idle RPG can be played on <a href="irc://<?php echo $this->escapeHtml($network_host); ?>/<?php echo $this->escapeHtml(substr($bot_channel, 1)) ;?>"><?php echo $this->escapeHtml($network_name) ;?></a>
-    in the channel <?php echo $this->escapeHtml($bot_channel); ?>.
+    The Idle RPG can be played on <a
+            href="<?php echo $url; ?>"><?php echo $this->network_name ;?></a>
+    in the channel <?php echo $this->bot_channel; ?>.
 </p>
 
 
@@ -19,7 +21,7 @@
 <p>To register, simply:</p>
 
 <code>
-    /msg <?php echo $this->escapeHtml($bot_nick) ;?> REGISTER <char name> <password>
+    /msg <?php echo $this->bot_nick; ?> REGISTER <char name> <password>
     <char class>
 </code>
 
@@ -32,7 +34,7 @@
 <p>To login, simply:</p>
 
 <code>
-    /msg <?php echo $this->escapeHtml($bot_nick) ;?> LOGIN <char name> <password>
+    /msg <?php echo $this->bot_nick; ?> LOGIN <char name> <password>
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command.</p>
@@ -43,7 +45,7 @@
 <p>To logout, simply:</p>
 
 <code>
-    /msg <?php echo $this->escapeHtml($bot_nick) ;?> LOGOUT
+    /msg <?php echo $this->bot_nick; ?> LOGOUT
 </code>
 
 <p>This is a p20 (see <a href="#penalties">Penalties</a>) command.</p>
@@ -54,7 +56,7 @@
 <p>To change your password, simply:</p>
 
 <code>
-    /msg <?php echo $this->escapeHtml($bot_nick) ;?> NEWPASS <new password>
+    /msg <?php echo $this->bot_nick; ?> NEWPASS <new password>
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command.</p>
@@ -69,7 +71,7 @@
 <p>To remove your account, simply:</p>
 
 <code>
-    /msg <?php echo $this->escapeHtml($bot_nick) ;?> REMOVEME
+    /msg <?php echo $this->bot_nick; ?> REMOVEME
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command :^)</p>
@@ -80,7 +82,7 @@
 <p>To change your alignment, simply:</p>
 
 <code>
-    /msg <?php echo $this->escapeHtml($bot_nick) ;?> ALIGN <good|neutral|evil>
+    /msg <?php echo $this->bot_nick; ?> ALIGN <good|neutral|evil>
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command.</p>
@@ -107,7 +109,7 @@
 <p>To see some simple information on the bot, simply:</p>
 
 <code>
-    /msg <?php echo $this->escapeHtml($bot_nick) ;?> INFO
+    /msg <?php echo $this->bot_nick; ?> INFO
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command.</p>
@@ -126,7 +128,7 @@
 600*(1.16^YOUR_LEVEL)
 
 <p>Where ^ represents the exponentiation operator.</p>
-<p>Very high levels are calculated differently as of version 3.0. Levels
+<p>Very high levels are calculated differently. Levels
     after level 60 have a next time to level of:</p>
 
 (time to level @ 60) + ((1 day) * (level - 60))
@@ -141,7 +143,7 @@
     completion:</p>
 
 <code>
-    /msg <?php echo $this->escapeHtml($bot_nick) ;?> QUEST
+    /msg <?php echo $this->bot_nick; ?> QUEST
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command.</p>
@@ -152,7 +154,7 @@
 <p>To see whether you are logged on, simply:</p>
 
 <code>
-    /msg <?php echo $this->escapeHtml($bot_nick) ;?> WHOAMI
+    /msg <?php echo $this->bot_nick; ?> WHOAMI
 </code>
 
 <p>This is a p0 (see <a href="#penalties">Penalties</a>) command.</p>
@@ -213,8 +215,8 @@
     amulets, charms, weapons, helms, tunics, gloves, leggings,
     shields, and boots. You can find one of each type. When you find
     an item with a level higher than the level of the item you already
-    have, you toss the old item and start using the new one. As of version
-    3.0, there is an optional, p0 STATUS command that your admin may have
+    have, you toss the old item and start using the new one.
+    There is an optional, p0 STATUS command that your admin may have
     enabled, but you cannot see which items you have over IRC (only your
     total item sum). You can, however, see which items you have on the web
     <a href="<?php echo $this->url('scoreboard'); ?>">here</a>.</p>
@@ -278,17 +280,17 @@ YOUR_NEXT_TIME_TO_LEVEL
     1+[highest item sum of all players]. The percent awarded if you win is a
     constant 20%, and the percent penalized if you lose is a constant 10%.</p>
 
-<p>As of version 3.0, if more than 15% of online players are level 45 or
+<p>If more than 15% of online players are level 45 or
     higher, then a random level 45+ user will battle another random player
     every hour. This is to speed up levelling among higher level players.</p>
 
-<p>Also as of version 3.0, there is a grid system. The grid is a 500 x 500
+<p>There is a grid system. The grid is a 500 x 500
     area in which players may walk. If you encounter another player on the
     grid, you have a 1 / (NUMBER_OF_ONLINE_PLAYERS) chance to battle them.
     Battle awards are calculated using the above formulae. More information
     on the grid system is available <a href="#grid">here</a>.</p>
 
-<p>Also as of version 3.0, a successful battle may result an item being
+<p>A successful battle may result an item being
     <a href="#stealing">stolen</a>.</p>
 
 

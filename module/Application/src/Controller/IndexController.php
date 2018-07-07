@@ -49,6 +49,9 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('home');
         }
 
+        $player_info['items'] = $this->parser::ITEMS;
+        $player_info['penalties'] = $this->parser::PENALTIES;
+
         if ($fullmod) {
             $player_info['mod'] = $this->parser->getModifiers($nick, 0);
             $player_info['mod']['link'] = false;
@@ -68,5 +71,10 @@ class IndexController extends AbstractActionController
     public function worldMapAction()
     {
         return new ViewModel(['coords' => $this->parser->getCoordinates()]);
+    }
+
+    public function questInfoAction()
+    {
+        return new ViewModel(['quest' => $this->parser->getQuestData()]);
     }
 }

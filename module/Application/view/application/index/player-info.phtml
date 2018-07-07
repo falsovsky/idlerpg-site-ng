@@ -23,42 +23,35 @@
 
 <h2>Items</h2>
 <p>
-    <b>amulet:</b> <?php echo $this->amulet['numeric']; ?> <?php echo (isset($this->amulet['unique']) ? '[<font color="#be9256">' .$this->amulet['unique'] . '</font>]' : ''); ?><br />
-    <b>boots:</b> <?php echo $this->boots['numeric']; ?> <?php echo (isset($this->boots['unique']) ? '[<font color="#be9256">' .$this->boots['unique'] . '</font>]' : ''); ?><br />
-    <b>charm:</b> <?php echo $this->charm['numeric']; ?> <?php echo (isset($this->charm['unique']) ? '[<font color="#be9256">' .$this->charm['unique'] . '</font>]' : ''); ?><br />
-    <b>gloves:</b> <?php echo $this->gloves['numeric']; ?> <?php echo (isset($this->gloves['unique']) ? '[<font color="#be9256">' .$this->gloves['unique'] . '</font>]' : ''); ?><br />
-    <b>helm:</b> <?php echo $this->helm['numeric']; ?> <?php echo (isset($this->helm['unique']) ? '[<font color="#be9256">' .$this->helm['unique'] . '</font>]' : ''); ?><br />
-    <b>leggings:</b> <?php echo $this->leggings['numeric']; ?> <?php echo (isset($this->leggings['unique']) ? '[<font color="#be9256">' .$this->leggings['unique'] . '</font>]' : ''); ?><br />
-    <b>ring:</b> <?php echo $this->ring['numeric']; ?> <?php echo (isset($this->ring['unique']) ? '[<font color="#be9256">' .$this->ring['unique'] . '</font>]' : ''); ?><br />
-    <b>shield:</b> <?php echo $this->shield['numeric']; ?> <?php echo (isset($this->shield['unique']) ? '[<font color="#be9256">' .$this->shield['unique'] . '</font>]' : ''); ?><br />
-    <b>tunic:</b> <?php echo $this->tunic['numeric']; ?> <?php echo (isset($this->tunic['unique']) ? '[<font color="#be9256">' .$this->tunic['unique'] . '</font>]' : ''); ?><br />
-    <b>weapon:</b> <?php echo $this->weapon['numeric']; ?> <?php echo (isset($this->weapon['unique']) ? '[<font color="#be9256">' .$this->weapon['unique'] . '</font>]' : ''); ?><br />
+<?php foreach ($this->items as $item) : ?>
+    <b><?php echo ucfirst($item); ?>:</b> <?php echo $this->$item['numeric']; ?>
+    <?php echo (isset($this->$item['unique']) ? ' [<font color="#be9256">' .$this->$item['unique'] . '</font>]' : ''); ?>
     <br />
-    <b>sum: <?php echo $this->sum; ?></b>
+<?php endforeach; ?>
+    <br />
+    <b>Sum: <?php echo $this->sum; ?></b>
 </p>
 
 <h2>Penalties</h2>
 <p>
-    <b>kick:</b> <?php echo $this->kick_pen['display']; ?><br />
-    <b>logout:</b> <?php echo $this->logout_pen['display']; ?><br />
-    <b>msg:</b> <?php echo $this->msg_pen['display']; ?><br />
-    <b>nick:</b> <?php echo $this->nick_pen['display']; ?><br />
-    <b>part:</b> <?php echo $this->part_pen['display']; ?><br />
-    <b>quest:</b> <?php echo $this->quest_pen['display']; ?><br />
-    <b>quit:</b> <?php echo $this->quit_pen['display']; ?><br />
+    <?php foreach ($this->penalties as $penalty) : ?>
+        <?php $key = $penalty . '_pen'; ?>
+        <b><?php echo ucfirst($penalty); ?>:</b> <?php echo $this->$key['display']; ?><br />
+    <?php endforeach; ?>
     <br />
-    <b>total: <?php echo $this->total_pen['display']; ?></b>
+    <b>Total: <?php echo $this->total_pen['display']; ?></b>
 </p>
 
 <h2>Recent Character Modifiers</h2>
 <?php if (count($this->mod['items']) > 0) : ?>
 <p>
     <?php foreach ($this->mod['items'] as $mod) : ?>
-    <?php echo $mod . "<br/>"; ?>
+        <?php echo $mod . "<br/>"; ?>
     <?php endforeach; ?>
     <br />
     <?php if ($this->mod['link']) : ?>
-    [<a href="<?php echo $this->url('player-info', ['nick' => $this->nick, 'mod' => '-full-modifier']); ?>">View all Character Modifiers</a> (<?php echo $this->mod['total']; ?>)]
+    [<a href="<?php echo $this->url('player-info', ['nick' => $this->nick, 'mod' => '-full-modifier']); ?>">
+View all Character Modifiers</a> (<?php echo $this->mod['total']; ?>)]
     <?php endif; ?>
 </p>
 <?php endif; ?>

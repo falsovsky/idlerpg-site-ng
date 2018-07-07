@@ -3,14 +3,35 @@
 namespace Application\Service;
 
 use Carbon\Carbon;
-use Intervention\Image\ImageManager;
 
 class BotParser
 {
+    const ITEMS = [
+        'amulet',
+        'boots',
+        'charm',
+        'gloves',
+        'helm',
+        'leggings',
+        'ring',
+        'shield',
+        'tunic',
+        'weapon',
+    ];
+    const PENALTIES = [
+        'kick',
+        'logout',
+        'msg',
+        'nick',
+        'part',
+        'quest',
+        'quit',
+    ];
+
     private $config;
     private $cache;
 
-    public function __construct(array $config, $cache)
+    public function __construct($config, $cache)
     {
         $this->config = $config;
         $this->cache = $cache;
@@ -62,7 +83,7 @@ class BotParser
      * @param $item_value
      * @return null|string
      */
-    private function getUniqueItem($item_value)
+    private function parseUniqueItem($item_value)
     {
         $result = null;
 
@@ -102,10 +123,26 @@ class BotParser
     }
 
     /**
+     * Sums the values from the keys of the array $record from $start till $end
+     * @param array $record
+     * @param int $start
+     * @param int $end
+     * @return int
+     */
+    private function sumFields(array $record, int $start, int $end)
+    {
+        $total = 0;
+        for ($i = $start; $i <= $end; $i++) {
+            $total += (int) $record[$i];
+        }
+        return $total;
+    }
+
+    /**
      * Returns an array with a list of all the Items from the database
      * @return array
      */
-    private function getItems()
+    public function getItems()
     {
         $key = __FUNCTION__ ;
 
@@ -116,7 +153,7 @@ class BotParser
 
             $row = 0;
             if (($handle = fopen($this->config['bot_itemdb'], "r")) !== false) {
-                while (($data = fgetcsv($handle, 1000, "\t")) !== false) {
+                while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
                     $row++;
                     if ($row == 1) {
                         continue;
@@ -142,7 +179,7 @@ class BotParser
     }
 
     /**
-     * Returns an array with the Players, sorted by level.
+     * Returns an array with the Players, sorted by level
      * Includes the fields needed for the scoreboard page
      * @return array
      */
@@ -157,7 +194,7 @@ class BotParser
 
             $row = 0;
             if (($handle = fopen($this->config['bot_db'], "r")) !== false) {
-                while (($data = fgetcsv($handle, 1000, "\t")) !== false) {
+                while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
                     $row++;
                     if ($row == 1) {
                         continue;
@@ -180,23 +217,6 @@ class BotParser
     }
 
     /**
-     * Sums the values from the keys of the array $record from $start till $end
-     * @param array $record
-     * @param int $start
-     * @param int $end
-     * @return int
-     */
-    private function sumFields(array $record, int $start, int $end)
-    {
-        $total = 0;
-        for ($i = $start; $i <= $end; $i++)
-        {
-            $total += (int) $record[$i];
-        }
-        return $total;
-    }
-
-    /**
      * Returns a list with (almost) all the fields from the Players database
      * If the parameter $nick is used, only returns the data for that Player
      * or 0 if that Player doesn't exist
@@ -214,7 +234,7 @@ class BotParser
 
             $row = 0;
             if (($handle = fopen($this->config['bot_db'], "r")) !== false) {
-                while (($data = fgetcsv($handle, 1000, "\t")) !== false) {
+                while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
                     $row++;
                     if ($row == 1) {
                         continue;
@@ -280,52 +300,52 @@ class BotParser
                         'amulet' => [
                             'display' => $data[21], // amulet
                             'numeric' => (int)$data[21],
-                            'unique' => $this->getUniqueItem($data[21])
+                            'unique' => $this->parseUniqueItem($data[21])
                         ],
                         'charm' => [
                             'display' => $data[22], // charm
                             'numeric' => (int)$data[22],
-                            'unique' => $this->getUniqueItem($data[22])
+                            'unique' => $this->parseUniqueItem($data[22])
                         ],
                         'helm' => [
                             'display' => $data[23], // helm
                             'numeric' => (int)$data[23],
-                            'unique' => $this->getUniqueItem($data[23])
+                            'unique' => $this->parseUniqueItem($data[23])
                         ],
                         'boots' => [
                             'display' => $data[24], // boots
                             'numeric' => (int)$data[24],
-                            'unique' => $this->getUniqueItem($data[24])
+                            'unique' => $this->parseUniqueItem($data[24])
                         ],
                         'gloves' => [
                             'display' => $data[25], // gloves
                             'numeric' => (int)$data[25],
-                            'unique' => $this->getUniqueItem($data[25])
+                            'unique' => $this->parseUniqueItem($data[25])
                         ],
                         'ring' => [
                             'display' => $data[26], // ring
                             'numeric' => (int)$data[26],
-                            'unique' => $this->getUniqueItem($data[26])
+                            'unique' => $this->parseUniqueItem($data[26])
                         ],
                         'leggings' => [
                             'display' => $data[27], // leggings
                             'numeric' => (int)$data[27],
-                            'unique' => $this->getUniqueItem($data[27])
+                            'unique' => $this->parseUniqueItem($data[27])
                         ],
                         'shield' => [
                             'display' => $data[28], // shield
                             'numeric' => (int)$data[28],
-                            'unique' => $this->getUniqueItem($data[28])
+                            'unique' => $this->parseUniqueItem($data[28])
                         ],
                         'tunic' => [
                             'display' => $data[29], // tunic
                             'numeric' => (int)$data[29],
-                            'unique' => $this->getUniqueItem($data[29])
+                            'unique' => $this->parseUniqueItem($data[29])
                         ],
                         'weapon' => [
                             'display' => $data[30], // weapon
                             'numeric' => (int)$data[30],
-                            'unique' => $this->getUniqueItem($data[30])
+                            'unique' => $this->parseUniqueItem($data[30])
                         ],
                         'sum' => $this->sumFields($data, 21, 30),
                         'alignment' => $this->parseAlignment($data[31]), // alignment
@@ -341,7 +361,7 @@ class BotParser
             }
 
             if ($nick) {
-                $this->cache->setItem($key, $database);
+                $this->cache->setItem($key, 0);
                 return 0;
             }
 
@@ -395,126 +415,6 @@ class BotParser
     }
 
     /**
-     * Draws a crosshair on $image, using coordinates $x and $y and color $color
-     * Also writes text next to the crosshair if $text isn't null
-     * @param $image
-     * @param $x
-     * @param $y
-     * @param $color
-     * @param null $text
-     * @return mixed
-     */
-    private function drawCrosshair($image, $x, $y, $color, $text = null)
-    {
-        $cross_size = 5;
-
-        // Bottom top
-        $image->line($x - $cross_size, $y, $x + $cross_size, $y, function ($draw) use ($color) {
-            $draw->color($color);
-        });
-
-        // Left right
-        $image->line($x, $y - $cross_size, $x, $y + $cross_size, function ($draw) use ($color) {
-            $draw->color($color);
-        });
-
-        if ($text) {
-            $text_x = $x + $cross_size + 2;
-            $text_y = $y + ($cross_size + 2);
-
-            // Draw a "shadow" 1 pixel ahead
-            $image->text($text, $text_x + 1, $text_y + 1, function ($font) {
-                $font->file($this->config['map_font']);
-                $font->size(13);
-                $font->color("#000");
-            });
-
-            // Text
-            $image->text($text, $text_x, $text_y, function ($font) use ($color) {
-                $font->file($this->config['map_font']);
-                $font->size(13);
-                $font->color($color);
-            });
-        }
-
-        return $image;
-    }
-
-    /**
-     * Returns a string with a generated image with the Player position and name
-     * @param string $nick
-     * @return mixed
-     */
-    public function getPlayerMap(string $nick)
-    {
-        $key = __FUNCTION__ . $nick;
-
-        if ($this->cache->hasItem($key)) {
-            $image = $this->cache->getItem($key);
-        } else {
-            $player_info = $this->getDatabase($nick);
-
-            $manager = new ImageManager(['driver' => 'gd']);
-            $image = $manager->make($this->config['map_image']);
-
-            $image = $this->drawCrosshair(
-                $image,
-                $player_info['x_pos'],
-                $player_info['y_pos'],
-                ($player_info['online'] == 'Yes' ? '#0080e1' : '#d30000'),
-                $nick
-            );
-
-            $image = $image->encode('png');
-            $this->cache->setItem($key, $image);
-        }
-
-        return $image;
-    }
-
-    /**
-     * Returns a string with a generated image with all the Players positions
-     * @return string
-     */
-    public function getWorldMap()
-    {
-        $key = __FUNCTION__;
-
-        if ($this->cache->hasItem($key)) {
-            $image = $this->cache->getItem($key);
-        } else {
-            $database = $this->getDatabase();
-            $items = $this->getItems();
-
-            $manager = new ImageManager(['driver' => 'gd']);
-            $image = $manager->make($this->config['map_image']);
-
-            foreach ($database as $player) {
-                $image = $this->drawCrosshair(
-                    $image,
-                    $player['x_pos'],
-                    $player['y_pos'],
-                    ($player['online'] == 'Yes' ? '#0080e1' : '#d30000')
-                );
-            }
-
-            foreach ($items as $item) {
-                $image = $this->drawCrosshair(
-                    $image,
-                    $item['x_pos'],
-                    $item['y_pos'],
-                    (is_numeric($item['level']) ? '#ff8000' : '#ffc000')
-                );
-            }
-
-            $image = $image->encode('png');
-            $this->cache->setItem($key, $image);
-        }
-
-        return $image;
-    }
-
-    /**
      * Returns an array with the coordinates and name of all Players and Items
      * @return array
      */
@@ -541,5 +441,57 @@ class BotParser
         }
 
         return $coordinates;
+    }
+
+    /**
+     * Returns an array with all the data associated with the current quest
+     * @return array
+     */
+    public function getQuestData()
+    {
+        $key = __FUNCTION__ ;
+
+        if ($this->cache->hasItem($key)) {
+            $quest = $this->cache->getItem($key);
+        } else {
+            $quest = [];
+            if (($handle = fopen($this->config['bot_quest'], "r")) !== false) {
+                while (($data = fgets($handle, 1024)) !== false) {
+                    // T - title
+                    if (! isset($data['title']) && $data[0] == "T") {
+                        $quest['title'] = substr($data, 2);
+                    }
+                    // Y - type. 1 for time based, 2 for stages
+                    if (! isset($data['type']) && $data[0] == "Y") {
+                        $quest['type'] = (int) substr($data, 2);
+                    }
+                    // S - objective
+                    if ($data[0] == "S") {
+                        $quest['objective'] = (int) substr($data, 2);
+                    }
+                    if ($data[0] == "P") {
+                        $d = explode(" ", $data);
+                        // P - stages position
+                        if ($d[0] == "P") {
+                            $quest['stages'] = [
+                                ['x_pos' => (int) $d[1],'y_pos' => (int) $d[2]],
+                                ['x_pos' => (int) $d[3],'y_pos' => (int) $d[4]],
+                            ];
+                        }
+                        // P{1-4} - player position
+                        if (is_numeric($d[0][1])) {
+                            $quest['players'][] = [
+                                'nick'  => $d[1],
+                                'x_pos' => (int) $d[2],
+                                'y_pos' => (int) $d[3]
+                            ];
+                        }
+                    }
+                }
+                fclose($handle);
+            }
+            $this->cache->setItem($key, $quest);
+        }
+        return $quest;
     }
 }
