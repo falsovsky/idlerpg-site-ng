@@ -38,7 +38,7 @@ class BotParser
      * @param $alignment
      * @return string
      */
-    private function parseAlignment(string $alignment)
+    private function parseAlignment(String $alignment)
     {
         $align = "";
         switch ($alignment) {
@@ -172,7 +172,8 @@ class BotParser
      */
     private function sumFields(array $record, int $start, int $end) {
         $total = 0;
-        for($i = $start; $i <= $end; $i++) {
+        for ($i = $start; $i <= $end; $i++)
+        {
             $total += (int) $record[$i];
         }
         return $total;
@@ -304,7 +305,7 @@ class BotParser
                         'numeric' => (int) $data[30],
                         'unique'  => $this->getUniqueItem($data[30])
                     ],
-                    'sum' =>  $this->sumFields($data, 21, 30),
+                    'sum' => $this->sumFields($data, 21, 30),
                     'alignment' => $this->parseAlignment($data[31]), // alignment
                 ];
 
@@ -317,7 +318,7 @@ class BotParser
             fclose($handle);
         }
 
-        if($nick) {
+        if ($nick) {
             return 0;
         }
 
