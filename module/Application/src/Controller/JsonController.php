@@ -21,6 +21,6 @@ class JsonController extends AbstractActionController
     {
         $database = $this->parser->getDatabase();
 
-        return new JsonModel($database);
+        return new JsonModel(['data' => $database]);
     }
 }

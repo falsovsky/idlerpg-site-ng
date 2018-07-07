@@ -44,7 +44,7 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('home');
         }
 
-        $player_info = $this->parser->getPlayerInfo($nick);
+        $player_info = $this->parser->getDatabase($nick);
         if (0 === $player_info) {
             return $this->redirect()->toRoute('home');
         }
