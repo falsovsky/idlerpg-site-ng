@@ -23,7 +23,7 @@ class ImageGenerator
         $this->imageManager = $imageManager;
     }
 
-    /**
+   /**
      * Draws a crosshair on $image, using coordinates $x and $y and color $color
      * Also writes text next to the crosshair if $text isn't null
      * @param $image
@@ -63,6 +63,26 @@ class ImageGenerator
         }
 
         return $image;
+    }
+
+    public function getMapDimensions()
+    {
+        $key = __FUNCTION__;
+
+        if ($this->cache->hasItem($key)) {
+            $dimensions = $this->cache->getItem($key);
+        } else {
+            $image = $this->imageManager->make($this->config['map_image']);
+
+            $dimensions = [
+                'height' => $image->height(),
+                'width' => $image->width(),
+            ];
+
+            $this->cache->setItem($key, $dimensions);
+        }
+
+        return $dimensions;
     }
 
     /**

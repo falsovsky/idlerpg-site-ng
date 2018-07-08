@@ -21,8 +21,8 @@ return [
 
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => Controller\Factory\IdleControllerFactory::class,
-            Controller\JsonController::class => Controller\Factory\IdleControllerFactory::class,
+            Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+            Controller\JsonController::class => Controller\Factory\JsonControllerFactory::class,
             Controller\ImageController::class => Controller\Factory\ImageControllerFactory::class,
         ],
     ],

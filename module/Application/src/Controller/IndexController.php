@@ -5,16 +5,19 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Service\BotParser;
+use Application\Service\ImageGenerator;
 
 class IndexController extends AbstractActionController
 {
     private $config;
     private $parser;
+    private $imageGenerator;
 
-    public function __construct(array $config, BotParser $parser)
+    public function __construct(array $config, BotParser $parser, ImageGenerator $imageGenerator)
     {
         $this->config = $config;
         $this->parser = $parser;
+        $this->imageGenerator = $imageGenerator;
     }
 
     public function gameInfoAction()
@@ -60,21 +63,31 @@ class IndexController extends AbstractActionController
             $player_info['mod']['link'] = true;
         }
 
+        $player_info['dimensions'] = $this->imageGenerator->getMapDimensions();
+
         return new ViewModel($player_info);
     }
 
     public function databaseAction()
     {
-        return new ViewModel();
+        return new ViewModel([
+            'dimensions' => $this->imageGenerator->getMapDimensions()]
+        );
     }
 
     public function worldMapAction()
     {
-        return new ViewModel(['coords' => $this->parser->getCoordinates()]);
+        return new ViewModel([
+            'coords' => $this->parser->getCoordinates(),
+            'dimensions' => $this->imageGenerator->getMapDimensions(),
+        ]);
     }
 
     public function questInfoAction()
     {
-        return new ViewModel(['quest' => $this->parser->getQuestData()]);
+        return new ViewModel([
+            'quest' => $this->parser->getQuestData(),
+            'dimensions' => $this->imageGenerator->getMapDimensions(),
+        ]);
     }
 }

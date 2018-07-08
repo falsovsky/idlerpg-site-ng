@@ -8,12 +8,10 @@ use Application\Service\BotParser;
 
 class JsonController extends AbstractActionController
 {
-    private $config;
     private $parser;
 
-    public function __construct(array $config, BotParser $parser)
+    public function __construct(BotParser $parser)
     {
-        $this->config = $config;
         $this->parser = $parser;
     }
 
