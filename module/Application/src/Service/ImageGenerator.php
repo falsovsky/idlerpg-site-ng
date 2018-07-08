@@ -159,8 +159,8 @@ class ImageGenerator
         if ($quest['type'] == 2) {
             $image = $this->drawCrosshair(
                 $image,
-                $quest['stages'][$quest['objective']]['x_pos'],
-                $quest['stages'][$quest['objective']]['y_pos'],
+                $quest['stages'][$quest['objective'] - 1]['x_pos'],
+                $quest['stages'][$quest['objective'] - 1]['y_pos'],
                 self::OFFLINE_COLOR
             );
         }
