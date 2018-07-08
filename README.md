@@ -6,8 +6,8 @@
 
 ## Introduction
 
-This is a rewrite of the original site from [http://idlerpg.net/] using Zend Framework 3.
-See a live demo at [http://idle.deadbsd.org/].
+This is a rewrite of the original site from http://idlerpg.net/ using Zend Framework 3.
+See a live demo at http://idle.deadbsd.org/.
 
 ## Installation using Composer
 
