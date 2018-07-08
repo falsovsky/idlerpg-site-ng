@@ -214,6 +214,10 @@ class BotParser
                     continue;
                 }
 
+                if ($nick !== null && strcmp($data[0], $nick) !== 0) {
+                    continue;
+                }
+
                 $record = [
                     'nick' => $data[0], // nick
                     'level' => $data[3], // level
@@ -325,7 +329,7 @@ class BotParser
                     'alignment' => $this->parseAlignment($data[31]), // alignment
                 ];
 
-                if ($nick && $record['nick'] == $nick) {
+                if ($nick != null) {
                     return $record;
                 }
 
@@ -334,7 +338,7 @@ class BotParser
             fclose($handle);
         }
 
-        if ($nick) {
+        if ($nick != null) {
             return 0;
         }
 
@@ -453,9 +457,16 @@ class BotParser
     {
         $players = [];
 
-        $database = $this->getDatabase();
-        foreach ($database as $player) {
-            $players[] = $player['nick'];
+        $row = 0;
+        if (($handle = fopen($this->config['bot_db'], "r")) !== false) {
+            while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
+                $row++;
+                if ($row == 1) {
+                    continue;
+                }
+
+                $players[] = $data[0]; // nick
+            }
         }
 
         return $players;
