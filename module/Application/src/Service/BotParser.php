@@ -479,7 +479,7 @@ class BotParser
                             ];
                         }
                         // P{1-4} - player position
-                        if (is_numeric($d[0][1])) {
+                        if (isset($d[0][1])) {
                             $quest['players'][] = [
                                 'nick'  => $d[1],
                                 'x_pos' => (int) $d[2],
