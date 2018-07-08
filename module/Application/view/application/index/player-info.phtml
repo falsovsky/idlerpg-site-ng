@@ -18,7 +18,8 @@
 
 <h2>Map</h2>
 <div id="map">
-    <img height="<?php echo $this->dimensions['height']; ?>" width="<?php echo $this->dimensions['width']; ?>"
+    <img class="img-fluid"
+         height="<?php echo $this->dimensions['height']; ?>" width="<?php echo $this->dimensions['width']; ?>"
          src="<?php echo $this->url('player-map-image', ['nick' => $this->nick]); ?>">
 </div>
 
@@ -51,8 +52,10 @@
     <?php endforeach; ?>
     <br />
     <?php if ($this->mod['link']) : ?>
-    [<a href="<?php echo $this->url('player-info', ['nick' => $this->nick, 'mod' => '-full-events']); ?>">
-View all Character Events</a> (<?php echo $this->mod['total']; ?>)]
+    <a class="btn btn-primary"
+       href="<?php echo $this->url('player-info', ['nick' => $this->nick, 'mod' => '-full-events']); ?>">
+        View all Character Events <span class="badge badge-light"><?php echo $this->mod['total']; ?></span>
+    </a>
     <?php endif; ?>
 </p>
 <?php endif; ?>

@@ -3,7 +3,8 @@
 <h1>World Map</h1>
 <p>[offline users are red, online users are blue, normal items are orange, unique items are yellow]</p>
 
-<img height="<?php echo $this->dimensions['height']; ?>" width="<?php echo $this->dimensions['width']; ?>"
+<img class="img-fluid"
+     height="<?php echo $this->dimensions['height']; ?>" width="<?php echo $this->dimensions['width']; ?>"
      src="<?php echo $this->url('world-map-image'); ?>"
      alt="IdleRPG World Map" title="IdleRPG World Map" usemap="#world" border="0" />
 <map id="world" name="world">
