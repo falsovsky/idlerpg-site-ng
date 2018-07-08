@@ -1,5 +1,7 @@
 # IdleRpg Site NG
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c407b983eb894a01a8b4d1e80e50dc4a)](https://www.codacy.com/app/falsovsky/idlerpg-site-ng?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=falsovsky/idlerpg-site-ng&amp;utm_campaign=Badge_Grade)
+
 ## Introduction
 
 This is a rewrite of the original site from [http://idlerpg.net/] using Zend Framework 3.
