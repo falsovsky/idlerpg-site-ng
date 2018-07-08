@@ -41,17 +41,6 @@ return [
             ],
         ],
 
-        'database-json' => [
-            'type' => Literal::class,
-            'options' => [
-                'route'    => '/api/database',
-                'defaults' => [
-                    'controller' => Controller\JsonController::class,
-                    'action'     => 'database',
-                ],
-            ],
-        ],
-
         'player-info' => [
             'type'    => Segment::class,
             'options' => [
@@ -67,37 +56,12 @@ return [
             ],
         ],
 
-        'player-map-image' => [
-            'type'    => Segment::class,
-            'options' => [
-                'route'    => '/images/playermap/:nick',
-                'constraints' => [
-                    'nick' => '[a-zA-Z0-9_.-]+',
-                ],
-                'defaults' => [
-                    'controller'    => Controller\ImageController::class,
-                    'action'        => 'playerMap',
-                ],
-            ],
-        ],
-
         'world-map' => [
             'type'    => Segment::class,
             'options' => [
                 'route'    => '/worldmap',
                 'defaults' => [
                     'controller'    => Controller\IndexController::class,
-                    'action'        => 'worldMap',
-                ],
-            ],
-        ],
-
-        'world-map-image' => [
-            'type'    => Segment::class,
-            'options' => [
-                'route'    => '/images/worldmap',
-                'defaults' => [
-                    'controller'    => Controller\ImageController::class,
                     'action'        => 'worldMap',
                 ],
             ],
@@ -114,17 +78,6 @@ return [
             ],
         ],
 
-        'quest-map-image' => [
-            'type'    => Segment::class,
-            'options' => [
-                'route'    => '/images/quest',
-                'defaults' => [
-                    'controller'    => Controller\ImageController::class,
-                    'action'        => 'questMap',
-                ],
-            ],
-        ],
-
         'recent-events' => [
             'type'    => Segment::class,
             'options' => [
@@ -136,5 +89,67 @@ return [
             ],
         ],
 
+        'image' => [
+            'type'    => Segment::class,
+            'options' => [
+                'route'    => '/image',
+            ],
+            'may_terminate' => false,
+            'child_routes' => [
+                'quest-map' => [
+                    'type'    => Segment::class,
+                    'options' => [
+                        'route'    => '/quest',
+                        'defaults' => [
+                            'controller'    => Controller\ImageController::class,
+                            'action'        => 'questMap',
+                        ],
+                    ],
+                ],
+                'world-map' => [
+                    'type'    => Segment::class,
+                    'options' => [
+                        'route'    => '/worldmap',
+                        'defaults' => [
+                            'controller'    => Controller\ImageController::class,
+                            'action'        => 'worldMap',
+                        ],
+                    ],
+                ],
+                'player-map' => [
+                    'type'    => Segment::class,
+                    'options' => [
+                        'route'    => '/playermap/:nick',
+                        'constraints' => [
+                            'nick' => '[a-zA-Z0-9_.-]+',
+                        ],
+                        'defaults' => [
+                            'controller'    => Controller\ImageController::class,
+                            'action'        => 'playerMap',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+
+        'api' => [
+            'type'    => Segment::class,
+            'options' => [
+                'route'    => '/api',
+            ],
+            'may_terminate' => false,
+            'child_routes' => [
+                'database' => [
+                    'type' => Literal::class,
+                    'options' => [
+                        'route'    => '/database',
+                        'defaults' => [
+                            'controller' => Controller\JsonController::class,
+                            'action'     => 'database',
+                        ],
+                    ],
+                ],
+            ],
+        ],
     ],
 ];

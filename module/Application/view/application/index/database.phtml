@@ -92,7 +92,7 @@ $script = <<< EOT
         $('th').addClass( 'text-nowrap' );
 
         $('#example').DataTable({
-            ajax: "{$this->url('database-json')}",
+            ajax: "{$this->url('api/database')}",
             scrollY: '500px',
             scrollX: true,
             scrollCollapse: true,

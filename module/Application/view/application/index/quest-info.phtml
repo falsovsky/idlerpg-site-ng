@@ -24,10 +24,9 @@
 <h2>Quest Map:</h2>
 <p>[Questers are shown in blue, current goal in red]</p>
 
-
 <img class="img-fluid"
      height="<?php echo $this->dimensions['height']; ?>" width="<?php echo $this->dimensions['width']; ?>"
-     src="<?php echo $this->url('quest-map-image'); ?>" alt="IdleRPG World Map" title="IdleRPG World Map"
+     src="<?php echo $this->url('image/quest-map'); ?>" alt="IdleRPG World Map" title="IdleRPG World Map"
      usemap="#world" border="0" />
 <map id="world" name="world">
     <?php foreach ($this->quest['players'] as $player) : ?>
