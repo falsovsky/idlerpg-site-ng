@@ -377,7 +377,7 @@ class BotParser
 
         $tmp = [];
         $handle = fopen($this->config['bot_mod'], "r");
-        if ($handle) {
+        if ($handle !== false) {
             while (($line = fgets($handle)) !== false) {
                 if ($nick != null && strpos($line, $nick) !== false) {
                     $tmp[] = $line;
