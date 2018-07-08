@@ -101,6 +101,11 @@ $script = <<< EOT
 
             createdRow: function( row, data, dataIndex ) {
                 $('td', row).addClass( 'text-nowrap' );
+
+                let nick = $('td:first-child', row).html();
+                let url = '<a href="{$this->url('player-info', ['nick' => 'placeholder'])}">placeholder</a>';
+                url = url.replace( /placeholder/g, nick);
+                $('td:first-child', row).html(url);
             },
             "columnDefs": [
               { className: "text-right", "targets": [
