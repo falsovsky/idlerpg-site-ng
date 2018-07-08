@@ -205,7 +205,7 @@ class BotParser
                         'level'  => (int) $data[3],
                         'class'  => $data[4],
                         'ttl'    => (int) $data[5],
-                        'status' => (bool)$data[8],
+                        'status' => (bool) $data[8],
                     ];
                 }
                 fclose($handle);
@@ -454,7 +454,7 @@ class BotParser
      */
     public function getQuestData()
     {
-        $key = __FUNCTION__ ;
+        $key = __FUNCTION__;
 
         if ($this->cache->hasItem($key)) {
             $quest = $this->cache->getItem($key);
