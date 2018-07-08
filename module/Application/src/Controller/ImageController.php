@@ -3,32 +3,21 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Cache\Storage\Adapter\AbstractAdapter;
-use Application\Service\ImageGenerator;
 
 class ImageController extends AbstractActionController
 {
     private $imageGenerator;
-    private $cache;
 
-    public function __construct(ImageGenerator $imageGenerator, AbstractAdapter $cache)
+    public function __construct($imageGenerator)
     {
         $this->imageGenerator = $imageGenerator;
-        $this->cache = $cache;
     }
 
     public function playerMapAction()
     {
-        $nick = (string) $this->params()->fromRoute('nick', 0);
+        $nick = $this->params()->fromRoute('nick', null);
 
-        $key = str_replace(['\\', ':', '.'], '', __METHOD__ . $nick);
-
-        if ($this->cache->hasItem($key)) {
-            $image = $this->cache->getItem($key);
-        } else {
-            $image = $this->imageGenerator->getPlayerMap($nick);
-            $this->cache->setItem($key, $image);
-        }
+        $image = $this->imageGenerator->getPlayerMap($nick);
 
         $response = $this->getResponse();
         $response->setContent($image);
@@ -43,14 +32,7 @@ class ImageController extends AbstractActionController
 
     public function worldMapAction()
     {
-        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
-
-        if ($this->cache->hasItem($key)) {
-            $image = $this->cache->getItem($key);
-        } else {
-            $image = $this->imageGenerator->getWorldMap();
-            $this->cache->setItem($key, $image);
-        }
+        $image = $this->imageGenerator->getWorldMap();
 
         $response = $this->getResponse();
         $response->setContent($image);
@@ -65,14 +47,7 @@ class ImageController extends AbstractActionController
 
     public function questMapAction()
     {
-        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
-
-        if ($this->cache->hasItem($key)) {
-            $image = $this->cache->getItem($key);
-        } else {
-            $image = $this->imageGenerator->getQuestMap();
-            $this->cache->setItem($key, $image);
-        }
+        $image = $this->imageGenerator->getQuestMap();
 
         $response = $this->getResponse();
         $response->setContent($image);

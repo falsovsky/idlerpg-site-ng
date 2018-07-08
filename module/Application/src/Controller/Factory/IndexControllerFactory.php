@@ -5,7 +5,7 @@ namespace Application\Controller\Factory;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Application\Controller\IndexController;
-use Application\Service\BotParser;
+use Application\Service\BotParserCache;
 use Application\Service\ImageGenerator;
 
 class IndexControllerFactory implements FactoryInterface
@@ -18,13 +18,10 @@ class IndexControllerFactory implements FactoryInterface
         $config = $container->get('configuration');
         $config = $config['idlerpg'];
 
-        $parser = $container->get(BotParser::class);
+        $parser = $container->get(BotParserCache::class);
 
         $imageGenerator = $container->get(ImageGenerator::class);
 
-        $cache = $container->get('Cache');
-        $cache->clearExpired();
-
-        return new IndexController($config, $parser, $imageGenerator, $cache);
+        return new IndexController($config, $parser, $imageGenerator);
     }
 }

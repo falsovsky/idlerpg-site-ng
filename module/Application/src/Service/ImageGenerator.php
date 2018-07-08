@@ -16,7 +16,7 @@ class ImageGenerator
     private $parser;
     private $imageManager;
 
-    public function __construct(array $config, BotParser $parser, ImageManager $imageManager)
+    public function __construct(array $config, $parser, ImageManager $imageManager)
     {
         $this->config = $config;
         $this->parser = $parser;

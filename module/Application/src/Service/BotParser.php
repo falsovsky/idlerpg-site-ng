@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 class BotParser
 {
-    const ITEMS = [
+    private $items = [
         'amulet',
         'boots',
         'charm',
@@ -18,7 +18,7 @@ class BotParser
         'tunic',
         'weapon',
     ];
-    const PENALTIES = [
+    private $penalties = [
         'kick',
         'logout',
         'msg',
@@ -133,6 +133,22 @@ class BotParser
             $total += (int) $record[$i];
         }
         return $total;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPenaltiesList()
+    {
+        return $this->penalties;
+    }
+
+    /**
+     * @return array
+     */
+    public function getItemsList()
+    {
+        return $this->items;
     }
 
     /**

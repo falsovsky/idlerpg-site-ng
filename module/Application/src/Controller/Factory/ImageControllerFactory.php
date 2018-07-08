@@ -5,7 +5,7 @@ namespace Application\Controller\Factory;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Application\Controller\ImageController;
-use Application\Service\ImageGenerator;
+use Application\Service\ImageGeneratorCache;
 
 class ImageControllerFactory implements FactoryInterface
 {
@@ -14,11 +14,8 @@ class ImageControllerFactory implements FactoryInterface
         $requestedName,
         array $options = null
     ) {
-        $imageGenerator = $container->get(ImageGenerator::class);
+        $imageGenerator = $container->get(ImageGeneratorCache::class);
 
-        $cache = $container->get('Cache');
-        $cache->clearExpired();
-
-        return new ImageController($imageGenerator, $cache);
+        return new ImageController($imageGenerator);
     }
 }
