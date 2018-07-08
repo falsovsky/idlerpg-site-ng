@@ -2,6 +2,7 @@
 
 namespace Application\Service;
 
+use Zend\Cache\Storage\Adapter\AbstractAdapter;
 use Carbon\Carbon;
 
 class BotParser
@@ -31,7 +32,7 @@ class BotParser
     private $config;
     private $cache;
 
-    public function __construct($config, $cache)
+    public function __construct(array $config, AbstractAdapter $cache)
     {
         $this->config = $config;
         $this->cache = $cache;
@@ -58,10 +59,10 @@ class BotParser
 
     /**
      * Returns the alignment
-     * @param $alignment
+     * @param string $alignment
      * @return string
      */
-    private function parseAlignment(String $alignment)
+    private function parseAlignment(string $alignment)
     {
         $align = "";
         switch ($alignment) {
@@ -80,7 +81,7 @@ class BotParser
 
     /**
      * Returns the name of item if it is unique, or null if it isn't
-     * @param $item_value
+     * @param mixed $item_value
      * @return null|string
      */
     private function parseUniqueItem($item_value)
@@ -220,10 +221,10 @@ class BotParser
      * Returns a list with (almost) all the fields from the Players database
      * If the parameter $nick is used, only returns the data for that Player
      * or 0 if that Player doesn't exist
-     * @param null $nick
-     * @return array|int
+     * @param string|null $nick
+     * @return array|int|mixed
      */
-    public function getDatabase($nick = null)
+    public function getDatabase(string $nick = null)
     {
         $key = __FUNCTION__ . $nick;
 

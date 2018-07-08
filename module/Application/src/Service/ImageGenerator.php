@@ -2,6 +2,10 @@
 
 namespace Application\Service;
 
+use Zend\Cache\Storage\Adapter\AbstractAdapter;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Image;
+
 class ImageGenerator
 {
     const ONLINE_COLOR = '#0080e1';
@@ -15,7 +19,7 @@ class ImageGenerator
     private $parser;
     private $imageManager;
 
-    public function __construct($config, $cache, $parser, $imageManager)
+    public function __construct(array $config, AbstractAdapter $cache, BotParser $parser, ImageManager $imageManager)
     {
         $this->config = $config;
         $this->cache = $cache;
@@ -23,17 +27,17 @@ class ImageGenerator
         $this->imageManager = $imageManager;
     }
 
-   /**
+    /**
      * Draws a crosshair on $image, using coordinates $x and $y and color $color
      * Also writes text next to the crosshair if $text isn't null
-     * @param $image
-     * @param $x
-     * @param $y
-     * @param $color
-     * @param null $text
-     * @return mixed
+     * @param Image $image
+     * @param int $x
+     * @param int $y
+     * @param string $color
+     * @param string|null $text
+     * @return Image
      */
-    private function drawCrosshair($image, $x, $y, $color, $text = null)
+    private function drawCrosshair(Image $image, int $x, int $y, string $color, string $text = null)
     {
         // Bottom top
         $image->line($x - self::CROSSHAIR_SIZE, $y, $x + self::CROSSHAIR_SIZE, $y, function ($draw) use ($color) {
@@ -65,6 +69,10 @@ class ImageGenerator
         return $image;
     }
 
+    /**
+     * Returns an array with the dimensions of the map image
+     * @return array|mixed
+     */
     public function getMapDimensions()
     {
         $key = __FUNCTION__;
