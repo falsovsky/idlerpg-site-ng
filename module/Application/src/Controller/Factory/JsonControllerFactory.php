@@ -4,6 +4,7 @@ namespace Application\Controller\Factory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Application\Controller\JsonController;
 use Application\Service\BotParser;
 
 class JsonControllerFactory implements FactoryInterface
@@ -15,6 +16,9 @@ class JsonControllerFactory implements FactoryInterface
     ) {
         $parser = $container->get(BotParser::class);
 
-        return new $requestedName($parser);
+        $cache = $container->get('Cache');
+        $cache->clearExpired();
+
+        return new JsonController($parser, $cache);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Application\Service;
 
-use Zend\Cache\Storage\Adapter\AbstractAdapter;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Image;
 
@@ -19,10 +18,9 @@ class ImageGenerator
     private $parser;
     private $imageManager;
 
-    public function __construct(array $config, AbstractAdapter $cache, BotParser $parser, ImageManager $imageManager)
+    public function __construct(array $config, BotParser $parser, ImageManager $imageManager)
     {
         $this->config = $config;
-        $this->cache = $cache;
         $this->parser = $parser;
         $this->imageManager = $imageManager;
     }
@@ -75,20 +73,12 @@ class ImageGenerator
      */
     public function getMapDimensions()
     {
-        $key = __FUNCTION__;
+        $image = $this->imageManager->make($this->config['map_image']);
 
-        if ($this->cache->hasItem($key)) {
-            $dimensions = $this->cache->getItem($key);
-        } else {
-            $image = $this->imageManager->make($this->config['map_image']);
-
-            $dimensions = [
-                'height' => $image->height(),
-                'width' => $image->width(),
-            ];
-
-            $this->cache->setItem($key, $dimensions);
-        }
+        $dimensions = [
+            'height' => $image->height(),
+            'width' => $image->width(),
+        ];
 
         return $dimensions;
     }
@@ -100,30 +90,21 @@ class ImageGenerator
      */
     public function getPlayerMap(string $nick)
     {
-        $key = __FUNCTION__ . $nick;
+        $player_info = $this->parser->getDatabase($nick);
 
-        if ($this->cache->hasItem($key)) {
-            $image = $this->cache->getItem($key);
-        } else {
-            $player_info = $this->parser->getDatabase($nick);
+        $image = $this->imageManager->make($this->config['map_image']);
 
-            $image = $this->imageManager->make($this->config['map_image']);
-
-            if ($player_info != 0) {
-                $image = $this->drawCrosshair(
-                    $image,
-                    $player_info['x_pos'],
-                    $player_info['y_pos'],
-                    ($player_info['online'] == 'Yes' ? self::ONLINE_COLOR : self::OFFLINE_COLOR),
-                    $nick
-                );
-            }
-
-            $image = $image->encode('png');
-            $this->cache->setItem($key, $image);
+        if ($player_info != 0) {
+            $image = $this->drawCrosshair(
+                $image,
+                $player_info['x_pos'],
+                $player_info['y_pos'],
+                ($player_info['online'] == 'Yes' ? self::ONLINE_COLOR : self::OFFLINE_COLOR),
+                $nick
+            );
         }
 
-        return $image;
+        return $image->encode('png');
     }
 
     /**
@@ -132,39 +113,30 @@ class ImageGenerator
      */
     public function getWorldMap()
     {
-        $key = __FUNCTION__;
+        $database = $this->parser->getDatabase();
+        $items = $this->parser->getItems();
 
-        if ($this->cache->hasItem($key)) {
-            $image = $this->cache->getItem($key);
-        } else {
-            $database = $this->parser->getDatabase();
-            $items = $this->parser->getItems();
+        $image = $this->imageManager->make($this->config['map_image']);
 
-            $image = $this->imageManager->make($this->config['map_image']);
-
-            foreach ($database as $player) {
-                $image = $this->drawCrosshair(
-                    $image,
-                    $player['x_pos'],
-                    $player['y_pos'],
-                    ($player['online'] == 'Yes' ? self::ONLINE_COLOR : self::OFFLINE_COLOR)
-                );
-            }
-
-            foreach ($items as $item) {
-                $image = $this->drawCrosshair(
-                    $image,
-                    $item['x_pos'],
-                    $item['y_pos'],
-                    (is_numeric($item['level']) ? self::ITEM_COLOR : self::UNIQUE_ITEM_COLOR)
-                );
-            }
-
-            $image = $image->encode('png');
-            $this->cache->setItem($key, $image);
+        foreach ($database as $player) {
+            $image = $this->drawCrosshair(
+                $image,
+                $player['x_pos'],
+                $player['y_pos'],
+                ($player['online'] == 'Yes' ? self::ONLINE_COLOR : self::OFFLINE_COLOR)
+            );
         }
 
-        return $image;
+        foreach ($items as $item) {
+            $image = $this->drawCrosshair(
+                $image,
+                $item['x_pos'],
+                $item['y_pos'],
+                (is_numeric($item['level']) ? self::ITEM_COLOR : self::UNIQUE_ITEM_COLOR)
+            );
+        }
+
+        return $image->encode('png');
     }
 
     /**
@@ -173,38 +145,28 @@ class ImageGenerator
      */
     public function getQuestMap()
     {
-        $key = __FUNCTION__;
+        $quest = $this->parser->getQuestData();
 
-        if ($this->cache->hasItem($key)) {
-            $image = $this->cache->getItem($key);
-        } else {
-            $quest = $this->parser->getQuestData();
+        $image = $this->imageManager->make($this->config['map_image']);
 
-            $image = $this->imageManager->make($this->config['map_image']);
-
-            foreach ($quest['players'] as $player) {
-                $image = $this->drawCrosshair(
-                    $image,
-                    $player['x_pos'],
-                    $player['y_pos'],
-                    self::ONLINE_COLOR
-                );
-            }
-
-            if ($quest['type'] == 2) {
-                $image = $this->drawCrosshair(
-                    $image,
-                    $quest['stages'][$quest['objective']]['x_pos'],
-                    $quest['stages'][$quest['objective']]['y_pos'],
-                    self::OFFLINE_COLOR
-                );
-            }
-
-            $image = $image->encode('png');
-
-            $this->cache->setItem($key, $image);
+        foreach ($quest['players'] as $player) {
+            $image = $this->drawCrosshair(
+                $image,
+                $player['x_pos'],
+                $player['y_pos'],
+                self::ONLINE_COLOR
+            );
         }
 
-        return $image;
+        if ($quest['type'] == 2) {
+            $image = $this->drawCrosshair(
+                $image,
+                $quest['stages'][$quest['objective']]['x_pos'],
+                $quest['stages'][$quest['objective']]['y_pos'],
+                self::OFFLINE_COLOR
+            );
+        }
+
+        return $image->encode('png');
     }
 }

@@ -15,15 +15,12 @@ class ImageGeneratorFactory implements FactoryInterface
         array $options = null
     ) {
         $config = $container->get('configuration');
-        $idlerpg = $config['idlerpg'];
-
-        $cache = $container->get('Cache');
-        $cache->clearExpired();
+        $config = $config['idlerpg'];
 
         $parser = $container->get(BotParser::class);
 
         $imageManager = new ImageManager(['driver' => 'gd']);
 
-        return new ImageGenerator($idlerpg, $cache, $parser, $imageManager);
+        return new ImageGenerator($config, $parser, $imageManager);
     }
 }

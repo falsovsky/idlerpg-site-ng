@@ -2,7 +2,6 @@
 
 namespace Application\Service;
 
-use Zend\Cache\Storage\Adapter\AbstractAdapter;
 use Carbon\Carbon;
 
 class BotParser
@@ -28,14 +27,11 @@ class BotParser
         'quest',
         'quit',
     ];
-
     private $config;
-    private $cache;
 
-    public function __construct(array $config, AbstractAdapter $cache)
+    public function __construct(array $config)
     {
         $this->config = $config;
-        $this->cache = $cache;
     }
 
     /**
@@ -145,35 +141,26 @@ class BotParser
      */
     public function getItems()
     {
-        $key = __FUNCTION__;
-
-        if ($this->cache->hasItem($key)) {
-            $items = $this->cache->getItem($key);
-        } else {
-            $items = [];
-
-            $row = 0;
-            if (($handle = fopen($this->config['bot_item'], "r")) !== false) {
-                while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
-                    $row++;
-                    if ($row == 1) {
-                        continue;
-                    }
-
-                    $record = [
-                        'x_pos' => (int) $data[0],
-                        'y_pos' => (int) $data[1],
-                        'type' => $data[2],
-                        'level' => $data[3],
-                        'age' => $data[4]
-                    ];
-
-                    $items[] = $record;
+        $items = [];
+        $row = 0;
+        if (($handle = fopen($this->config['bot_item'], "r")) !== false) {
+            while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
+                $row++;
+                if ($row == 1) {
+                    continue;
                 }
-                fclose($handle);
-            }
 
-            $this->cache->setItem($key, $items);
+                $record = [
+                    'x_pos' => (int)$data[0],
+                    'y_pos' => (int)$data[1],
+                    'type' => $data[2],
+                    'level' => $data[3],
+                    'age' => $data[4]
+                ];
+
+                $items[] = $record;
+            }
+            fclose($handle);
         }
 
         return $items;
@@ -186,33 +173,25 @@ class BotParser
      */
     public function getScoreboard()
     {
-        $key = __FUNCTION__;
-
-        if ($this->cache->hasItem($key)) {
-            $players = $this->cache->getItem($key);
-        } else {
-            $players = [];
-
-            $row = 0;
-            if (($handle = fopen($this->config['bot_db'], "r")) !== false) {
-                while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
-                    $row++;
-                    if ($row == 1) {
-                        continue;
-                    }
-                    $players[] = [
-                        'nick'   => $data[0],
-                        'level'  => (int) $data[3],
-                        'class'  => $data[4],
-                        'ttl'    => (int) $data[5],
-                        'status' => (bool) $data[8],
-                    ];
+        $players = [];
+        $row = 0;
+        if (($handle = fopen($this->config['bot_db'], "r")) !== false) {
+            while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
+                $row++;
+                if ($row == 1) {
+                    continue;
                 }
-                fclose($handle);
+                $players[] = [
+                    'nick'   => $data[0],
+                    'level'  => (int) $data[3],
+                    'class'  => $data[4],
+                    'ttl'    => (int) $data[5],
+                    'status' => (bool) $data[8],
+                ];
             }
-            array_multisort(array_column($players, 'level'), SORT_DESC, $players);
-            $this->cache->setItem($key, $players);
+            fclose($handle);
         }
+        array_multisort(array_column($players, 'level'), SORT_DESC, $players);
 
         return $players;
     }
@@ -226,147 +205,137 @@ class BotParser
      */
     public function getDatabase(string $nick = null)
     {
-        $key = __FUNCTION__ . $nick;
-
-        if ($this->cache->hasItem($key)) {
-            $database = $this->cache->getItem($key);
-        } else {
-            $database = [];
-
-            $row = 0;
-            if (($handle = fopen($this->config['bot_db'], "r")) !== false) {
-                while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
-                    $row++;
-                    if ($row == 1) {
-                        continue;
-                    }
-
-                    $record = [
-                        'nick' => $data[0], // nick
-                        'level' => $data[3], // level
-                        'admin' => ($data[2] ? 'Yes' : 'No'), // admin
-                        'class' => $data[4], // class
-                        'ttl' => [
-                            'display' => $this->secondsToTime((int) $data[5]),
-                            'numeric' => (int) $data[5], // ttl
-                        ],
-                        'nick_host' => $data[7], // nick and host
-                        'online' => ($data[8] ? 'Yes' : 'No'), // online
-                        'idled' => [
-                            'display' => $this->secondsToTime((int) $data[9]), // idled
-                            'numeric' => (int) $data[9],
-                        ],
-                        'x_pos' => (int) $data[10], // x pos
-                        'y_pos' => (int) $data[11], // y pos
-                        'msg_pen' => [
-                            'display' => $this->secondsToTime((int) $data[12]), // msg pen
-                            'numeric' => (int) $data[12],
-                        ],
-                        'nick_pen' => [
-                            'display' => $this->secondsToTime((int) $data[13]), // nick pen
-                            'numeric' => (int) $data[13],
-                        ],
-                        'part_pen' => [
-                            'display' => $this->secondsToTime((int) $data[14]), // part pen
-                            'numeric' => (int) $data[14],
-                        ],
-                        'kick_pen' => [
-                            'display' => $this->secondsToTime((int) $data[15]), // kick pen
-                            'numeric' => (int) $data[15],
-                        ],
-                        'quit_pen' => [
-                            'display' => $this->secondsToTime((int) $data[16]), // quit pen
-                            'numeric' => (int) $data[16],
-                        ],
-                        'quest_pen' => [
-                            'display' => $this->secondsToTime((int) $data[17]), // quest pen
-                            'numeric' => (int) $data[17],
-                        ],
-                        'logout_pen' => [
-                            'display' => $this->secondsToTime((int) $data[18]), // logout pen
-                            'numeric' => (int) $data[18],
-                        ],
-                        'total_pen' => [
-                            'display' => $this->secondsToTime($this->sumFields($data, 12, 18)),
-                            'numeric' => $this->sumFields($data, 12, 18),
-                        ],
-                        'created' => [
-                            'display' => date('Y-m-d H:i:s', (int) $data[19]), // created
-                            'numeric' => (int) $data[19],
-                        ],
-                        'last_login' => [
-                            'display' => date('Y-m-d H:i:s', (int) $data[20]), // last login
-                            'numeric' => (int) $data[20],
-                        ],
-                        'amulet' => [
-                            'display' => $data[21], // amulet
-                            'numeric' => (int) $data[21],
-                            'unique' => $this->parseUniqueItem($data[21])
-                        ],
-                        'charm' => [
-                            'display' => $data[22], // charm
-                            'numeric' => (int) $data[22],
-                            'unique' => $this->parseUniqueItem($data[22])
-                        ],
-                        'helm' => [
-                            'display' => $data[23], // helm
-                            'numeric' => (int) $data[23],
-                            'unique' => $this->parseUniqueItem($data[23])
-                        ],
-                        'boots' => [
-                            'display' => $data[24], // boots
-                            'numeric' => (int) $data[24],
-                            'unique' => $this->parseUniqueItem($data[24])
-                        ],
-                        'gloves' => [
-                            'display' => $data[25], // gloves
-                            'numeric' => (int) $data[25],
-                            'unique' => $this->parseUniqueItem($data[25])
-                        ],
-                        'ring' => [
-                            'display' => $data[26], // ring
-                            'numeric' => (int) $data[26],
-                            'unique' => $this->parseUniqueItem($data[26])
-                        ],
-                        'leggings' => [
-                            'display' => $data[27], // leggings
-                            'numeric' => (int) $data[27],
-                            'unique' => $this->parseUniqueItem($data[27])
-                        ],
-                        'shield' => [
-                            'display' => $data[28], // shield
-                            'numeric' => (int) $data[28],
-                            'unique' => $this->parseUniqueItem($data[28])
-                        ],
-                        'tunic' => [
-                            'display' => $data[29], // tunic
-                            'numeric' => (int) $data[29],
-                            'unique' => $this->parseUniqueItem($data[29])
-                        ],
-                        'weapon' => [
-                            'display' => $data[30], // weapon
-                            'numeric' => (int) $data[30],
-                            'unique' => $this->parseUniqueItem($data[30])
-                        ],
-                        'sum' => $this->sumFields($data, 21, 30),
-                        'alignment' => $this->parseAlignment($data[31]), // alignment
-                    ];
-
-                    if ($nick && $record['nick'] == $nick) {
-                        return $record;
-                    }
-
-                    $database[] = $record;
+        $database = [];
+        $row = 0;
+        if (($handle = fopen($this->config['bot_db'], "r")) !== false) {
+            while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
+                $row++;
+                if ($row == 1) {
+                    continue;
                 }
-                fclose($handle);
-            }
 
-            if ($nick) {
-                $this->cache->setItem($key, 0);
-                return 0;
-            }
+                $record = [
+                    'nick' => $data[0], // nick
+                    'level' => $data[3], // level
+                    'admin' => ($data[2] ? 'Yes' : 'No'), // admin
+                    'class' => $data[4], // class
+                    'ttl' => [
+                        'display' => $this->secondsToTime((int) $data[5]),
+                        'numeric' => (int) $data[5], // ttl
+                    ],
+                    'nick_host' => $data[7], // nick and host
+                    'online' => ($data[8] ? 'Yes' : 'No'), // online
+                    'idled' => [
+                        'display' => $this->secondsToTime((int) $data[9]), // idled
+                        'numeric' => (int) $data[9],
+                    ],
+                    'x_pos' => (int) $data[10], // x pos
+                    'y_pos' => (int) $data[11], // y pos
+                    'msg_pen' => [
+                        'display' => $this->secondsToTime((int) $data[12]), // msg pen
+                        'numeric' => (int) $data[12],
+                    ],
+                    'nick_pen' => [
+                        'display' => $this->secondsToTime((int) $data[13]), // nick pen
+                        'numeric' => (int) $data[13],
+                    ],
+                    'part_pen' => [
+                        'display' => $this->secondsToTime((int) $data[14]), // part pen
+                        'numeric' => (int) $data[14],
+                    ],
+                    'kick_pen' => [
+                        'display' => $this->secondsToTime((int) $data[15]), // kick pen
+                        'numeric' => (int) $data[15],
+                    ],
+                    'quit_pen' => [
+                        'display' => $this->secondsToTime((int) $data[16]), // quit pen
+                        'numeric' => (int) $data[16],
+                    ],
+                    'quest_pen' => [
+                        'display' => $this->secondsToTime((int) $data[17]), // quest pen
+                        'numeric' => (int) $data[17],
+                    ],
+                    'logout_pen' => [
+                        'display' => $this->secondsToTime((int) $data[18]), // logout pen
+                        'numeric' => (int) $data[18],
+                    ],
+                    'total_pen' => [
+                        'display' => $this->secondsToTime($this->sumFields($data, 12, 18)),
+                        'numeric' => $this->sumFields($data, 12, 18),
+                    ],
+                    'created' => [
+                        'display' => date('Y-m-d H:i:s', (int) $data[19]), // created
+                        'numeric' => (int) $data[19],
+                    ],
+                    'last_login' => [
+                        'display' => date('Y-m-d H:i:s', (int) $data[20]), // last login
+                        'numeric' => (int) $data[20],
+                    ],
+                    'amulet' => [
+                        'display' => $data[21], // amulet
+                        'numeric' => (int) $data[21],
+                        'unique' => $this->parseUniqueItem($data[21])
+                    ],
+                    'charm' => [
+                        'display' => $data[22], // charm
+                        'numeric' => (int) $data[22],
+                        'unique' => $this->parseUniqueItem($data[22])
+                    ],
+                    'helm' => [
+                        'display' => $data[23], // helm
+                        'numeric' => (int) $data[23],
+                        'unique' => $this->parseUniqueItem($data[23])
+                    ],
+                    'boots' => [
+                        'display' => $data[24], // boots
+                        'numeric' => (int) $data[24],
+                        'unique' => $this->parseUniqueItem($data[24])
+                    ],
+                    'gloves' => [
+                        'display' => $data[25], // gloves
+                        'numeric' => (int) $data[25],
+                        'unique' => $this->parseUniqueItem($data[25])
+                    ],
+                    'ring' => [
+                        'display' => $data[26], // ring
+                        'numeric' => (int) $data[26],
+                        'unique' => $this->parseUniqueItem($data[26])
+                    ],
+                    'leggings' => [
+                        'display' => $data[27], // leggings
+                        'numeric' => (int) $data[27],
+                        'unique' => $this->parseUniqueItem($data[27])
+                    ],
+                    'shield' => [
+                        'display' => $data[28], // shield
+                        'numeric' => (int) $data[28],
+                        'unique' => $this->parseUniqueItem($data[28])
+                    ],
+                    'tunic' => [
+                        'display' => $data[29], // tunic
+                        'numeric' => (int) $data[29],
+                        'unique' => $this->parseUniqueItem($data[29])
+                    ],
+                    'weapon' => [
+                        'display' => $data[30], // weapon
+                        'numeric' => (int) $data[30],
+                        'unique' => $this->parseUniqueItem($data[30])
+                    ],
+                    'sum' => $this->sumFields($data, 21, 30),
+                    'alignment' => $this->parseAlignment($data[31]), // alignment
+                ];
 
-            $this->cache->setItem($key, $database);
+                if ($nick && $record['nick'] == $nick) {
+                    return $record;
+                }
+
+                $database[] = $record;
+            }
+            fclose($handle);
+        }
+
+        if ($nick) {
+            return 0;
         }
 
         return $database;
@@ -381,39 +350,32 @@ class BotParser
      */
     public function getEvents(int $limit, string $nick = null)
     {
-        $key = __FUNCTION__ . $nick . $limit;
+        $modifiers = [
+            'items' => [],
+            'total' => 0,
+        ];
 
-        if ($this->cache->hasItem($key)) {
-            $modifiers = $this->cache->getItem($key);
-        } else {
-            $modifiers = [
-                'items' => [],
-                'total' => 0,
-            ];
-
-            $tmp = [];
-            $handle = fopen($this->config['bot_mod'], "r");
-            if ($handle) {
-                while (($line = fgets($handle)) !== false) {
-                    if (nick != null && strpos($line, $nick) !== false) {
-                        $tmp[] = $line;
-                    }
-
-                    if ($nick == null) {
-                        $tmp[] = $line;
-                    }
+        $tmp = [];
+        $handle = fopen($this->config['bot_mod'], "r");
+        if ($handle) {
+            while (($line = fgets($handle)) !== false) {
+                if (nick != null && strpos($line, $nick) !== false) {
+                    $tmp[] = $line;
                 }
-                fclose($handle);
-            }
 
-            $tmp = array_reverse($tmp);
-            $modifiers['total'] = count($tmp);
-            if ($limit > 0) {
-                $modifiers['items'] = array_slice($tmp, 0, $limit);
-            } else {
-                $modifiers['items'] = $tmp;
+                if ($nick == null) {
+                    $tmp[] = $line;
+                }
             }
-            $this->cache->setItem($key, $modifiers);
+            fclose($handle);
+        }
+
+        $tmp = array_reverse($tmp);
+        $modifiers['total'] = count($tmp);
+        if ($limit > 0) {
+            $modifiers['items'] = array_slice($tmp, 0, $limit);
+        } else {
+            $modifiers['items'] = $tmp;
         }
 
         return $modifiers;
@@ -425,24 +387,17 @@ class BotParser
      */
     public function getCoordinates()
     {
-        $key = __FUNCTION__;
+        $coordinates = [];
 
-        if ($this->cache->hasItem($key)) {
-            $coordinates = $this->cache->getItem($key);
-        } else {
-            $coordinates = [];
+        $players = $this->getDatabase();
+        $items = $this->getItems();
 
-            $players = $this->getDatabase();
-            $items = $this->getItems();
+        foreach ($players as $player) {
+            $coordinates[] = ['x' => $player['x_pos'], 'y' => $player['y_pos'], 'text' => $player['nick']];
+        }
 
-            foreach ($players as $player) {
-                $coordinates[] = ['x' => $player['x_pos'], 'y' => $player['y_pos'], 'text' => $player['nick']];
-            }
-
-            foreach ($items as $item) {
-                $coordinates[] = ['x' => $item['x_pos'], 'y' => $item['y_pos'], 'text' => $item['type']];
-            }
-            $this->cache->setItem($key, $coordinates);
+        foreach ($items as $item) {
+            $coordinates[] = ['x' => $item['x_pos'], 'y' => $item['y_pos'], 'text' => $item['type']];
         }
 
         return $coordinates;
@@ -454,49 +409,43 @@ class BotParser
      */
     public function getQuestData()
     {
-        $key = __FUNCTION__;
-
-        if ($this->cache->hasItem($key)) {
-            $quest = $this->cache->getItem($key);
-        } else {
-            $quest = [];
-            if (($handle = fopen($this->config['bot_quest'], "r")) !== false) {
-                while (($data = fgets($handle, 1024)) !== false) {
-                    // T - title
-                    if (! isset($data['title']) && $data[0] == "T") {
-                        $quest['title'] = substr($data, 2);
+        $quest = [];
+        if (($handle = fopen($this->config['bot_quest'], "r")) !== false) {
+            while (($data = fgets($handle, 1024)) !== false) {
+                // T - title
+                if (! isset($data['title']) && $data[0] == "T") {
+                    $quest['title'] = substr($data, 2);
+                }
+                // Y - type. 1 for time based, 2 for stages
+                if (! isset($data['type']) && $data[0] == "Y") {
+                    $quest['type'] = (int) substr($data, 2);
+                }
+                // S - objective
+                if ($data[0] == "S") {
+                    $quest['objective'] = (int) substr($data, 2);
+                }
+                if ($data[0] == "P") {
+                    $data_exploded = explode(" ", $data);
+                    // P - stages position
+                    if ($data_exploded[0] == "P") {
+                        $quest['stages'] = [
+                            ['x_pos' => (int) $data_exploded[1], 'y_pos' => (int) $data_exploded[2]],
+                            ['x_pos' => (int) $data_exploded[3], 'y_pos' => (int) $data_exploded[4]],
+                        ];
                     }
-                    // Y - type. 1 for time based, 2 for stages
-                    if (! isset($data['type']) && $data[0] == "Y") {
-                        $quest['type'] = (int) substr($data, 2);
-                    }
-                    // S - objective
-                    if ($data[0] == "S") {
-                        $quest['objective'] = (int) substr($data, 2);
-                    }
-                    if ($data[0] == "P") {
-                        $data_exploded = explode(" ", $data);
-                        // P - stages position
-                        if ($data_exploded[0] == "P") {
-                            $quest['stages'] = [
-                                ['x_pos' => (int) $data_exploded[1], 'y_pos' => (int) $data_exploded[2]],
-                                ['x_pos' => (int) $data_exploded[3], 'y_pos' => (int) $data_exploded[4]],
-                            ];
-                        }
-                        // P{1-4} - player position
-                        if (isset($data_exploded[0][1])) {
-                            $quest['players'][] = [
-                                'nick'  => $data_exploded[1],
-                                'x_pos' => (int) $data_exploded[2],
-                                'y_pos' => (int) $data_exploded[3]
-                            ];
-                        }
+                    // P{1-4} - player position
+                    if (isset($data_exploded[0][1])) {
+                        $quest['players'][] = [
+                            'nick'  => $data_exploded[1],
+                            'x_pos' => (int) $data_exploded[2],
+                            'y_pos' => (int) $data_exploded[3]
+                        ];
                     }
                 }
-                fclose($handle);
             }
-            $this->cache->setItem($key, $quest);
+            fclose($handle);
         }
+
         return $quest;
     }
 }

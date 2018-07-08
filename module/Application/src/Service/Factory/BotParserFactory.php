@@ -13,11 +13,8 @@ class BotParserFactory implements FactoryInterface
         array $options = null
     ) {
         $config = $container->get('configuration');
-        $idlerpg = $config['idlerpg'];
+        $config = $config['idlerpg'];
 
-        $cache = $container->get('Cache');
-        $cache->clearExpired();
-
-        return new Botparser($idlerpg, $cache);
+        return new Botparser($config);
     }
 }

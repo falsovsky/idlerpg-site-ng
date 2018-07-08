@@ -3,25 +3,34 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Cache\Storage\Adapter\AbstractAdapter;
 use Application\Service\ImageGenerator;
 
 class ImageController extends AbstractActionController
 {
     private $imageGenerator;
+    private $cache;
 
-    public function __construct(ImageGenerator $imageGenerator)
+    public function __construct(ImageGenerator $imageGenerator, AbstractAdapter $cache)
     {
         $this->imageGenerator = $imageGenerator;
+        $this->cache = $cache;
     }
 
     public function playerMapAction()
     {
         $nick = (string) $this->params()->fromRoute('nick', 0);
 
-        $image = $this->imageGenerator->getPlayerMap($nick);
+        $key = strreplace(['\\', ':'], '', __METHOD__ . $nick);
+
+        if ($this->cache->hasItem($key)) {
+            $image = $this->cache->getItem($key);
+        } else {
+            $image = $this->imageGenerator->getPlayerMap($nick);
+            $this->cache->setItem($key, $image);
+        }
 
         $response = $this->getResponse();
-
         $response->setContent($image);
         $response
             ->getHeaders()
@@ -34,10 +43,16 @@ class ImageController extends AbstractActionController
 
     public function worldMapAction()
     {
-        $image = $this->imageGenerator->getWorldMap();
+        $key = str_replace(['\\', ':'], '', __METHOD__);
+
+        if ($this->cache->hasItem($key)) {
+            $image = $this->cache->getItem($key);
+        } else {
+            $image = $this->imageGenerator->getWorldMap();
+            $this->cache->setItem($key, $image);
+        }
 
         $response = $this->getResponse();
-
         $response->setContent($image);
         $response
             ->getHeaders()
@@ -50,10 +65,16 @@ class ImageController extends AbstractActionController
 
     public function questMapAction()
     {
-        $image = $this->imageGenerator->getQuestMap();
+        $key = str_replace(['\\', ':'], '', __METHOD__);
+
+        if ($this->cache->hasItem($key)) {
+            $image = $this->cache->getItem($key);
+        } else {
+            $image = $this->imageGenerator->getQuestMap();
+            $this->cache->setItem($key, $image);
+        }
 
         $response = $this->getResponse();
-
         $response->setContent($image);
         $response
             ->getHeaders()
