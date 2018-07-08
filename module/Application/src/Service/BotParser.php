@@ -201,7 +201,7 @@ class BotParser
                     'nick'   => $data[0],
                     'level'  => (int) $data[3],
                     'class'  => $data[4],
-                    'ttl'    => (int) $data[5],
+                    'ttl'    => $this->secondsToTime((int) $data[5]),
                     'status' => (bool) $data[8],
                 ];
             }
