@@ -1,16 +1,16 @@
-<?= $this->doctype() ?>
+<?php echo $this->doctype() ?>
 
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?= $this->headTitle($this->title)->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle($this->title)->setSeparator(' - ')->setAutoEscape(false) ?>
 
-        <?= $this->headMeta()
+        <?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
         ?>
 
-        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon',
+        <?php echo $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon',
                 'href' => $this->basePath() . '/img/favicon.ico'])
             ->prependStylesheet($this->basePath('css/style.css'))
             ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
@@ -34,7 +34,7 @@
         </div>
 
         <div class="container">
-            <?= $this->content ?>
+            <?php echo $this->content ?>
 
             <footer id="footer">
                 <div class="row">
@@ -49,11 +49,11 @@
             </footer>
         </div>
 
-        <?= $this->headScript()
+        <?php echo $this->headScript()
             ->prependFile($this->basePath('js/bootstrap.min.js'))
             ->prependFile($this->basePath('js/popper.min.js'))
             ->prependFile($this->basePath('js/jquery.min.js'))
         ?>
-        <?= $this->inlineScript() ?>
+        <?php echo $this->inlineScript() ?>
     </body>
 </html>
