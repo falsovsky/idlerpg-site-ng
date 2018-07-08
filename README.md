@@ -3,6 +3,7 @@
 ## Introduction
 
 This is a rewrite of the original site from [http://idlerpg.net/] using Zend Framework 3.
+See a live demo at [http://idle.deadbsd.org/].
 
 ## Installation using Composer
 
@@ -10,20 +11,29 @@ The easiest way to install the site is to use
 [Composer](https://getcomposer.org/).  If you don't have it already installed,
 then please install as per the [documentation](https://getcomposer.org/doc/00-intro.md).
 
-To create your new IdleRpg Site NG:
+To create your new idlerpg-site-ng:
 
 ```bash
 $ git clone https://github.com/falsovsky/idlerpg-site-ng.git path/to/install
 ```
 
-Once installed, you can test it out immediately using PHP's built-in web server:
+Edit the default configuration file to set the path to your bot files, bot name, etc:
 
 ```bash
 $ cd path/to/install
-$ composer install
-# Choose "Do not inject" if asked
 $ cp config/autoload/local.php.dist config/autoload/local.php
-# Edit config/autoload/local.php to your preferences
+$ nano config/autoload/local.php
+```
+
+Now lets install the PHP dependencies via composer (Choose **"Do not inject"** if asked):
+
+```bash
+$ composer install
+```
+
+Once everything is installed, you can test it out immediately using PHP's built-in web server:
+
+```bash
 $ php -S 0.0.0.0:8080 -t public/ public/index.php
 # OR use the composer alias:
 $ composer run --timeout 0 serve

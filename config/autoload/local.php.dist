@@ -13,12 +13,10 @@
 
 return [
     'idlerpg' => [
-        'admin_email'  => 'plz@change.me',
-
         'bot_nick'     => 'Idle',
         'bot_channel'  => '#idle',
         'bot_db'       => '/path/to/irpg.db',
-        'bot_itemdb'   => '/path/to/mapitems.db',
+        'bot_item'     => '/path/to/mapitems.db',
         'bot_mod'      => '/path/to/modifiers.txt',
         'bot_quest'    => '/path/to/questinfo.txt',
 
@@ -26,6 +24,5 @@ return [
         'network_host' => 'irc.example.org',
 
         'map_image'    => __DIR__ . '/../../public/img/themap.png',
-        'map_font'     => __DIR__ . '/../../public/fonts/Antonio-Bold.ttf',
     ]
 ];

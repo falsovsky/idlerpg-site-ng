@@ -152,7 +152,7 @@ class BotParser
             $items = [];
 
             $row = 0;
-            if (($handle = fopen($this->config['bot_itemdb'], "r")) !== false) {
+            if (($handle = fopen($this->config['bot_item'], "r")) !== false) {
                 while (($data = fgetcsv($handle, 1024, "\t")) !== false) {
                     $row++;
                     if ($row == 1) {
