@@ -151,11 +151,11 @@ class BotParser
                 }
 
                 $record = [
-                    'x_pos' => (int)$data[0],
-                    'y_pos' => (int)$data[1],
-                    'type' => $data[2],
+                    'x_pos' => (int) $data[0],
+                    'y_pos' => (int) $data[1],
+                    'type'  => $data[2],
                     'level' => $data[3],
-                    'age' => $data[4]
+                    'age'   => $data[4]
                 ];
 
                 $items[] = $record;

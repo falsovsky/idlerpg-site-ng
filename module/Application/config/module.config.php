@@ -8,8 +8,8 @@ use Application\Service\ImageGenerator;
 use Application\View\Helper\Scoreboard;
 
 return [
-    'router' => require __DIR__ .'/router.config.php',
-    'navigation' => require __DIR__ .'/navigation.config.php',
+    'router' => require __DIR__ . '/router.config.php',
+    'navigation' => require __DIR__ . '/navigation.config.php',
 
     'service_manager' => [
         'factories' => [
