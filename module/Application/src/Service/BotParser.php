@@ -372,11 +372,7 @@ class BotParser
 
         $tmp = array_reverse($tmp);
         $modifiers['total'] = count($tmp);
-        if ($limit > 0) {
-            $modifiers['items'] = array_slice($tmp, 0, $limit);
-        } else {
-            $modifiers['items'] = $tmp;
-        }
+        $modifiers['items'] = array_slice($tmp, 0, ($limit > 0 ) ? $limit : null);
 
         return $modifiers;
     }
