@@ -329,7 +329,7 @@ class BotParser
                     'alignment' => $this->parseAlignment($data[31]), // alignment
                 ];
 
-                if ($nick != null) {
+                if ($nick !== null) {
                     return $record;
                 }
 
@@ -338,7 +338,7 @@ class BotParser
             fclose($handle);
         }
 
-        if ($nick != null) {
+        if ($nick !== null) {
             return 0;
         }
 
