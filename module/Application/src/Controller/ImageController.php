@@ -21,7 +21,7 @@ class ImageController extends AbstractActionController
     {
         $nick = (string) $this->params()->fromRoute('nick', 0);
 
-        $key = strreplace(['\\', ':'], '', __METHOD__ . $nick);
+        $key = str_replace(['\\', ':'], '', __METHOD__ . $nick);
 
         if ($this->cache->hasItem($key)) {
             $image = $this->cache->getItem($key);
