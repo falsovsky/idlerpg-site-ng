@@ -6,7 +6,7 @@
 <p><b>Quest:</b> <?php echo $this->quest['title']; ?></p>
 
     <?php if ($this->quest['type'] == 1) : ?>
-<p><b>Time to completion:</b> <?php echo $this->quest['objective'] - time(); ?></p>
+<p><b>Time to completion:</b> <?php echo $this->quest['objective']; ?></p>
     <?php elseif ($this->quest['type'] == 2) : ?>
     <?php $goal['x_pos'] = $this->quest['stages'][$this->quest['objective'] - 1]['x_pos']; ?>
     <?php $goal['y_pos'] = $this->quest['stages'][$this->quest['objective'] - 1]['y_pos']; ?>

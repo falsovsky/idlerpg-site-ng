@@ -422,7 +422,13 @@ class BotParser
                 }
                 // S - objective
                 if ($data[0] == "S") {
-                    $quest['objective'] = (int) substr($data, 2);
+                    if ($quest['type'] == 1) {
+                        // Time to end
+                        $quest['objective'] = $this->secondsToTime((int) substr($data, 2));
+                    } elseif ($quest['type'] == 2) {
+                        // Stage
+                        $quest['objective'] = (int) substr($data, 2);
+                    }
                 }
                 if ($data[0] == "P") {
                     $data_exploded = explode(" ", $data);
