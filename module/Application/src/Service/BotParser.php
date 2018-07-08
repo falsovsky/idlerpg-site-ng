@@ -88,8 +88,8 @@ class BotParser
     {
         $result = null;
 
-        $re = $re = '/\d+([a-h])/';
-        preg_match($re, $item_value, $matches);
+        $regex = '/\d+([a-h])/';
+        preg_match($regex, $item_value, $matches);
 
         if (isset($matches[1])) {
             switch ($matches[1]) {
@@ -475,20 +475,20 @@ class BotParser
                         $quest['objective'] = (int) substr($data, 2);
                     }
                     if ($data[0] == "P") {
-                        $d = explode(" ", $data);
+                        $data_exploded = explode(" ", $data);
                         // P - stages position
-                        if ($d[0] == "P") {
+                        if ($data_exploded[0] == "P") {
                             $quest['stages'] = [
-                                ['x_pos' => (int) $d[1],'y_pos' => (int) $d[2]],
-                                ['x_pos' => (int) $d[3],'y_pos' => (int) $d[4]],
+                                ['x_pos' => (int) $data_exploded[1],'y_pos' => (int) $data_exploded[2]],
+                                ['x_pos' => (int) $data_exploded[3],'y_pos' => (int) $data_exploded[4]],
                             ];
                         }
                         // P{1-4} - player position
-                        if (isset($d[0][1])) {
+                        if (isset($data_exploded[0][1])) {
                             $quest['players'][] = [
-                                'nick'  => $d[1],
-                                'x_pos' => (int) $d[2],
-                                'y_pos' => (int) $d[3]
+                                'nick'  => $data_exploded[1],
+                                'x_pos' => (int) $data_exploded[2],
+                                'y_pos' => (int) $data_exploded[3]
                             ];
                         }
                     }
