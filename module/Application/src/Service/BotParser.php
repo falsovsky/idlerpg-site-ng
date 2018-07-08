@@ -373,13 +373,13 @@ class BotParser
     }
 
     /**
-     * Returns the last $limit modifiers from the user $nick
+     * Returns the last $limit events [from the user $nick]
      * If $limit is 0 returns all
-     * @param string $nick
      * @param int $limit
-     * @return array
+     * @param string|null $nick
+     * @return array|mixed
      */
-    public function getModifiers(string $nick, int $limit = 5)
+    public function getEvents(int $limit, string $nick = null)
     {
         $key = __FUNCTION__ . $nick . $limit;
 
@@ -395,7 +395,11 @@ class BotParser
             $handle = fopen($this->config['bot_mod'], "r");
             if ($handle) {
                 while (($line = fgets($handle)) !== false) {
-                    if (strpos($line, $nick) !== false) {
+                    if (nick != null && strpos($line, $nick) !== false) {
+                        $tmp[] = $line;
+                    }
+
+                    if ($nick == null) {
                         $tmp[] = $line;
                     }
                 }

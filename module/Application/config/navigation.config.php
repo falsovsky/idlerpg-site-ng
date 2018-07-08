@@ -22,5 +22,9 @@ return [
             'label' => 'Quest info',
             'route' => 'quest-info',
         ],
+        [
+            'label' => 'Recent events',
+            'route' => 'recent-events',
+        ],
     ],
 ];

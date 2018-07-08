@@ -56,10 +56,10 @@ class IndexController extends AbstractActionController
         $player_info['penalties'] = $this->parser::PENALTIES;
 
         if ($fullmod) {
-            $player_info['mod'] = $this->parser->getModifiers($nick, 0);
+            $player_info['mod'] = $this->parser->getEvents(0, $nick);
             $player_info['mod']['link'] = false;
         } else {
-            $player_info['mod'] = $this->parser->getModifiers($nick);
+            $player_info['mod'] = $this->parser->getEvents(5, $nick);
             $player_info['mod']['link'] = true;
         }
 
@@ -89,5 +89,10 @@ class IndexController extends AbstractActionController
             'quest' => $this->parser->getQuestData(),
             'dimensions' => $this->imageGenerator->getMapDimensions(),
         ]);
+    }
+
+    public function recentEventsAction()
+    {
+        return new ViewModel($this->parser->getEvents(15));
     }
 }

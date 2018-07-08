@@ -1,0 +1,11 @@
+<?php $this->headTitle('Recent Events'); ?>
+
+<h1>Recent Events</h1>
+
+<?php if (count($this->items) > 0) : ?>
+<p>
+    <?php foreach ($this->items as $mod) : ?>
+        <?php echo $mod . "<br/>"; ?>
+    <?php endforeach; ?>
+</p>
+<?php endif; ?>

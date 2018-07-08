@@ -121,5 +121,16 @@ return [
             ],
         ],
 
+        'recent-events' => [
+            'type'    => Segment::class,
+            'options' => [
+                'route'    => '/recent',
+                'defaults' => [
+                    'controller'    => Controller\IndexController::class,
+                    'action'        => 'recentEvents',
+                ],
+            ],
+        ],
+
     ],
 ];
