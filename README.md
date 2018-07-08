@@ -155,7 +155,7 @@ project and you should be ready to go! It should look something like below:
     ServerName idlerpg.localhost
     DocumentRoot /path/to/idlerpg/public
     <Directory /path/to/idlerpg/public>
-        DirectoryIndex idlerpg.php
+        DirectoryIndex index.php
         AllowOverride All
         Order allow,deny
         Allow from all
