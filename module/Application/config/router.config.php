@@ -57,7 +57,7 @@ return [
             'options' => [
                 'route'    => '/playerinfo[:mod]/:nick',
                 'constraints' => [
-                    'mod' => '-full-modifier',
+                    'mod' => '-full-events',
                 ],
                 'defaults' => [
                     'controller'    => Controller\IndexController::class,

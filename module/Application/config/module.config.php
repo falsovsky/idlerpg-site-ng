@@ -6,6 +6,7 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 use Application\Service\BotParser;
 use Application\Service\ImageGenerator;
 use Application\View\Helper\Scoreboard;
+use Application\View\Helper\PlayerItem;
 
 return [
     'router' => require __DIR__ . '/router.config.php',
@@ -30,9 +31,11 @@ return [
     'view_helpers' => [
         'aliases' => [
             'scoreboard' => Scoreboard::class,
+            'playeritem' => PlayerItem::class,
         ],
         'factories' => [
             Scoreboard::class => InvokableFactory::class,
+            PlayerItem::class => InvokableFactory::class,
         ],
     ],
 

@@ -25,8 +25,7 @@
 <h2>Items</h2>
 <p>
 <?php foreach ($this->items as $item) : ?>
-    <b><?php echo ucfirst($item); ?>:</b> <?php echo $this->$item['numeric']; ?>
-    <?php echo (isset($this->$item['unique']) ? ' [<font color="#be9256">' .$this->$item['unique'] . '</font>]' : ''); ?>
+    <?php echo $this->playeritem($item, $this->$item['numeric'], $this->$item['unique']); ?>
     <br />
 <?php endforeach; ?>
     <br />
@@ -51,8 +50,8 @@
     <?php endforeach; ?>
     <br />
     <?php if ($this->mod['link']) : ?>
-    [<a href="<?php echo $this->url('player-info', ['nick' => $this->nick, 'mod' => '-full-modifier']); ?>">
-View all Character Modifiers</a> (<?php echo $this->mod['total']; ?>)]
+    [<a href="<?php echo $this->url('player-info', ['nick' => $this->nick, 'mod' => '-full-events']); ?>">
+View all Character Events</a> (<?php echo $this->mod['total']; ?>)]
     <?php endif; ?>
 </p>
 <?php endif; ?>

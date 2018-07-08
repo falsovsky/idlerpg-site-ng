@@ -6,6 +6,10 @@ body {
     color: #707070;
 }
 
+.unique {
+    color: #be9256;
+}
+
 #footer {
     margin: 3em 0;
 }
