@@ -444,4 +444,20 @@ class BotParser
 
         return $quest;
     }
+
+    /**
+     * Returns an array with all the Players nicks
+     * @return array
+     */
+    public function getPlayers()
+    {
+        $players = [];
+
+        $database = $this->getDatabase();
+        foreach ($database as $player) {
+            $players[] = $player['nick'];
+        }
+
+        return $players;
+    }
 }

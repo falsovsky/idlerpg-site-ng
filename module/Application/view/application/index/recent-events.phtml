@@ -5,7 +5,8 @@
 <?php if (count($this->items) > 0) : ?>
 <p>
     <?php foreach ($this->items as $mod) : ?>
-        <?php echo $mod . "<br/>"; ?>
+        <?php echo $this->event($mod); ?>
+        <br/>
     <?php endforeach; ?>
 </p>
 <?php endif; ?>

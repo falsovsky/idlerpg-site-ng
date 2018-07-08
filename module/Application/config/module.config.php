@@ -7,6 +7,7 @@ use Application\Service\BotParser;
 use Application\Service\ImageGenerator;
 use Application\View\Helper\Scoreboard;
 use Application\View\Helper\PlayerItem;
+use Application\View\Helper\Event;
 
 return [
     'router' => require __DIR__ . '/router.config.php',
@@ -32,10 +33,12 @@ return [
         'aliases' => [
             'scoreboard' => Scoreboard::class,
             'playeritem' => PlayerItem::class,
+            'event'      => Event::class,
         ],
         'factories' => [
             Scoreboard::class => InvokableFactory::class,
             PlayerItem::class => InvokableFactory::class,
+            Event::class       => View\Helper\Factory\EventFactory::class,
         ],
     ],
 

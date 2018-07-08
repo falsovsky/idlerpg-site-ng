@@ -46,7 +46,8 @@
 <?php if (count($this->mod['items']) > 0) : ?>
 <p>
     <?php foreach ($this->mod['items'] as $mod) : ?>
-        <?php echo $mod . "<br/>"; ?>
+        <?php echo $this->event($mod); ?>
+        <br/>
     <?php endforeach; ?>
     <br />
     <?php if ($this->mod['link']) : ?>
