@@ -71,8 +71,8 @@ class IndexController extends AbstractActionController
     public function databaseAction()
     {
         return new ViewModel([
-            'dimensions' => $this->imageGenerator->getMapDimensions()]
-        );
+            'dimensions' => $this->imageGenerator->getMapDimensions()
+        ]);
     }
 
     public function worldMapAction()
