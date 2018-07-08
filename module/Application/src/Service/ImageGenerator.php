@@ -12,9 +12,7 @@ class ImageGenerator
     const ITEM_COLOR = '#ff8000';
     const UNIQUE_ITEM_COLOR = '#ffc000';
     const CROSSHAIR_SIZE = 5;
-
     private $config;
-    private $cache;
     private $parser;
     private $imageManager;
 
