@@ -39,7 +39,7 @@ class IndexController extends AbstractActionController
 
     public function scoreBoardAction()
     {
-        $key = str_replace(['\\', ':'], '', __METHOD__);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
 
         if ($this->cache->hasItem($key)) {
             $scoreboard = $this->cache->getItem($key);
@@ -61,7 +61,7 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('home');
         }
 
-        $key = str_replace(['\\', ':'], '', __METHOD__ . $nick . $fullmod);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__ . $nick . $fullmod);
 
         if ($this->cache->hasItem($key)) {
             $player_info = $this->cache->getItem($key);
@@ -91,7 +91,7 @@ class IndexController extends AbstractActionController
 
     public function databaseAction()
     {
-        $key = str_replace(['\\', ':'], '', __METHOD__);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
 
         if ($this->cache->hasItem($key)) {
             $dimensions = $this->cache->getItem($key);
@@ -107,7 +107,7 @@ class IndexController extends AbstractActionController
 
     public function worldMapAction()
     {
-        $key = str_replace(['\\', ':'], '', __METHOD__);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
 
         if ($this->cache->hasItem($key)) {
             $data = $this->cache->getItem($key);
@@ -124,7 +124,7 @@ class IndexController extends AbstractActionController
 
     public function questInfoAction()
     {
-        $key = str_replace(['\\', ':'], '', __METHOD__);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
 
         if ($this->cache->hasItem($key)) {
             $data = $this->cache->getItem($key);
@@ -142,7 +142,7 @@ class IndexController extends AbstractActionController
 
     public function recentEventsAction()
     {
-        $key = str_replace(['\\', ':'], '', __METHOD__);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
 
         if ($this->cache->hasItem($key)) {
             $events = $this->cache->getItem($key);

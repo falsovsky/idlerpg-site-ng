@@ -58,6 +58,7 @@ return [
                 'route'    => '/playerinfo[:mod]/:nick',
                 'constraints' => [
                     'mod' => '-full-events',
+                    'nick' => '[a-zA-Z0-9_.-]+',
                 ],
                 'defaults' => [
                     'controller'    => Controller\IndexController::class,
@@ -70,6 +71,9 @@ return [
             'type'    => Segment::class,
             'options' => [
                 'route'    => '/images/playermap/:nick',
+                'constraints' => [
+                    'nick' => '[a-zA-Z0-9_.-]+',
+                ],
                 'defaults' => [
                     'controller'    => Controller\ImageController::class,
                     'action'        => 'playerMap',

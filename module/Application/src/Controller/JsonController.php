@@ -20,7 +20,7 @@ class JsonController extends AbstractActionController
 
     public function databaseAction()
     {
-        $key = str_replace(['\\', ':'], '', __METHOD__);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
 
         if ($this->cache->hasItem($key)) {
             $database = $this->cache->getItem($key);

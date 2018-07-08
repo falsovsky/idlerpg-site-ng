@@ -21,7 +21,7 @@ class ImageController extends AbstractActionController
     {
         $nick = (string) $this->params()->fromRoute('nick', 0);
 
-        $key = str_replace(['\\', ':'], '', __METHOD__ . $nick);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__ . $nick);
 
         if ($this->cache->hasItem($key)) {
             $image = $this->cache->getItem($key);
@@ -43,7 +43,7 @@ class ImageController extends AbstractActionController
 
     public function worldMapAction()
     {
-        $key = str_replace(['\\', ':'], '', __METHOD__);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
 
         if ($this->cache->hasItem($key)) {
             $image = $this->cache->getItem($key);
@@ -65,7 +65,7 @@ class ImageController extends AbstractActionController
 
     public function questMapAction()
     {
-        $key = str_replace(['\\', ':'], '', __METHOD__);
+        $key = str_replace(['\\', ':', '.'], '', __METHOD__);
 
         if ($this->cache->hasItem($key)) {
             $image = $this->cache->getItem($key);
