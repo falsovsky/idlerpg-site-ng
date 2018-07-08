@@ -1,27 +1,29 @@
-# ZendSkeletonApplication
+# IdleRpg Site NG
 
 ## Introduction
 
-This is a skeleton application using the Zend Framework MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with Zend Framework.
+This is a rewrite of the original site from [http://idlerpg.net/] using Zend Framework 3.
 
 ## Installation using Composer
 
-The easiest way to create a new Zend Framework project is to use
+The easiest way to install the site is to use
 [Composer](https://getcomposer.org/).  If you don't have it already installed,
 then please install as per the [documentation](https://getcomposer.org/doc/00-intro.md).
 
-To create your new Zend Framework project:
+To create your new IdleRpg Site NG:
 
 ```bash
-$ composer create-project -sdev zendframework/skeleton-application path/to/install
+$ git clone https://github.com/falsovsky/idlerpg-site-ng.git path/to/install
 ```
 
 Once installed, you can test it out immediately using PHP's built-in web server:
 
 ```bash
 $ cd path/to/install
+$ composer install
+# Choose "Do not inject" if asked
+$ cp config/autoload/local.php.dist config/autoload/local.php
+# Edit config/autoload/local.php to your preferences
 $ php -S 0.0.0.0:8080 -t public/ public/index.php
 # OR use the composer alias:
 $ composer run --timeout 0 serve
@@ -29,13 +31,12 @@ $ composer run --timeout 0 serve
 
 This will start the cli-server on port 8080, and bind it to all network
 interfaces. You can then visit the site at http://localhost:8080/
-- which will bring up Zend Framework welcome page.
 
 **Note:** The built-in CLI server is *for development only*.
 
 ## Development mode
 
-The skeleton ships with [zf-development-mode](https://github.com/zfcampus/zf-development-mode)
+The site ships with [zf-development-mode](https://github.com/zfcampus/zf-development-mode)
 by default, and provides three aliases for consuming the script it ships with:
 
 ```bash
@@ -50,14 +51,14 @@ configuration in `config/autoload/development.local.php.dist`. Enabling
 development mode will copy these files to versions removing the `.dist` suffix,
 while disabling development mode will remove those copies.
 
-Development mode is automatically enabled as part of the skeleton installation process. 
+Development mode is automatically enabled as part of the site installation process. 
 After making changes to one of the above-mentioned `.dist` configuration files you will
 either need to disable then enable development mode for the changes to take effect,
 or manually make matching updates to the `.dist`-less copies of those files.
 
 ## Running Unit Tests
 
-To run the supplied skeleton unit tests, you need to do one of the following:
+To run the supplied site unit tests, you need to do one of the following:
 
 - During initial project creation, select to install the MVC testing support.
 - After initial project creation, install [zend-test](https://zendframework.github.io/zend-test/):
@@ -80,7 +81,7 @@ control. (If you want to make the modifications permanent, edit the
 
 ## Using Vagrant
 
-This skeleton includes a `Vagrantfile` based on ubuntu 16.04 (bento box)
+This site includes a `Vagrantfile` based on ubuntu 16.04 (bento box)
 with configured Apache2 and PHP 7.0. Start it up using:
 
 ```bash
@@ -115,7 +116,7 @@ For vagrant documentation, please refer to [vagrantup.com](https://www.vagrantup
 
 ## Using docker-compose
 
-This skeleton provides a `docker-compose.yml` for use with
+This site provides a `docker-compose.yml` for use with
 [docker-compose](https://docs.docker.com/compose/); it
 uses the `Dockerfile` provided as its base. Build and start the image using:
 
@@ -141,10 +142,10 @@ project and you should be ready to go! It should look something like below:
 
 ```apache
 <VirtualHost *:80>
-    ServerName zfapp.localhost
-    DocumentRoot /path/to/zfapp/public
-    <Directory /path/to/zfapp/public>
-        DirectoryIndex index.php
+    ServerName idlerpg.localhost
+    DocumentRoot /path/to/idlerpg/public
+    <Directory /path/to/idlerpg/public>
+        DirectoryIndex idlerpg.php
         AllowOverride All
         Order allow,deny
         Allow from all
@@ -169,14 +170,14 @@ http {
 ```
 
 
-Create a virtual host configuration file for your project under `/path/to/nginx/sites-enabled/zfapp.localhost.conf`
+Create a virtual host configuration file for your project under `/path/to/nginx/sites-enabled/idlerpg.localhost.conf`
 it should look something like below:
 
 ```nginx
 server {
     listen       80;
-    server_name  zfapp.localhost;
-    root         /path/to/zfapp/public;
+    server_name  idlerpg.localhost;
+    root         /path/to/idlerpg/public;
 
     location / {
         index index.php;
@@ -186,7 +187,7 @@ server {
     location @php {
         # Pass the PHP requests to FastCGI server (php-fpm) on 127.0.0.1:9000
         fastcgi_pass   127.0.0.1:9000;
-        fastcgi_param  SCRIPT_FILENAME /path/to/zfapp/public/index.php;
+        fastcgi_param  SCRIPT_FILENAME /path/to/idlerpg/public/index.php;
         include fastcgi_params;
     }
 }
@@ -196,7 +197,7 @@ Restart the nginx, now you should be ready to go!
 
 ## QA Tools
 
-The skeleton does not come with any QA tooling by default, but does ship with
+The site does not come with any QA tooling by default, but does ship with
 configuration for each of:
 
 - [phpcs](https://github.com/squizlabs/php_codesniffer)
