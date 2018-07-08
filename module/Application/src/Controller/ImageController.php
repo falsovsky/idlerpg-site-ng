@@ -3,12 +3,13 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Application\Service\ImageGeneratorCache;
 
 class ImageController extends AbstractActionController
 {
     private $imageGenerator;
 
-    public function __construct($imageGenerator)
+    public function __construct(ImageGeneratorCache $imageGenerator)
     {
         $this->imageGenerator = $imageGenerator;
     }

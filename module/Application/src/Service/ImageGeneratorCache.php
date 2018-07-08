@@ -4,6 +4,15 @@ namespace Application\Service;
 
 use Zend\Cache\Storage\Adapter\AbstractAdapter;
 
+/**
+ * Class ImageGeneratorCache
+ * @package Application\Service
+ * @method drawCrosshair(\Intervention\Image\Image $image, int $x, int $y, string $color, string $text = null)
+ * @method getMapDimensions()
+ * @method getPlayerMap(string $nick)
+ * @method getWorldMap()
+ * @method getQuestMap()
+ */
 class ImageGeneratorCache
 {
     private $imageGenerator;

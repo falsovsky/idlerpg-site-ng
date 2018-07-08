@@ -4,6 +4,19 @@ namespace Application\Service;
 
 use Zend\Cache\Storage\Adapter\AbstractAdapter;
 
+/**
+ * Class BotParserCache
+ * @package Application\Service
+ * @method getPenaltiesList()
+ * @method getItemsList()
+ * @method getItems()
+ * @method getScoreboard()
+ * @method getDatabase(string $nick = null)
+ * @method getEvents(int $limit, string $nick = null)
+ * @method getCoordinates()
+ * @method getQuestData()
+ * @method getPlayers()
+ */
 class BotParserCache
 {
     private $cache;
