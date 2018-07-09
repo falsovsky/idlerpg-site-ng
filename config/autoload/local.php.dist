@@ -23,6 +23,8 @@ return [
         'network_name' => 'ExampleNet',
         'network_host' => 'irc.example.org',
 
-        'map_image'    => __DIR__ . '/../../public/img/themap.png',
+        'map_image'    => '/img/themap.png',
+        'map_width'    => 800,
+        'map_height'   => 400,
     ]
 ];
