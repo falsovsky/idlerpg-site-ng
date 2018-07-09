@@ -9,7 +9,7 @@ class BotParser
     const ONLINE_COLOR = '#0080e1';
     const OFFLINE_COLOR = '#d30000';
     const ITEM_COLOR = '#ff8000';
-    const UNIQUE_ITEM_COLOR = '#ffc000';
+    const UNIQUE_ITEM_COLOR = '#e1c000';
     private $items = [
         'amulet',
         'boots',
@@ -175,7 +175,8 @@ class BotParser
                     'y_pos' => (int) $data[1],
                     'type'  => $data[2],
                     'level' => $data[3],
-                    'age'   => $data[4]
+                    'age'   => $data[4],
+                    'color' => (is_numeric($data[3]) ? self::ITEM_COLOR : self::UNIQUE_ITEM_COLOR)
                 ];
 
                 $items[] = $record;
@@ -426,7 +427,7 @@ class BotParser
                 'x'     => $item['x_pos'],
                 'y'     => $item['y_pos'],
                 'text'  => $item['type'],
-                'color' => self::ITEM_COLOR,
+                'color' => $item['color'],
             ];
         }
 
