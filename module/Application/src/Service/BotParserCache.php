@@ -16,6 +16,7 @@ use Zend\Cache\Storage\Adapter\AbstractAdapter;
  * @method getCoordinates()
  * @method getQuestData()
  * @method getPlayers()
+ * @method getMapDimensions()
  */
 class BotParserCache
 {

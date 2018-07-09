@@ -6,7 +6,6 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Application\Controller\IndexController;
 use Application\Service\BotParserCache;
-use Application\Service\ImageGenerator;
 
 class IndexControllerFactory implements FactoryInterface
 {
@@ -20,8 +19,6 @@ class IndexControllerFactory implements FactoryInterface
 
         $parser = $container->get(BotParserCache::class);
 
-        $imageGenerator = $container->get(ImageGenerator::class);
-
-        return new IndexController($config, $parser, $imageGenerator);
+        return new IndexController($config, $parser);
     }
 }

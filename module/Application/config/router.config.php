@@ -89,49 +89,6 @@ return [
             ],
         ],
 
-        'image' => [
-            'type'    => Segment::class,
-            'options' => [
-                'route'    => '/image',
-            ],
-            'may_terminate' => false,
-            'child_routes' => [
-                'quest-map' => [
-                    'type'    => Segment::class,
-                    'options' => [
-                        'route'    => '/quest',
-                        'defaults' => [
-                            'controller'    => Controller\ImageController::class,
-                            'action'        => 'questMap',
-                        ],
-                    ],
-                ],
-                'world-map' => [
-                    'type'    => Segment::class,
-                    'options' => [
-                        'route'    => '/worldmap',
-                        'defaults' => [
-                            'controller'    => Controller\ImageController::class,
-                            'action'        => 'worldMap',
-                        ],
-                    ],
-                ],
-                'player-map' => [
-                    'type'    => Segment::class,
-                    'options' => [
-                        'route'    => '/playermap/:nick',
-                        'constraints' => [
-                            'nick' => '[a-zA-Z0-9_.-]+',
-                        ],
-                        'defaults' => [
-                            'controller'    => Controller\ImageController::class,
-                            'action'        => 'playerMap',
-                        ],
-                    ],
-                ],
-            ],
-        ],
-
         'api' => [
             'type'    => Segment::class,
             'options' => [
@@ -151,5 +108,6 @@ return [
                 ],
             ],
         ],
+
     ],
 ];

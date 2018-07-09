@@ -5,22 +5,16 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Service\BotParserCache;
-use Application\Service\ImageGenerator;
 
 class IndexController extends AbstractActionController
 {
     private $config;
     private $parser;
-    private $imageGenerator;
 
-    public function __construct(
-        array $config,
-        BotParserCache $parser,
-        ImageGenerator $imageGenerator
-    ) {
+    public function __construct(array $config, BotParserCache $parser)
+    {
         $this->config = $config;
         $this->parser = $parser;
-        $this->imageGenerator = $imageGenerator;
     }
 
     public function gameInfoAction()
@@ -63,31 +57,32 @@ class IndexController extends AbstractActionController
             $player_info['mod']['link'] = true;
         }
 
-        $player_info['dimensions'] = $this->imageGenerator->getMapDimensions();
+        $player_info['map_image'] = $this->config['map_image'];
+        $player_info['dimensions'] = $this->parser->getMapDimensions();
 
         return new ViewModel($player_info);
     }
 
     public function databaseAction()
     {
-        return new ViewModel([
-            'dimensions' => $this->imageGenerator->getMapDimensions()
-        ]);
+        return new ViewModel();
     }
 
     public function worldMapAction()
     {
         return new ViewModel([
-            'coords' => $this->parser->getCoordinates(),
-            'dimensions' => $this->imageGenerator->getMapDimensions()
+            'map_image'  => $this->config['map_image'],
+            'coords'     => $this->parser->getCoordinates(),
+            'dimensions' => $this->parser->getMapDimensions()
         ]);
     }
 
     public function questInfoAction()
     {
         return new ViewModel([
+            'map_image'  => $this->config['map_image'],
             'quest' => $this->parser->getQuestData(),
-            'dimensions' => $this->imageGenerator->getMapDimensions(),
+            'dimensions' => $this->parser->getMapDimensions(),
         ]);
     }
 

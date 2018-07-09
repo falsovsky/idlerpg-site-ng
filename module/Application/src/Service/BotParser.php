@@ -6,6 +6,10 @@ use Carbon\Carbon;
 
 class BotParser
 {
+    const ONLINE_COLOR = '#0080e1';
+    const OFFLINE_COLOR = '#d30000';
+    const ITEM_COLOR = '#ff8000';
+    const UNIQUE_ITEM_COLOR = '#ffc000';
     private $items = [
         'amulet',
         'boots',
@@ -409,11 +413,21 @@ class BotParser
         $items = $this->getItems();
 
         foreach ($players as $player) {
-            $coordinates[] = ['x' => $player['x_pos'], 'y' => $player['y_pos'], 'text' => $player['nick']];
+            $coordinates[] = [
+                'x'     => $player['x_pos'],
+                'y'     => $player['y_pos'],
+                'text'  => $player['nick'],
+                'color' => ($player['online'] == 'Yes' ? self::ONLINE_COLOR : self::OFFLINE_COLOR)
+            ];
         }
 
         foreach ($items as $item) {
-            $coordinates[] = ['x' => $item['x_pos'], 'y' => $item['y_pos'], 'text' => $item['type']];
+            $coordinates[] = [
+                'x'     => $item['x_pos'],
+                'y'     => $item['y_pos'],
+                'text'  => $item['type'],
+                'color' => self::ITEM_COLOR,
+            ];
         }
 
         return $coordinates;
@@ -451,8 +465,16 @@ class BotParser
                     // P - stages position
                     if ($data_exploded[0] == "P") {
                         $quest['stages'] = [
-                            ['x_pos' => (int) $data_exploded[1], 'y_pos' => (int) $data_exploded[2]],
-                            ['x_pos' => (int) $data_exploded[3], 'y_pos' => (int) $data_exploded[4]],
+                            [
+                                'x_pos' => (int) $data_exploded[1],
+                                'y_pos' => (int) $data_exploded[2],
+                                'color' => self::OFFLINE_COLOR,
+                            ],
+                            [
+                                'x_pos' => (int) $data_exploded[3],
+                                'y_pos' => (int) $data_exploded[4],
+                                'color' => self::OFFLINE_COLOR,
+                            ],
                         ];
                     }
                     // P{1-4} - player position
@@ -460,7 +482,8 @@ class BotParser
                         $quest['players'][] = [
                             'nick'  => $data_exploded[1],
                             'x_pos' => (int) $data_exploded[2],
-                            'y_pos' => (int) $data_exploded[3]
+                            'y_pos' => (int) $data_exploded[3],
+                            'color' => self::ONLINE_COLOR,
                         ];
                     }
                 }
@@ -492,5 +515,17 @@ class BotParser
         }
 
         return $players;
+    }
+
+    /**
+     * Returns an array with the dimensions of the map image
+     * @return array
+     */
+    public function getMapDimensions()
+    {
+        return [
+            'height' => $this->config['map_height'],
+            'width'  => $this->config['map_width'],
+        ];
     }
 }

@@ -5,8 +5,6 @@ namespace Application;
 use Zend\ServiceManager\Factory\InvokableFactory;
 use Application\Service\BotParser;
 use Application\Service\BotParserCache;
-use Application\Service\ImageGenerator;
-use Application\Service\ImageGeneratorCache;
 use Application\View\Helper\Scoreboard;
 use Application\View\Helper\PlayerItem;
 use Application\View\Helper\Event;
@@ -18,8 +16,6 @@ return [
     'service_manager' => [
         'factories' => [
             'Cache' => Service\Factory\CacheFactory::class,
-            ImageGeneratorCache::class => Service\Factory\ImageGeneratorCacheFactory::class,
-            ImageGenerator::class => Service\Factory\ImageGeneratorFactory::class,
             BotParserCache::class => Service\Factory\BotParserCacheFactory::class,
             BotParser::class => Service\Factory\BotParserFactory::class,
         ],
@@ -29,7 +25,6 @@ return [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
             Controller\JsonController::class => Controller\Factory\JsonControllerFactory::class,
-            Controller\ImageController::class => Controller\Factory\ImageControllerFactory::class,
         ],
     ],
 

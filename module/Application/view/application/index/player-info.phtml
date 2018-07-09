@@ -1,5 +1,10 @@
 <?php $this->headTitle('Player Info: ' . $this->nick); ?>
 
+<?php
+$this->headScript()
+    ->prependFile("/js/hoverDot.js");
+?>
+
 <h1>Player Info</h1>
 
 <p>
@@ -17,11 +22,10 @@
 </p>
 
 <h2>Map</h2>
-<div id="map">
-    <img class="img-fluid"
-         height="<?php echo $this->dimensions['height']; ?>" width="<?php echo $this->dimensions['width']; ?>"
-         src="<?php echo $this->url('image/player-map', ['nick' => $this->nick]); ?>">
-</div>
+
+<canvas id="world-map"
+        height="<?php echo $this->dimensions['height']; ?>" width="<?php echo $this->dimensions['width']; ?>"></canvas>
+
 
 <h2>Items</h2>
 <p>
@@ -59,3 +63,24 @@
     <?php endif; ?>
 </p>
 <?php endif; ?>
+
+<?php $script = "
+$(document).ready(function () {
+    var items = [
+        {
+            x: " . $this->x_pos . ",
+            y: " . $this->y_pos . ",
+            text: '" . $this->nick . "',
+            color: '#0080e1',
+        },
+    ];
+
+    $('#world-map').dotHover(items
+    , {
+        img: '" . $this->map_image . "'
+    });
+});
+";
+
+$this->inlineScript()->appendScript($script);
+?>
