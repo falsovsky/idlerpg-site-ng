@@ -204,16 +204,19 @@ class BotParser
                     continue;
                 }
                 $players[] = [
-                    'nick'   => $data[0],
-                    'level'  => (int) $data[3],
-                    'class'  => $data[4],
-                    'ttl'    => $this->secondsToTime((int) $data[5]),
-                    'status' => (bool) $data[8],
+                    'nick'    => $data[0],
+                    'level'   => (int) $data[3],
+                    'class'   => $data[4],
+                    'ttl'     => $this->secondsToTime((int) $data[5]),
+                    'ttl_num' => (int) $data[5],
+                    'status'  => (bool) $data[8],
                 ];
             }
             fclose($handle);
         }
-        array_multisort(array_column($players, 'level'), SORT_DESC, $players);
+        usort($players, function ($a, $b) {
+            return $b['level'] - $a['level'] ?: $a['ttl_num'] - $b['ttl_num'];
+        });
 
         return $players;
     }
