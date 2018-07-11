@@ -2,10 +2,12 @@
 
 <?php
 $this->headLink()
+    ->prependStylesheet("https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css")
     ->prependStylesheet("https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css")
     ->prependStylesheet("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css");
 $this->headScript()
-    ->prependFile("https://cdn.datatables.net/colreorder/1.5.1/js/dataTables.colReorder.min.js")
+    ->prependFile("https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js")
+    ->prependFile("https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js")
     ->prependFile("https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js")
     ->prependFile("https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js")
     ->prependFile("https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js")
@@ -101,7 +103,13 @@ $script = <<< EOT
             scrollCollapse: true,
             deferRender: true,
             paging: false,
-            colReorder: true,
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'colvis',
+                    collectionLayout: 'fixed four-column'
+                }
+            ],
 
             createdRow: function( row, data, dataIndex ) {
                 $('td', row).addClass( 'text-nowrap' );
