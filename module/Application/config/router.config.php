@@ -19,6 +19,17 @@ return [
             ],
         ],
 
+        'admin-info' => [
+            'type' => Literal::class,
+            'options' => [
+                'route'    => '/admininfo',
+                'defaults' => [
+                    'controller' => Controller\IndexController::class,
+                    'action'     => 'adminInfo',
+                ],
+            ],
+        ],
+
         'scoreboard' => [
             'type' => Literal::class,
             'options' => [

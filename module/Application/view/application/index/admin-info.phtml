@@ -1,0 +1,115 @@
+<?php $this->headTitle('Admin Info'); ?>
+
+<h1>Admin Info</h1>
+
+<p>These are the commands available to the bot admins</p>
+
+<table class="table table-striped">
+
+    <thead>
+        <td class="text-nowrap">Command</td>
+        <td>Description</td>
+    </thead>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> INFO</code></td>
+        <td>Retrieves some fairly useless stats about the bot.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> DIE</code></td>
+        <td>Kills the bot.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> HOG</code></td>
+        <td>Summon the Hand of God spell.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> RESTART</code></td>
+        <td>Restarts the bot.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> CHPASS [char name] [new password]</code></td>
+        <td>Change a character password.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap">
+            <code>/msg <?php echo $this->bot_nick; ?> CHCLASS [char name] [new class name]</code>
+        </td>
+        <td>Change a character class.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> CHUSER [char name] [new char name]</code></td>
+        <td>Change a character username. Please only use in very special circumstances;
+            otherwise, have them form a new player and <code>DEL</code> the old one.
+            This should not let you overwrite an existing account, but is untested.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> PUSH [char name] [seconds]</code></td>
+        <td>Push a player toward his goal by subtracting time from his next time to level.
+            Please use this only if bot has mistakenly penalized someone.
+            You could also use this to punish a user by setting the number of seconds to a negative number.
+            Don't do that.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> DEL [char name]</code></td>
+        <td>Delete a character.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> JUMP [server:port]</code></td>
+        <td>Move the bot to another server.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> SILENT [mode]</code></td>
+        <td>Switch bot between 4 modes of silence:
+            <ul>
+                <li>mode 0, bot sends all privmsgs.</li>
+                <li>mode 1, only chanmsg() is disabled.</li>
+                <li>mode 2, only privmsg()/notice() to non-channels is disabled.</li>
+                <li>mode 3, privmsgs/notices to users and channels are disabled.</li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> BACKUP</code></td>
+        <td>Tell bot to copy $opts{'dbfile'} to .dbbackup/$opts{'dbfile'}TIMESTAMP.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> RELOADDB</code></td>
+        <td>Force bot to reload the player database file, rewriting all memory.
+            Can only be used while in pause mode.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> PAUSE</code></td>
+        <td>Toggle pause mode.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> DELOLD [days]</code></td>
+        <td>Remove all non-logged-in accounts inactive in the last specified days.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> CLEARQ</code></td>
+        <td>Clear the outgoing message queue.
+            Useful to use if someone floods the bot with a lot of text that it plans to respond to.</td>
+    </tr>
+
+    <tr>
+        <td class="text-nowrap"><code>/msg <?php echo $this->bot_nick; ?> MKADMIN [username]</code></td>
+        <td>Set the isadmin flag for a given username..</td>
+    </tr>
+
+</table>

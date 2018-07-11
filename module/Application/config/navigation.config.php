@@ -7,6 +7,10 @@ return [
             'route' => 'home',
         ],
         [
+            'label' => 'Admin Info',
+            'route' => 'admin-info',
+        ],
+        [
             'label' => 'Scoreboard',
             'route' => 'scoreboard',
         ],

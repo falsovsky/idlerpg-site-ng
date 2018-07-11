@@ -90,4 +90,11 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel($this->parser->getEvents(15));
     }
+
+    public function adminInfoAction()
+    {
+        return new ViewModel([
+            'bot_nick' => $this->config['bot_nick'],
+        ]);
+    }
 }
