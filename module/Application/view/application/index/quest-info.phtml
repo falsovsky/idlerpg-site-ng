@@ -21,40 +21,43 @@
     <b>Participant <?php echo ($n + 1); ?>:</b>
     <a href="<?php echo $this->url('player-info', ['nick' => $player['nick']]); ?>"><?php echo $player['nick']; ?></a>
     <br />
+        <?php if ($this->type == 2) : ?>
     <b>Position:</b> [<?php echo $player['x_pos']; ?>,<?php echo $player['y_pos']; ?>]</p>
+        <?php endif; ?>
     <?php endforeach; ?>
 
+    <?php if ($this->quest['type'] == 2) : ?>
 <h2>Quest Map:</h2>
 <p>[Questers are shown in blue, current goal in red]</p>
 
 <canvas id="world-map"
         height="<?php echo $this->dimensions['height']; ?>" width="<?php echo $this->dimensions['width']; ?>"></canvas>
 
-    <?php $script = "
+        <?php $script = "
 $(document).ready(function () {
     var items = ["; ?>
 
-    <?php foreach ($this->quest['players'] as $coord) : ?>
-        <?php $script .= "
+        <?php foreach ($this->quest['players'] as $coord) : ?>
+            <?php $script .= "
         {
             x: " . $coord['x_pos'] . ",
             y: " . $coord['y_pos'] . ",
             text: '" . $coord['nick'] . "',
             color: '" . $coord['color'] . "',
         },"; ?>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 
-    <?php if ($this->quest['type'] == 2) : ?>
-        <?php $script .= "
+        <?php if ($this->quest['type'] == 2) : ?>
+            <?php $script .= "
         {
             x: " . $goal['x_pos'] . ",
             y: " . $goal['y_pos'] . ",
             text: 'Goal',
             color: '" . $goal['color'] . "',
         },"; ?>
-    <?php endif; ?>
+        <?php endif; ?>
 
-    <?php $script .= "
+        <?php $script .= "
     ];
 
     $('#world-map').dotHover(items
@@ -64,7 +67,8 @@ $(document).ready(function () {
 });
 ";
 
-    $this->inlineScript()->appendScript($script); ?>
+        $this->inlineScript()->appendScript($script); ?>
+    <?php endif; ?>
 
 <?php else : ?>
     <p>Sorry, there is no active quest.</p>

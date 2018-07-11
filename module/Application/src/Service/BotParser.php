@@ -42,14 +42,15 @@ class BotParser
      * Converts a DateInterval to a human readable format
      * Returns 'None' if the difference is zero
      * @param int $seconds
+     * @param int $start
      * @return string
      */
-    private function secondsToTime(int $seconds)
+    private function secondsToTime(int $seconds, int $start = 0)
     {
         $result = 'None';
 
         if ($seconds > 0) {
-            $dtF = new Carbon('@0');
+            $dtF = new Carbon("@$start");
             $dtT = new Carbon("@$seconds");
             $result = $dtF->diffForHumans($dtT, true, false, 2);
         }
@@ -455,7 +456,7 @@ class BotParser
                 if ($data[0] == "S") {
                     if ($quest['type'] == 1) {
                         // Time to end
-                        $quest['objective'] = $this->secondsToTime((int) substr($data, 2));
+                        $quest['objective'] = $this->secondsToTime((int) substr($data, 2), time());
                     } elseif ($quest['type'] == 2) {
                         // Stage
                         $quest['objective'] = (int) substr($data, 2);
@@ -480,12 +481,18 @@ class BotParser
                     }
                     // P{1-4} - player position
                     if (isset($data_exploded[0][1])) {
-                        $quest['players'][] = [
-                            'nick'  => $data_exploded[1],
-                            'x_pos' => (int) $data_exploded[2],
-                            'y_pos' => (int) $data_exploded[3],
-                            'color' => self::ONLINE_COLOR,
-                        ];
+                        if ($quest['type'] == 2) {
+                            $quest['players'][] = [
+                                'nick' => $data_exploded[1],
+                                'x_pos' => (int)$data_exploded[2],
+                                'y_pos' => (int)$data_exploded[3],
+                                'color' => self::ONLINE_COLOR,
+                            ];
+                        } elseif ($quest['type'] == 1) {
+                            $quest['players'][] = [
+                                'nick' => trim($data_exploded[1]),
+                            ];
+                        }
                     }
                 }
             }
