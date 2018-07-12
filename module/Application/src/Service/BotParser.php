@@ -389,11 +389,11 @@ class BotParser
         if ($handle !== false) {
             while (($line = fgets($handle)) !== false) {
                 if ($nick !== null && strpos($line, $nick) !== false) {
-                    $tmp[] = $line;
+                    $tmp[] = trim($line);
                 }
 
                 if ($nick === null) {
-                    $tmp[] = $line;
+                    $tmp[] = trim($line);
                 }
             }
             fclose($handle);
