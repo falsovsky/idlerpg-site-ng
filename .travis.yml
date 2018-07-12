@@ -25,7 +25,7 @@ before_script:
 
 # Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
-  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - composer test
 
 
 #after_script:

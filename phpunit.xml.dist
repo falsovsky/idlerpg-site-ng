@@ -5,7 +5,7 @@
 
     <filter>
         <whitelist>
-            <directory>./module</directory>
+            <directory>./module/Application/src/Service</directory>
             <exclude>
                 <directory>./config</directory>
                 <directory>./public</directory>
@@ -20,4 +20,9 @@
             <directory>./module/Application/test/Service</directory>
         </testsuite>
     </testsuites>
+
+    <logging>
+        <log type="coverage-clover" target="./build/logs/clover.xml"/>
+    </logging>
+
 </phpunit>
