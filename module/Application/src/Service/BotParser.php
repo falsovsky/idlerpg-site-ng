@@ -245,7 +245,7 @@ class BotParser
 
                 $record = [
                     'nick' => $data[0], // nick
-                    'level' => $data[3], // level
+                    'level' => (int) $data[3], // level
                     'admin' => ($data[2] ? 'Yes' : 'No'), // admin
                     'class' => $data[4], // class
                     'ttl' => [
