@@ -176,7 +176,7 @@ class BotParser
                     'y_pos' => (int) $data[1],
                     'type'  => $data[2],
                     'level' => $data[3],
-                    'age'   => $data[4],
+                    'age'   => (int) $data[4],
                     'color' => (is_numeric($data[3]) ? self::ITEM_COLOR : self::UNIQUE_ITEM_COLOR)
                 ];
 
