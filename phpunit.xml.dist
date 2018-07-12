@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit colors="true">
+<phpunit backupGlobals="true"
+        colors="true"
+        stopOnFailure="false">
+
+    <filter>
+        <whitelist>
+            <directory>./module</directory>
+            <exclude>
+                <directory>./config</directory>
+                <directory>./public</directory>
+                <directory>./vendor</directory>
+                <directory>./module/Application/test</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
     <testsuites>
-        <testsuite name="idlerpg-site-ng">
+        <testsuite name="idlerpg-site-ng Test Suite">
             <directory>./module/Application/test/Service</directory>
         </testsuite>
     </testsuites>
