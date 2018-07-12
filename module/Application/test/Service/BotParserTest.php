@@ -35,7 +35,10 @@ class BotParserTest extends AbstractHttpControllerTestCase
         $db = $parser->getQuestData();
 
         // Title
-        $this->assertEquals('lay waste to the Towers of Ankh-Allor, wherein lies the terrible sorceror Croocq', $db['title']);
+        $this->assertEquals(
+            'lay waste to the Towers of Ankh-Allor, wherein lies the terrible sorceror Croocq',
+            $db['title']
+        );
 
         // Type
         $this->assertEquals(2, $db['type']);
@@ -107,7 +110,10 @@ class BotParserTest extends AbstractHttpControllerTestCase
         $db = $parser->getQuestData();
 
         // Title
-        $this->assertEquals('locate the herbs and brew the elixir to rid the realm of the Normonic Plague', $db['title']);
+        $this->assertEquals(
+            'locate the herbs and brew the elixir to rid the realm of the Normonic Plague',
+            $db['title']
+        );
 
         // Type
         $this->assertEquals(1, $db['type']);
