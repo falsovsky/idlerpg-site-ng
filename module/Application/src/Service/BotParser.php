@@ -460,7 +460,7 @@ class BotParser
                     if ($quest['type'] == 1) {
                         // Time to end
                         $quest['objective'] = $this->secondsToTime((int) substr($data, 2), time());
-                        $quest['objective_val'] = (int) substr($data, 2);
+                        $quest['objective_num'] = (int) substr($data, 2);
                     } elseif ($quest['type'] == 2) {
                         // Stage
                         $quest['objective'] = (int) substr($data, 2);
