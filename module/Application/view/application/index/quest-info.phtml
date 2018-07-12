@@ -21,7 +21,7 @@
     <b>Participant <?php echo ($n + 1); ?>:</b>
     <a href="<?php echo $this->url('player-info', ['nick' => $player['nick']]); ?>"><?php echo $player['nick']; ?></a>
     <br />
-        <?php if ($this->type == 2) : ?>
+        <?php if ($this->quest['type'] == 2) : ?>
     <b>Position:</b> [<?php echo $player['x_pos']; ?>,<?php echo $player['y_pos']; ?>]</p>
         <?php endif; ?>
     <?php endforeach; ?>
