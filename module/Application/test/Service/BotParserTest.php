@@ -169,4 +169,135 @@ class BotParserTest extends AbstractHttpControllerTestCase
             'status'  => true
         ], $scoreboard[11]);
     }
+
+    public function testDatabase()
+    {
+        $testcase = 'irpg-scoreboard.db';
+        $config = [
+            'bot_db' => __DIR__ . '/../testcases/' . $testcase,
+        ];
+
+        $parser = new BotParser($config);
+
+        $db = $parser->getDatabase();
+
+        // Number of players
+        $this->assertEquals(12, count($db));
+
+        // Test for invalid player
+        $this->assertEquals(0, $parser->getDatabase('ZBR123'));
+
+        $expectedUser = [
+            'nick' => 'fALSO',
+            'level' => 43,
+            'admin' => 'No',
+            'class' => 'GLORIOSO',
+            'ttl' => [
+                'display' => '3 days 12 hours',
+                'numeric' => 304376,
+            ],
+            'nick_host' => 'secret!secret@secret',
+            'online' => 'Yes',
+            'idled' => [
+                'display' => '2 weeks 5 days',
+                'numeric' => 1675484,
+            ],
+            'x_pos' => 259,
+            'y_pos' => 390,
+            'msg_pen' => [
+                'display' => '10 minutes 3 seconds',
+                'numeric' => 603,
+            ],
+            'nick_pen' => [
+                'display' => 'None',
+                'numeric' => 0,
+            ],
+            'part_pen' => [
+                'display' => 'None',
+                'numeric' => 0,
+            ],
+            'kick_pen' => [
+                'display' => 'None',
+                'numeric' => 0,
+            ],
+            'quit_pen' => [
+                'display' => 'None',
+                'numeric' => 0,
+            ],
+            'quest_pen' => [
+                'display' => 'None',
+                'numeric' => 0,
+            ],
+            'logout_pen' => [
+                'display' => 'None',
+                'numeric' => 0,
+            ],
+            'total_pen' => [
+                'display' => '10 minutes 3 seconds',
+                'numeric' => 603,
+            ],
+            'created' => [
+                'display' => '2018-06-20 22:58:00',
+                'numeric' => 1529535480,
+            ],
+            'last_login' => [
+                'display' => '2018-06-28 13:35:35',
+                'numeric' => 1530192935,
+            ],
+            'amulet' => [
+                'display' => '43',
+                'numeric' => 43,
+                'unique' => NULL,
+            ],
+            'charm' => [
+                'display' => '40',
+                'numeric' => 40,
+                'unique' => NULL,
+            ],
+            'helm' => [
+                'display' => '23',
+                'numeric' => 23,
+                'unique' => NULL,
+            ],
+            'boots' => [
+                'display' => '27',
+                'numeric' => 27,
+                'unique' => NULL,
+            ],
+            'gloves' => [
+                'display' => '30',
+                'numeric' => 30,
+                'unique' => NULL,
+            ],
+            'ring' => [
+                'display' => '52h',
+                'numeric' => 52,
+                'unique' => 'Juliet\'s Glorious Ring of Sparkliness',
+            ],
+            'leggings' => [
+                'display' => '21',
+                'numeric' => 21,
+                'unique' => NULL,
+            ],
+            'shield' => [
+                'display' => '43',
+                'numeric' => 43,
+                'unique' => NULL,
+            ],
+            'tunic' => [
+                'display' => '55',
+                'numeric' => 55,
+                'unique' => NULL,
+            ],
+            'weapon' => [
+                'display' => '46',
+                'numeric' => 46,
+                'unique' => NULL,
+            ],
+            'sum' => 380,
+            'alignment' => 'Neutral',
+        ];
+
+        $this->assertEquals($expectedUser, $parser->getDatabase('fALSO'));
+    }
 }
