@@ -1,0 +1,100 @@
+[06/19/18 22:53:13] JEWTEST [0/1] has challenged b0nk [287/1223] in combat and lost! 0 days, 00:01:17 is added to JEWTEST's clock.
+[06/19/18 22:56:42] JEWTEST [0/1] has challenged Idle [1246/1403] in combat and lost! 0 days, 00:00:59 is added to JEWTEST's clock.
+[06/20/18 00:37:17] Infernvs [1/4] has challenged Hetfield [842/990] in combat and lost! 0 days, 00:01:09 is added to Infernvs's clock.
+[06/20/18 01:31:29] RaulVidal [857/1312] has challenged b0nk [448/1223] in combat and won! 2 days, 16:38:54 is removed from RaulVidal's clock.
+[06/20/18 01:37:10] Infernvs [16/23] has challenged Hetfield [684/990] in combat and lost! 0 days, 00:02:05 is added to Infernvs's clock.
+[06/20/18 02:31:29] Adolfo_Dias [554/1480] has challenged fAGSO [343/948] in combat and won! 0 days, 02:53:35 is removed from Adolfo_Dias's clock.
+[06/20/18 03:31:31] o_barbas [263/1425] has challenged Rei [225/1241] in combat and won! 0 days, 20:16:30 is removed from o_barbas's clock.
+[06/20/18 04:31:30] b0nk [8/1223] has challenged RichardStallman [52/1184] in combat and lost! 2 days, 21:51:24 is added to b0nk's clock.
+[06/20/18 05:31:31] PIROCCO [158/1289] has challenged b0nk [529/1223] in combat and lost! 9 days, 05:35:56 is added to PIROCCO's clock.
+[06/20/18 05:38:55] Infernvs [20/104] has challenged PIROCCO [859/1289] in combat and lost! 0 days, 00:11:16 is added to Infernvs's clock.
+[06/20/18 06:31:30] b0nk [382/1223] has challenged Idle [190/1403] in combat and won! 3 days, 19:11:23 is removed from b0nk's clock.
+[06/20/18 06:46:42] RichardStallman hit it off with a drunk sorority chick named Jenny! This wondrous godsend has accelerated them 2 days, 16:25:00 towards level 129.
+[06/20/18 06:59:39] o_barbas lost his glasses. This terrible calamity has slowed them 0 days, 01:37:43 from level 138.
+[06/20/18 07:31:30] PIROCCO [270/1289] has challenged flcl [564/937] in combat and lost! 5 days, 14:41:40 is added to PIROCCO's clock.
+[06/20/18 08:31:31] Adolfo_Dias [1458/1480] has challenged RaulVidal [587/1312] in combat and won! 0 days, 01:53:39 is removed from Adolfo_Dias's clock.
+[06/20/18 09:31:29] Rei [597/1241] has challenged o_barbas [1066/1425] in combat and lost! 7 days, 06:44:39 is added to Rei's clock.
+[06/20/18 10:31:30] b0nk [1015/1223] has challenged fAGSO [915/948] in combat and won! 3 days, 00:09:07 is removed from b0nk's clock.
+[06/20/18 10:50:55] Infernvs [138/146] has challenged RaulVidal [93/1312] in combat and won! 0 days, 00:36:31 is removed from Infernvs's clock.
+[06/20/18 11:31:31] b0nk [1048/1223] has challenged Idle [1327/1403] in combat and lost! 1 day, 04:45:38 is added to b0nk's clock.
+[06/20/18 12:12:07] Adolfo_Dias [1466/1480] has challenged .hack [549/1201] in combat and won! 24 days, 12:18:21 is removed from Adolfo_Dias's clock.
+[06/20/18 12:23:19] fAGSO, o_barbas and Hetfield [2466/3363] have team battled Infernvs, RaulVidal and PIROCCO [1949/2751] at [652,328] and won! 0 days, 05:45:43 is removed from their clocks.
+[06/20/18 12:30:10] nina [20/26] has challenged PIROCCO [1263/1289] in combat and lost! 0 days, 00:03:59 is added to nina's clock.
+[06/20/18 12:31:29] flcl [494/937] has challenged b0nk [1109/1223] in combat and lost! 0 days, 19:55:35 is added to flcl's clock.
+[06/20/18 12:54:31] .hack [505/1201] has come upon RichardStallman [887/1184] and been defeated in combat! 0 days, 14:51:00 is added to .hack's clock.
+[06/20/18 12:59:17] RichardStallman [639/1184] has come upon .hack [195/1201] and taken them in combat! 4 days, 07:14:14 is removed from RichardStallman's clock.
+[06/20/18 13:31:30] Adolfo_Dias [1045/1480] has challenged .hack [711/1201] in combat and won! 20 days, 02:10:22 is removed from Adolfo_Dias's clock.
+[06/20/18 13:36:05] o_barbas and Adolfo_Dias have not let the iniquities of evil men poison them. Together have they prayed to their god, and it is his light that now shines upon them. 9% of their time is removed from their clocks.
+[06/20/18 14:20:33] nina [12/54] has challenged flcl [854/937] in combat and lost! 0 days, 00:02:39 is added to nina's clock.
+[06/20/18 14:31:30] Adolfo_Dias [901/1480] has challenged Hetfield [9/990] in combat and won! 14 days, 23:37:07 is removed from Adolfo_Dias's clock.
+[06/20/18 15:31:29] flcl [123/937] has challenged Rei [714/1241] in combat and lost! 1 day, 10:02:29 is added to flcl's clock.
+[06/20/18 15:45:18] nina [4/81] has challenged Idle [147/1403] in combat and lost! 0 days, 00:05:06 is added to nina's clock.
+[06/20/18 15:53:11] b0nk was rejuvenated by drinking from a magic stream! This wondrous godsend has accelerated them 1 day, 00:57:38 towards level 98.
+[06/20/18 16:31:30] RichardStallman [181/1184] has challenged Idle [1254/1403] in combat and lost! 1 day, 22:40:35 is added to RichardStallman's clock.
+[06/20/18 17:31:29] RaulVidal [254/1312] has challenged .hack [844/1201] in combat and lost! 0 days, 18:52:19 is added to RaulVidal's clock.
+[06/20/18 18:31:31] PIROCCO [450/1289] has challenged Adolfo_Dias [1362/1480] in combat and lost! 17 days, 01:34:49 is added to PIROCCO's clock.
+[06/20/18 19:18:54] Infernvs [56/164] has challenged Adolfo_Dias [738/1480] in combat and lost! 0 days, 00:38:54 is added to Infernvs's clock.
+[06/20/18 19:31:30] xhip [517/1273] has challenged PIROCCO [626/1289] in combat and lost! 0 days, 20:15:11 is added to xhip's clock.
+[06/20/18 20:31:31] xhip [922/1273] has challenged nina [4/106] in combat and won! 0 days, 08:48:33 is removed from xhip's clock.
+[06/20/18 21:31:31] RaulVidal [1160/1312] has challenged xhip [1022/1273] in combat and won! 3 days, 14:57:40 is removed from RaulVidal's clock.
+[06/20/18 22:31:30] .hack [922/1201] has challenged Infernvs [71/164] in combat and won! 0 days, 07:56:32 is removed from .hack's clock.
+[06/20/18 23:31:29] .hack [619/1201] has challenged nina [26/122] in combat and won! 0 days, 07:18:59 is removed from .hack's clock.
+[06/21/18 00:17:12] xhip was accepted into Pi Beta Phi! This wondrous godsend has accelerated them 0 days, 09:03:44 towards level 127.
+[06/21/18 00:31:29] RaulVidal [915/1312] has challenged Idle [384/1403] in combat and won! 1 day, 14:06:43 is removed from RaulVidal's clock.
+[06/21/18 01:31:31] Hetfield [604/990] has challenged o_barbas [67/1425] in combat and won! 28 days, 18:40:36 is removed from Hetfield's clock.
+[06/21/18 01:46:36] Infernvs [17/167] has come upon .hack [42/1201] and been defeated in combat! 0 days, 00:07:09 is added to Infernvs's clock.
+[06/21/18 02:31:29] Hetfield [955/990] has challenged o_barbas [159/1425] in combat and won! 18 days, 23:30:25 is removed from Hetfield's clock.
+[06/21/18 03:05:17] Infernvs [114/177] has challenged PIROCCO [578/1289] in combat and lost! 0 days, 00:49:44 is added to Infernvs's clock.
+[06/21/18 03:31:31] o_barbas [345/1425] has challenged fAGSO [577/948] in combat and lost! 0 days, 00:39:14 is added to o_barbas's clock.
+[06/21/18 04:31:30] Rei [1195/1241] has challenged xhip [106/1273] in combat and won! 14 days, 22:43:32 is removed from Rei's clock.
+[06/21/18 05:31:30] Rei [808/1241] has challenged RaulVidal [685/1312] in combat and won! 11 days, 07:08:03 is removed from Rei's clock.
+[06/21/18 06:31:30] Hetfield [641/990] has challenged nina [66/153] in combat and won! 2 days, 13:36:55 is removed from Hetfield's clock.
+[06/21/18 07:31:29] fAGSO [243/948] has challenged Hetfield [246/990] in combat and lost! 1 day, 03:49:08 is added to fAGSO's clock.
+[06/21/18 08:00:21] .hack broke his compass. This terrible calamity has slowed them 0 days, 06:12:38 from level 75.
+[06/21/18 08:31:30] Adolfo_Dias [148/1480] has challenged PIROCCO [18/1289] in combat and won! 22 days, 22:53:21 is removed from Adolfo_Dias's clock.
+[06/21/18 09:31:30] Adolfo_Dias [967/1480] has challenged Hetfield [278/990] in combat and won! 8 days, 00:18:26 is removed from Adolfo_Dias's clock.
+[06/21/18 10:07:28] o_barbas [672/1425] has challenged b0nk [1117/1223] in combat and lost! 16 days, 15:55:39 is added to o_barbas's clock.
+[06/21/18 10:31:29] PIROCCO [574/1289] has challenged xhip [1166/1273] in combat and lost! 18 days, 21:10:12 is added to PIROCCO's clock.
+[06/21/18 10:35:39] Infernvs, PIROCCO and .hack [615/2675] have team battled RaulVidal, nina and RichardStallman [886/2674] at [422,202] and lost! 0 days, 00:32:59 is added to their clocks.
+[06/21/18 11:31:29] fAGSO [293/948] has challenged .hack [48/1201] in combat and won! 2 days, 06:21:41 is removed from fAGSO's clock.
+[06/21/18 12:31:31] PIROCCO [1231/1289] has challenged Rei [1223/1241] in combat and won! 44 days, 12:57:32 is removed from PIROCCO's clock.
+[06/21/18 13:20:59] o_barbas, Adolfo_Dias, fAGSO, and b0nk have completed their journey! 25% of their burden is eliminated.
+[06/21/18 13:24:26] o_barbas [227/1425] has come upon fAGSO [748/948] and been defeated in combat! 11 days, 22:31:18 is added to o_barbas's clock.
+[06/21/18 13:31:30] xhip [1024/1273] has challenged Adolfo_Dias [1028/1480] in combat and lost! 0 days, 18:11:44 is added to xhip's clock.
+[06/21/18 13:53:35] Infernvs [108/204] has challenged Adolfo_Dias [856/1480] in combat and lost! 0 days, 01:10:28 is added to Infernvs's clock.
+[06/21/18 14:31:30] xhip [141/1273] has challenged flcl [610/937] in combat and lost! 0 days, 07:34:19 is added to xhip's clock.
+[06/21/18 15:31:28] Rei [1036/1241] has challenged RichardStallman [907/1184] in combat and won! 6 days, 21:13:20 is removed from Rei's clock.
+[06/21/18 15:43:18] b0nk stopped using dial-up! This wondrous godsend has accelerated them 0 days, 21:38:58 towards level 98.
+[06/21/18 16:31:29] xhip [1254/1273] has challenged Rei [866/1241] in combat and won! 1 day, 16:56:54 is removed from xhip's clock.
+[06/21/18 16:32:30] RaulVidal had his clothes laundered by a passing fairy! This wondrous godsend has accelerated them 0 days, 08:11:09 towards level 139.
+[06/21/18 17:14:28] The war between the four parts of the realm has shown the power of the Northwest [5171/6218], whereas it led the Southeast [102/198] to perdition. The diplomacy of the Northeast [863/6069] and the Southwest [1107/2396] was admirable.
+[06/21/18 17:31:31] .hack [1129/1201] has challenged PIROCCO [843/1289] in combat and won! 1 day, 05:13:40 is removed from .hack's clock.
+[06/21/18 17:54:39] Infernvs lost their mind. This terrible calamity has slowed them 0 days, 00:05:39 from level 26.
+[06/21/18 18:31:29] Adolfo_Dias [305/1480] has challenged xhip [382/1273] in combat and lost! 4 days, 20:49:16 is added to Adolfo_Dias's clock.
+[06/21/18 19:11:04] Infernvs [74/204] has challenged b0nk [848/1223] in combat and lost! 0 days, 00:53:07 is added to Infernvs's clock.
+[06/21/18 19:31:29] .hack [66/1201] has challenged RichardStallman [121/1184] in combat and lost! 0 days, 09:51:09 is added to .hack's clock.
+[06/21/18 19:55:26] PIROCCO has fallen ill with the black plague. This terrible calamity has slowed them 3 days, 13:03:46 from level 138.
+[06/21/18 20:31:31] b0nk [574/1223] has challenged flcl [68/937] in combat and won! 0 days, 10:51:36 is removed from b0nk's clock.
+[06/21/18 21:31:30] RaulVidal [202/1312] has challenged o_barbas [472/1425] in combat and lost! 0 days, 23:25:10 is added to RaulVidal's clock.
+[06/21/18 22:31:30] o_barbas [64/1425] has challenged .hack [1067/1201] in combat and lost! 12 days, 00:12:53 is added to o_barbas's clock.
+[06/21/18 23:31:31] fAGSO [287/948] has challenged Infernvs [67/215] in combat and won! 0 days, 05:52:36 is removed from fAGSO's clock.
+[06/21/18 23:39:04] fAGSO [384/948] has come upon Adolfo_Dias [1126/1480] and been defeated in combat! 0 days, 15:35:24 is added to fAGSO's clock.
+[06/22/18 00:07:15] nina [113/203] has challenged Idle [452/1403] in combat and lost! 0 days, 00:35:14 is added to nina's clock.
+[06/22/18 00:31:31] o_barbas [739/1425] has challenged flcl [893/937] in combat and lost! 9 days, 05:47:07 is added to o_barbas's clock.
+[06/22/18 01:31:31] fAGSO [89/948] has challenged flcl [741/937] in combat and lost! 0 days, 06:25:00 is added to fAGSO's clock.
+[06/22/18 02:31:31] b0nk [101/1223] has challenged Infernvs [13/215] in combat and won! 0 days, 04:40:03 is removed from b0nk's clock.
+[06/22/18 02:52:56] Infernvs [121/215] has challenged b0nk [676/1223] in combat and lost! 0 days, 01:01:37 is added to Infernvs's clock.
+[06/22/18 03:31:30] flcl [35/937] has challenged Infernvs [204/215] in combat and lost! 0 days, 11:46:38 is added to flcl's clock.
+[06/22/18 04:31:30] PIROCCO [827/1289] has challenged nina [63/203] in combat and won! 2 days, 23:30:44 is removed from PIROCCO's clock.
+[06/22/18 05:31:29] xhip [701/1273] has challenged Adolfo_Dias [105/1480] in combat and won! 0 days, 21:31:37 is removed from xhip's clock.
+[06/22/18 05:31:29] xhip has dealt Adolfo_Dias a Critical Strike! 5 days, 08:19:14 is added to Adolfo_Dias's clock.
+[06/22/18 06:31:31] Adolfo_Dias [1311/1480] has challenged flcl [911/937] in combat and won! 4 days, 18:40:45 is removed from Adolfo_Dias's clock.
+[06/22/18 06:34:49] nina [49/203] has challenged fAGSO [95/948] in combat and lost! 0 days, 00:44:57 is added to nina's clock.
+[06/22/18 06:37:04] Hetfield started a discussion about football in #C. This terrible calamity has slowed them 2 days, 15:33:39 from level 75.
+[06/22/18 06:46:30] o_barbas [970/1425] has come upon xhip [1239/1273] and been defeated in combat! 25 days, 09:06:06 is added to o_barbas's clock.
+[06/22/18 07:31:30] Hetfield [218/990] has challenged RaulVidal [916/1312] in combat and lost! 6 days, 18:51:40 is added to Hetfield's clock.
+[06/22/18 08:31:30] Rei [3/1241] has challenged xhip [747/1273] in combat and lost! 1 day, 04:41:35 is added to Rei's clock.
+[06/22/18 09:03:15] fAGSO has fallen ill with the black plague. This terrible calamity has slowed them 0 days, 10:51:59 from level 81.
+[06/22/18 09:31:30] PIROCCO [677/1289] has challenged Adolfo_Dias [387/1480] in combat and won! 14 days, 04:14:02 is removed from PIROCCO's clock.
+[06/22/18 10:11:46] Adolfo_Dias [155/1480] has come upon xhip [221/1273] and been defeated in combat! 5 days, 17:29:00 is added to Adolfo_Dias's clock.
+[06/22/18 10:31:30] RaulVidal [544/1312] has challenged Hetfield [755/990] in combat and lost! 0 days, 13:22:05 is added to RaulVidal's clock.

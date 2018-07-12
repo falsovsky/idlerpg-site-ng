@@ -50,14 +50,14 @@ class BotParserTest extends AbstractHttpControllerTestCase
         $this->assertEquals(2, count($db['stages']));
 
         // Stage 1
-        $this->assertEquals([
+        $this->assertSame([
             'x_pos' => 225,
             'y_pos' => 315,
             'color' => '#d30000',
         ], $db['stages'][0]);
 
         // Stage 2
-        $this->assertEquals([
+        $this->assertSame([
             'x_pos' => 280,
             'y_pos' => 360,
             'color' => '#d30000',
@@ -67,7 +67,7 @@ class BotParserTest extends AbstractHttpControllerTestCase
         $this->assertEquals(4, count($db['players']));
 
         // Player 1
-        $this->assertEquals([
+        $this->assertSame([
             'nick'  => 'Orange',
             'x_pos' => 195,
             'y_pos' => 315,
@@ -75,7 +75,7 @@ class BotParserTest extends AbstractHttpControllerTestCase
         ], $db['players'][0]);
 
         // Player 2
-        $this->assertEquals([
+        $this->assertSame([
             'nick'  => 'pi',
             'x_pos' => 225,
             'y_pos' => 270,
@@ -83,7 +83,7 @@ class BotParserTest extends AbstractHttpControllerTestCase
         ], $db['players'][1]);
 
         // Player 3
-        $this->assertEquals([
+        $this->assertSame([
             'nick'  => 'BernardoRafael',
             'x_pos' => 225,
             'y_pos' => 315,
@@ -91,7 +91,7 @@ class BotParserTest extends AbstractHttpControllerTestCase
         ], $db['players'][2]);
 
         // Player 4
-        $this->assertEquals([
+        $this->assertSame([
             'nick'  => 'pirilampo',
             'x_pos' => 225,
             'y_pos' => 315,
@@ -150,7 +150,7 @@ class BotParserTest extends AbstractHttpControllerTestCase
         $this->assertEquals(12, count($scoreboard));
 
         // Full data of the first player
-        $this->assertEquals([
+        $this->assertSame([
             'nick'    => 'flcl',
             'level'   => 43,
             'class'   => 'gordo',
@@ -160,7 +160,7 @@ class BotParserTest extends AbstractHttpControllerTestCase
         ], $scoreboard[0]);
 
         // Full data of the last player
-        $this->assertEquals([
+        $this->assertSame([
             'nick'    => 'MalMen',
             'level'   => 26,
             'class'   => 'amen',
@@ -247,27 +247,27 @@ class BotParserTest extends AbstractHttpControllerTestCase
             'amulet' => [
                 'display' => '43',
                 'numeric' => 43,
-                'unique' => NULL,
+                'unique' => null,
             ],
             'charm' => [
                 'display' => '40',
                 'numeric' => 40,
-                'unique' => NULL,
+                'unique' => null,
             ],
             'helm' => [
                 'display' => '23',
                 'numeric' => 23,
-                'unique' => NULL,
+                'unique' => null,
             ],
             'boots' => [
                 'display' => '27',
                 'numeric' => 27,
-                'unique' => NULL,
+                'unique' => null,
             ],
             'gloves' => [
                 'display' => '30',
                 'numeric' => 30,
-                'unique' => NULL,
+                'unique' => null,
             ],
             'ring' => [
                 'display' => '52h',
@@ -277,27 +277,172 @@ class BotParserTest extends AbstractHttpControllerTestCase
             'leggings' => [
                 'display' => '21',
                 'numeric' => 21,
-                'unique' => NULL,
+                'unique' => null,
             ],
             'shield' => [
                 'display' => '43',
                 'numeric' => 43,
-                'unique' => NULL,
+                'unique' => null,
             ],
             'tunic' => [
                 'display' => '55',
                 'numeric' => 55,
-                'unique' => NULL,
+                'unique' => null,
             ],
             'weapon' => [
                 'display' => '46',
                 'numeric' => 46,
-                'unique' => NULL,
+                'unique' => null,
             ],
             'sum' => 380,
             'alignment' => 'Neutral',
         ];
 
-        $this->assertEquals($expectedUser, $parser->getDatabase('fALSO'));
+        $this->assertSame($expectedUser, $parser->getDatabase('fALSO'));
+    }
+
+    public function testPlayers()
+    {
+        $testcase = 'irpg-scoreboard.db';
+        $config = [
+            'bot_db' => __DIR__ . '/../testcases/' . $testcase,
+        ];
+
+        $parser = new BotParser($config);
+
+        $expectedPlayers = [
+            'Abram',
+            'Bergalho',
+            'Sir_MaD',
+            'Infernvs',
+            'BernardoRafael',
+            'pirilampo',
+            'fALSO',
+            'Orange',
+            'flcl',
+            'Weasel',
+            'pi',
+            'MalMen',
+        ];
+
+        $players = $parser->getPlayers();
+
+        // Number of players
+        $this->assertEquals(12, count($players));
+
+        // Test full output
+        $this->assertSame($expectedPlayers, $players);
+    }
+
+    public function testItems()
+    {
+        $testcase = 'mapitems.db';
+        $config = [
+            'bot_item' => __DIR__ . '/../testcases/' . $testcase,
+        ];
+
+        $parser = new BotParser($config);
+
+        $expectedItems = [
+            [
+                'x_pos' => 407,
+                'y_pos' => 380,
+                'type' => 'charm',
+                'level' => '20',
+                'age' => 792,
+                'color' => '#ff8000',
+            ],
+            [
+                'x_pos' => 274,
+                'y_pos' => 125,
+                'type' => 'shield',
+                'level' => '35',
+                'age' => 3345,
+                'color' => '#ff8000',
+            ],
+            [
+                'x_pos' => 293,
+                'y_pos' => 396,
+                'type' => 'shield',
+                'level' => '2',
+                'age' => 0,
+                'color' => '#ff8000',
+            ],
+            [
+                'x_pos' => 50,
+                'y_pos' => 350,
+                'type' => 'weapon',
+                'level' => '85',
+                'age' => 258753,
+                'color' => '#ff8000',
+            ],
+        ];
+
+        // Test full output
+        $this->assertSame($expectedItems, $parser->getItems());
+    }
+
+    public function testCoordinates()
+    {
+        $bot_db = 'irpg-scoreboard.db';
+        $bot_item = 'mapitems.db';
+        $config = [
+            'bot_db' => __DIR__ . '/../testcases/' . $bot_db,
+            'bot_item' => __DIR__ . '/../testcases/' . $bot_item,
+        ];
+
+        $parser = new BotParser($config);
+
+        $coordinates = $parser->getCoordinates();
+
+        // Test for total - 12 players plus 4 items
+        $this->assertEquals(12 + 4, count($coordinates));
+
+        // Compare first player
+        $this->assertSame([
+            'x' => 267,
+            'y' => 306,
+            'text' => 'Abram',
+            'color' => '#0080e1',
+        ], $coordinates[0]);
+    }
+
+    public function testEvents()
+    {
+        $testcase = 'modifiers.txt';
+        $config = [
+            'bot_mod' => __DIR__ . '/../testcases/' . $testcase,
+        ];
+
+        $parser = new BotParser($config);
+
+        $events = $parser->getEvents(0);
+
+        // Test total events
+        $this->assertEquals(100, count($events['items']));
+
+        // Test total
+        $this->assertEquals(100, $events['total']);
+
+        $events = $parser->getEvents(0, 'fAGSO');
+
+        // Test all events
+        $this->assertEquals(13, count($events['items']));
+
+        // Test total
+        $this->assertEquals(13, $events['total']);
+
+        // Test first event
+        $this->assertEquals(
+            "[06/22/18 09:03:15] fAGSO has fallen ill with the black plague. " .
+                     "This terrible calamity has slowed them 0 days, 10:51:59 from level 81.",
+            $events['items'][0]
+        );
+
+        // Test for invalid player
+        $this->assertSame([
+            'items' => [],
+            'total' => 0,
+        ], $parser->getEvents(0, 'ZBR123'));
     }
 }
