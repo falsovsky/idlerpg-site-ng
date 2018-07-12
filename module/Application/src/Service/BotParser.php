@@ -449,7 +449,7 @@ class BotParser
             while (($data = fgets($handle, 1024)) !== false) {
                 // T - title
                 if (! isset($data['title']) && $data[0] == "T") {
-                    $quest['title'] = substr($data, 2);
+                    $quest['title'] = trim(substr($data, 2));
                 }
                 // Y - type. 1 for time based, 2 for stages
                 if (! isset($data['type']) && $data[0] == "Y") {
@@ -460,6 +460,7 @@ class BotParser
                     if ($quest['type'] == 1) {
                         // Time to end
                         $quest['objective'] = $this->secondsToTime((int) substr($data, 2), time());
+                        $quest['objective_val'] = (int) substr($data, 2);
                     } elseif ($quest['type'] == 2) {
                         // Stage
                         $quest['objective'] = (int) substr($data, 2);
@@ -486,7 +487,7 @@ class BotParser
                     if (isset($data_exploded[0][1])) {
                         if ($quest['type'] == 2) {
                             $quest['players'][] = [
-                                'nick' => $data_exploded[1],
+                                'nick'  => trim($data_exploded[1]),
                                 'x_pos' => (int)$data_exploded[2],
                                 'y_pos' => (int)$data_exploded[3],
                                 'color' => self::ONLINE_COLOR,
