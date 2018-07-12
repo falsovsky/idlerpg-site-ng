@@ -113,7 +113,7 @@ class BotParserTest extends AbstractHttpControllerTestCase
         $this->assertEquals(1, $db['type']);
 
         // Current stage
-        $this->assertEquals(1531325222, $db['objective_val']);
+        $this->assertEquals(1531325222, $db['objective_num']);
 
         // Number of players
         $this->assertEquals(4, count($db['players']));
