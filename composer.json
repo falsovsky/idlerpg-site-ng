@@ -48,6 +48,8 @@
     },
     "require-dev": {
         "zendframework/zend-test": "^3.2",
-        "phpunit/phpunit": "6.*"
+        "phpunit/phpunit": "6.*",
+        "doctrine/instantiator": "1.0.*",
+        "myclabs/deep-copy": "1.7.*"
     }
 }

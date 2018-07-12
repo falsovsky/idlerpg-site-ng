@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit colors="true">
     <testsuites>
-        <testsuite name="ZendSkeletonApplication Test Suite">
-            <directory>./module/Application/test</directory>
+        <testsuite name="idlerpg-site-ng">
+            <directory>./module/Application/test/Service</directory>
         </testsuite>
     </testsuites>
 </phpunit>
