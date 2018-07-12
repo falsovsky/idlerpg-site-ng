@@ -3,6 +3,8 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c407b983eb894a01a8b4d1e80e50dc4a)](https://www.codacy.com/app/falsovsky/idlerpg-site-ng?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=falsovsky/idlerpg-site-ng&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/falsovsky/idlerpg-site-ng/badge)](https://www.codefactor.io/repository/github/falsovsky/idlerpg-site-ng)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/falsovsky/idlerpg-site-ng/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/falsovsky/idlerpg-site-ng/?branch=master)
+[![Build Status](https://travis-ci.org/falsovsky/idlerpg-site-ng.svg?branch=master)](https://travis-ci.org/falsovsky/idlerpg-site-ng)
+[![Coverage Status](https://coveralls.io/repos/github/falsovsky/idlerpg-site-ng/badge.svg?branch=master)](https://coveralls.io/github/falsovsky/idlerpg-site-ng?branch=master)
 
 ## Introduction
 
