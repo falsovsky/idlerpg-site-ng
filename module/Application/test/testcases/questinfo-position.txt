@@ -1,0 +1,8 @@
+T lay waste to the Towers of Ankh-Allor, wherein lies the terrible sorceror Croocq
+Y 2
+S 1
+P 225 315 280 360
+P1 Orange 195 315
+P2 pi 225 270
+P3 BernardoRafael 225 315
+P4 pirilampo 225 315
