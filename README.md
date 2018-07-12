@@ -11,7 +11,7 @@
 This is a rewrite of the original site from http://idlerpg.net/ using Zend Framework 3.
 See a live demo at http://idle.deadbsd.org/.
 
-## Installation using Composer
+## Installation
 
 The easiest way to install the site is to use
 [Composer](https://getcomposer.org/).  If you don't have it already installed,
