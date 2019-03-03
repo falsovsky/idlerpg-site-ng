@@ -18,8 +18,8 @@
         "zfcampus/zf-development-mode": "^3.0",
         "zendframework/zend-json": "^3.0",
         "zendframework/zend-navigation": "^2.9",
-        "nesbot/carbon": "^1.32",
-        "symfony/translation": "v3.4.12",
+        "nesbot/carbon": "^2.0",
+        "symfony/translation": "^4.0",
         "zendframework/zend-cache": "^2.8",
         "zendframework/zend-serializer": "^2.9"
     },
@@ -48,8 +48,8 @@
     },
     "require-dev": {
         "zendframework/zend-test": "^3.2",
-        "phpunit/phpunit": "6.*",
-        "doctrine/instantiator": "1.0.*",
-        "myclabs/deep-copy": "1.7.*"
+        "phpunit/phpunit": "^7.0",
+        "doctrine/instantiator": "^1.1",
+        "myclabs/deep-copy": "^1.8"
     }
 }
