@@ -4,9 +4,9 @@
     "type": "project",
     "license": "BSD-3-Clause",
     "keywords": [
-        "framework",
-        "mvc",
-        "zf"
+        "irc",
+        "idlerpg",
+        "site"
     ],
     "homepage": "http://idle.deadbsd.org/",
     "minimum-stability": "dev",
