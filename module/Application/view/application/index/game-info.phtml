@@ -508,7 +508,6 @@ $script = <<< EOT
 $(document).ready(function() {
     $('.anchor').click(function(){
         var divId = $(this).attr('href');
-        console.log(divId);
         $('html, body').animate({
             scrollTop: $(divId).offset().top - 80
         }, 100);
