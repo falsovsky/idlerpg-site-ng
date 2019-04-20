@@ -76,15 +76,6 @@ or manually make matching updates to the `.dist`-less copies of those files.
 
 To run the supplied site unit tests, you need to do one of the following:
 
-- During initial project creation, select to install the MVC testing support.
-- After initial project creation, install [zend-test](https://zendframework.github.io/zend-test/):
-
-  ```bash
-  $ composer require --dev zendframework/zend-test
-  ```
-
-Once testing support is present, you can run the tests using:
-
 ```bash
 $ ./vendor/bin/phpunit
 ```
@@ -94,41 +85,6 @@ If you need to make local modifications for the PHPUnit test setup, copy
 precedence over the former when running tests, and is ignored by version
 control. (If you want to make the modifications permanent, edit the
 `phpunit.xml.dist` file.)
-
-## Using Vagrant
-
-This site includes a `Vagrantfile` based on ubuntu 16.04 (bento box)
-with configured Apache2 and PHP 7.0. Start it up using:
-
-```bash
-$ vagrant up
-```
-
-Once built, you can also run composer within the box. For example, the following
-will install dependencies:
-
-```bash
-$ vagrant ssh -c 'composer install'
-```
-
-While this will update them:
-
-```bash
-$ vagrant ssh -c 'composer update'
-```
-
-While running, Vagrant maps your host port 8080 to port 80 on the virtual
-machine; you can visit the site at http://localhost:8080/
-
-> ### Vagrant and VirtualBox
->
-> The vagrant image is based on ubuntu/xenial64. If you are using VirtualBox as
-> a provider, you will need:
->
-> - Vagrant 1.8.5 or later
-> - VirtualBox 5.0.26 or later
-
-For vagrant documentation, please refer to [vagrantup.com](https://www.vagrantup.com/)
 
 ## Using docker-compose
 
@@ -212,23 +168,6 @@ server {
 Restart the nginx, now you should be ready to go!
 
 ## QA Tools
-
-The site does not come with any QA tooling by default, but does ship with
-configuration for each of:
-
-- [phpcs](https://github.com/squizlabs/php_codesniffer)
-- [phpunit](https://phpunit.de)
-
-Additionally, it comes with some basic tests for the shipped
-`Application\Controller\IndexController`.
-
-If you want to add these QA tools, execute the following:
-
-```bash
-$ composer require --dev phpunit/phpunit squizlabs/php_codesniffer zendframework/zend-test
-```
-
-We provide aliases for each of these tools in the Composer configuration:
 
 ```bash
 # Run CS checks:
