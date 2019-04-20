@@ -199,7 +199,7 @@ class BotParser
             }
             fclose($handle);
         }
-        usort($players, function ($valueA, $valueB) {
+        usort($players, function($valueA, $valueB) {
             return $valueB['level'] - $valueA['level'] ?: $valueA['ttl_num'] - $valueB['ttl_num'];
         });
 
@@ -386,7 +386,7 @@ class BotParser
 
         $tmp = array_reverse($tmp);
         $modifiers['total'] = count($tmp);
-        $modifiers['items'] = array_slice($tmp, 0, ($limit > 0 ) ? $limit : null);
+        $modifiers['items'] = array_slice($tmp, 0, ($limit > 0) ? $limit : null);
 
         return $modifiers;
     }
@@ -433,7 +433,7 @@ class BotParser
         if (($handle = fopen($this->config['bot_quest'], "r")) !== false) {
             while (($data = fgets($handle, 1024)) !== false) {
                 // T - title
-                if (! isset($data['title']) && $data[0] == "T") {
+                if (!isset($data['title']) && $data[0] == "T") {
                     $quest['title'] = trim(substr($data, 2));
                 }
                 // Y - type. 1 for time based, 2 for stages
@@ -473,8 +473,8 @@ class BotParser
                         if ($quest['type'] == 2) {
                             $quest['players'][] = [
                                 'nick'  => trim($data_exploded[1]),
-                                'x_pos' => (int)$data_exploded[2],
-                                'y_pos' => (int)$data_exploded[3],
+                                'x_pos' => (int) $data_exploded[2],
+                                'y_pos' => (int) $data_exploded[3],
                                 'color' => self::ONLINE_COLOR,
                             ];
                         } elseif ($quest['type'] == 1) {
