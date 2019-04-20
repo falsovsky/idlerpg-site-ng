@@ -5,3 +5,5 @@ config/development.config.php
 data/cache/*
 !data/cache/.gitkeep
 phpunit.xml
+node_modules/
+yarn-error.log
