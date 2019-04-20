@@ -37,30 +37,31 @@ class IndexController extends AbstractActionController
     public function playerInfoAction()
     {
         $nick = $this->params()->fromRoute('nick', null);
-        $all_events = $this->params()->fromRoute('mod', null);
+        $allEvents = $this->params()->fromRoute('mod', null);
         if (null === $nick) {
             return $this->redirect()->toRoute('home');
         }
 
-        $player_info = $this->parser->getDatabase($nick);
-        if (0 === $player_info) {
+        $playerInfo = $this->parser->getDatabase($nick);
+        if (0 === $playerInfo) {
             return $this->redirect()->toRoute('home');
         }
-        $player_info['items'] = $this->parser->getItemsList();
-        $player_info['penalties'] = $this->parser->getPenaltiesList();
 
-        if ($all_events) {
-            $player_info['mod'] = $this->parser->getEvents(0, $nick);
-            $player_info['mod']['link'] = false;
+        $playerInfo['items'] = $this->parser->getItemsList();
+        $playerInfo['penalties'] = $this->parser->getPenaltiesList();
+
+        if ($allEvents) {
+            $playerInfo['mod'] = $this->parser->getEvents(0, $nick);
+            $playerInfo['mod']['link'] = false;
         } else {
-            $player_info['mod'] = $this->parser->getEvents(5, $nick);
-            $player_info['mod']['link'] = true;
+            $playerInfo['mod'] = $this->parser->getEvents(5, $nick);
+            $playerInfo['mod']['link'] = true;
         }
 
-        $player_info['map_image'] = $this->config['map_image'];
-        $player_info['dimensions'] = $this->parser->getMapDimensions();
+        $playerInfo['map_image'] = $this->config['map_image'];
+        $playerInfo['dimensions'] = $this->parser->getMapDimensions();
 
-        return new ViewModel($player_info);
+        return new ViewModel($playerInfo);
     }
 
     public function databaseAction()
@@ -79,10 +80,19 @@ class IndexController extends AbstractActionController
 
     public function questInfoAction()
     {
+        $quest = $this->parser->getQuestData();
+        if ($quest['type'] == 2) {
+            $goal = [
+                'x_pos' => $quest['stages'][$quest['objective'] - 1]['x_pos'],
+                'y_pos' => $quest['stages'][$quest['objective'] - 1]['y_pos'],
+                'color' => $quest['stages'][$quest['objective'] - 1]['color']
+            ];
+        }
         return new ViewModel([
             'map_image'  => $this->config['map_image'],
-            'quest' => $this->parser->getQuestData(),
+            'quest'      => $quest,
             'dimensions' => $this->parser->getMapDimensions(),
+            'goal'       => isset($goal) ? $goal : null
         ]);
     }
 

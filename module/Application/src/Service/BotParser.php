@@ -39,8 +39,8 @@ class BotParser
     }
 
     /**
-     * Converts a DateInterval to a human readable format
-     * Returns 'None' if the difference is zero
+     * Converts a DateInterval to a human readable format.
+     * Returns 'None' if the difference is zero.
      * @param int $seconds
      * @param int $start
      * @return string
@@ -59,7 +59,7 @@ class BotParser
     }
 
     /**
-     * Returns the alignment
+     * Returns the alignment.
      * @param string $alignment
      * @return string
      */
@@ -81,51 +81,36 @@ class BotParser
     }
 
     /**
-     * Returns the name of item if it is unique, or null if it isn't
-     * @param mixed $item_value
+     * Returns the name of item if it is unique, or null if it isn't.
+     * @param mixed $itemValue
      * @return null|string
      */
-    private function parseUniqueItem($item_value)
+    private function parseUniqueItem($itemValue)
     {
+        $items = [
+            "a" => "Mattt's Omniscience Grand Crown",
+            "b" => "Res0's Protectorate Plate Mail",
+            "c" => "Dwyn's Storm Magic Amulet",
+            "d" => "Jotun's Fury Colossal Sword",
+            "e" => "Drdink's Cane of Blind Rage",
+            "f" => "Mrquick's Magical Boots of Swiftness",
+            "g" => "Jeff's Cluehammer of Doom",
+            "h" => "Juliet's Glorious Ring of Sparkliness"
+        ];
         $result = null;
 
         $regex = '/\d+([a-h])/';
-        preg_match($regex, $item_value, $matches);
+        preg_match($regex, $itemValue, $matches);
 
-        if (isset($matches[1])) {
-            switch ($matches[1]) {
-                case 'a':
-                    $result = "Mattt's Omniscience Grand Crown";
-                    break;
-                case 'b':
-                    $result = "Res0's Protectorate Plate Mail";
-                    break;
-                case 'c':
-                    $result = "Dwyn's Storm Magic Amulet";
-                    break;
-                case 'd':
-                    $result = "Jotun's Fury Colossal Sword";
-                    break;
-                case 'e':
-                    $result = "Drdink's Cane of Blind Rage";
-                    break;
-                case 'f':
-                    $result = "Mrquick's Magical Boots of Swiftness";
-                    break;
-                case 'g':
-                    $result = "Jeff's Cluehammer of Doom";
-                    break;
-                case 'h':
-                    $result = "Juliet's Glorious Ring of Sparkliness";
-                    break;
-            }
+        if (isset($matches[1]) && array_key_exists($matches[1], $items)) {
+            $result = $items[$matches[1]];
         }
 
         return $result;
     }
 
     /**
-     * Sums the values from the keys of the array $record from $start till $end
+     * Sums the values from the keys of the array $record from $start till $end.
      * @param array $record
      * @param int $start
      * @param int $end
@@ -157,7 +142,7 @@ class BotParser
     }
 
     /**
-     * Returns an array with a list of all the Items from the database
+     * Returns an array with a list of all the Items from the database.
      * @return array
      */
     public function getItems()
@@ -189,8 +174,8 @@ class BotParser
     }
 
     /**
-     * Returns an array with the Players, sorted by level
-     * Includes the fields needed for the scoreboard page
+     * Returns an array with the Players, sorted by level.
+     * Includes the fields needed for the scoreboard page.
      * @return array
      */
     public function getScoreboard()
@@ -214,17 +199,17 @@ class BotParser
             }
             fclose($handle);
         }
-        usort($players, function ($a, $b) {
-            return $b['level'] - $a['level'] ?: $a['ttl_num'] - $b['ttl_num'];
+        usort($players, function ($valueA, $valueB) {
+            return $valueB['level'] - $valueA['level'] ?: $valueA['ttl_num'] - $valueB['ttl_num'];
         });
 
         return $players;
     }
 
     /**
-     * Returns a list with (almost) all the fields from the Players database
+     * Returns a list with (almost) all the fields from the Players database.
      * If the parameter $nick is used, only returns the data for that Player
-     * or 0 if that Player doesn't exist
+     * or 0 if that Player doesn't exist.
      * @param string|null $nick
      * @return array|int|mixed
      */
@@ -371,8 +356,8 @@ class BotParser
     }
 
     /**
-     * Returns the last $limit events [from the user $nick]
-     * If $limit is 0 returns all
+     * Returns the last $limit events [from the user $nick].
+     * If $limit is 0 returns all.
      * @param int $limit
      * @param string|null $nick
      * @return array|mixed
@@ -407,7 +392,7 @@ class BotParser
     }
 
     /**
-     * Returns an array with the coordinates and name of all Players and Items
+     * Returns an array with the coordinates and name of all Players and Items.
      * @return array
      */
     public function getCoordinates()
@@ -507,7 +492,7 @@ class BotParser
     }
 
     /**
-     * Returns an array with all the Players nicks
+     * Returns an array with all the Players nicks.
      * @return array
      */
     public function getPlayers()
@@ -530,7 +515,7 @@ class BotParser
     }
 
     /**
-     * Returns an array with the dimensions of the map image
+     * Returns an array with the dimensions of the map image.
      * @return array
      */
     public function getMapDimensions()

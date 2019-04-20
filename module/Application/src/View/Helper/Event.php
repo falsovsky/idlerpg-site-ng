@@ -21,7 +21,7 @@ class Event extends AbstractHelper
         foreach ($this->nicks as $nick) {
             $event = str_replace(
                 $nick,
-                '<a href="' . $url('player-info', ['nick' => $nick]) . '">'. $nick .'</a>',
+                '<a href="' . $url('player-info', ['nick' => $nick]) . '">' . $nick . '</a>',
                 $event
             );
         }

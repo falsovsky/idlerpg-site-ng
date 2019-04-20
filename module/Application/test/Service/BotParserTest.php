@@ -384,11 +384,11 @@ class BotParserTest extends AbstractHttpControllerTestCase
 
     public function testCoordinates()
     {
-        $bot_db = 'irpg-scoreboard.db';
-        $bot_item = 'mapitems.db';
+        $botDb = 'irpg-scoreboard.db';
+        $botItem = 'mapitems.db';
         $config = [
-            'bot_db' => __DIR__ . '/../testcases/' . $bot_db,
-            'bot_item' => __DIR__ . '/../testcases/' . $bot_item,
+            'bot_db' => __DIR__ . '/../testcases/' . $botDb,
+            'bot_item' => __DIR__ . '/../testcases/' . $botItem,
         ];
 
         $parser = new BotParser($config);
