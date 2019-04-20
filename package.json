@@ -1,0 +1,24 @@
+{
+  "name": "idlerpg-site-ng",
+  "description": "Idlerpg irc bot site using Zend Framework 3",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "author": "Pedro de Oliveira",
+  "homepage": "http://idle.deadbsd.org/",
+  "scripts": {
+    "prod": "gulp --production"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootswatch": "^4.3.1",
+    "jquery": "^3.4.0",
+    "popper.js": "^1.15.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-cli": "^2.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1"
+  }
+}
