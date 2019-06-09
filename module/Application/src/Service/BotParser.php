@@ -199,7 +199,7 @@ class BotParser
             }
             fclose($handle);
         }
-        usort($players, function($valueA, $valueB) {
+        usort($players, function ($valueA, $valueB) {
             return $valueB['level'] - $valueA['level'] ?: $valueA['ttl_num'] - $valueB['ttl_num'];
         });
 
@@ -433,7 +433,7 @@ class BotParser
         if (($handle = fopen($this->config['bot_quest'], "r")) !== false) {
             while (($data = fgets($handle, 1024)) !== false) {
                 // T - title
-                if (!isset($data['title']) && $data[0] == "T") {
+                if (! isset($data['title']) && $data[0] == "T") {
                     $quest['title'] = trim(substr($data, 2));
                 }
                 // Y - type. 1 for time based, 2 for stages
