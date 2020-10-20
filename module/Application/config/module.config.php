@@ -2,7 +2,7 @@
 
 namespace Application;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 use Application\Service\BotParser;
 use Application\Service\BotParserCache;
 use Application\View\Helper\Scoreboard;
