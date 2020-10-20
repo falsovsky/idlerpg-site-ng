@@ -2,8 +2,8 @@
 
 namespace ApplicationTest\Service;
 
-use Zend\Stdlib\ArrayUtils;
-use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
+use Laminas\Stdlib\ArrayUtils;
+use Laminas\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 use Application\Service\BotParser;
 
 class BotParserTest extends AbstractHttpControllerTestCase

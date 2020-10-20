@@ -1,7 +1,7 @@
 <?php
 namespace Application\Service\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Application\Service\BotParser;
 use Application\Service\BotParserCache;

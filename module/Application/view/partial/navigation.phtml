@@ -4,7 +4,7 @@
         <?php if (! $this->navigation()->accept($page)) { ?>
             <?php   continue; ?>
         <?php } ?>
-        <?php /* @var $page Zend\Navigation\Page\Mvc */ ?>
+        <?php /* @var $page Laminas\Navigation\Page\Mvc */ ?>
         <?php $hasChildren = $page->hasPages() ?>
         <?php if (! $hasChildren) : ?>
             <li class="nav-item<?php echo ($page->isActive()) ? ' active' : ''?>">

@@ -11,8 +11,9 @@
  * This should be an array of module namespaces used in the application.
  */
 return [
-    'Zend\Cache',
-    'Zend\Router',
-    'Zend\Navigation',
+    'Laminas\ZendFrameworkBridge',
+    'Laminas\Cache',
+    'Laminas\Router',
+    'Laminas\Navigation',
     'Application',
 ];

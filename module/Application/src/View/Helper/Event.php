@@ -2,7 +2,7 @@
 
 namespace Application\View\Helper;
 
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 use Application\Service\BotParser;
 
 class Event extends AbstractHelper
