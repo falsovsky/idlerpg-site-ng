@@ -2,7 +2,7 @@
 
 namespace Application\Controller\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Application\Controller\IndexController;
 use Application\Service\BotParserCache;

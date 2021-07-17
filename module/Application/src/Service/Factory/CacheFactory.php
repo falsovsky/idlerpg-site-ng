@@ -2,7 +2,7 @@
 namespace Application\Service\Factory;
 
 use Interop\Container\ContainerInterface;
-use Zend\Cache\StorageFactory;
+use Laminas\Cache\StorageFactory;
 
 final class CacheFactory
 {

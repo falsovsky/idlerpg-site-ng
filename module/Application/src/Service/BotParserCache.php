@@ -2,7 +2,7 @@
 
 namespace Application\Service;
 
-use Zend\Cache\Storage\Adapter\AbstractAdapter;
+use Laminas\Cache\Storage\Adapter\AbstractAdapter;
 
 /**
  * Class BotParserCache

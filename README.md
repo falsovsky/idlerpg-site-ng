@@ -52,7 +52,7 @@ interfaces. You can then visit the site at http://localhost:8080/
 
 ## Development mode
 
-The site ships with [zf-development-mode](https://github.com/zfcampus/zf-development-mode)
+The site ships with [laminas-development-mode](https://github.com/laminas/laminas-development-mode)
 by default, and provides three aliases for consuming the script it ships with:
 
 ```bash

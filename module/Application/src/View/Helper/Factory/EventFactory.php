@@ -1,7 +1,7 @@
 <?php
 namespace Application\View\Helper\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Application\Service\BotParser;
 use Application\View\Helper\Event;
