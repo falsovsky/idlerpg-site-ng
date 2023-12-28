@@ -400,7 +400,7 @@ browserify@3.x:
     querystring-es3 "0.2.0"
     resolve "~0.6.1"
     shallow-copy "0.0.1"
-    shell-quote "~0.0.1"
+    shell-quote "^1.7.3"
     stream-browserify "~0.1.0"
     stream-combiner "~0.0.2"
     string_decoder "~0.0.0"
@@ -2713,10 +2713,8 @@ shallow-copy@0.0.1:
   resolved "https://registry.yarnpkg.com/shallow-copy/-/shallow-copy-0.0.1.tgz#415f42702d73d810330292cc5ee86eae1a11a170"
   integrity sha1-QV9CcC1z2BAzApLMXuhurhoRoXA=
 
-shell-quote@~0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-0.0.1.tgz#1a41196f3c0333c482323593d6886ecf153dd986"
-  integrity sha1-GkEZbzwDM8SCMjWT1ohuzxU92YY=
+shell-quote@^1.7.3:
+  version "1.7.3"
 
 sigmund@~1.0.0:
   version "1.0.1"
